@@ -17,6 +17,7 @@ import { AuthService } from './service/auth/auth.service';
 import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
+import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
     CreateEventComponent,
     HomebarComponent,
     HomebandComponent,
-    LoginsidenavComponent
+    LoginsidenavComponent,
+    SubscribeEventGroupeComponent
   ],
   imports: [
     FormsModule,
