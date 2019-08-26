@@ -1,0 +1,18 @@
+<form #forme ="ngForm" (ngSubmit)="addBattleGroup()" autocomplete="off">
+    <input type="time" placeholder="Date" name="date" #dateAction="ngModel" [(ngModel)]= "battleGroup.date" required>
+    <br>
+    <input type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroup.description" required>
+    <br>
+    <input type="text" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "battleGroup.nom" required>
+    <br>
+    <input type="number" placeholder="Cachetmax" name="cachetmax" #nomAction="ngModel" [(ngModel)]= "battleGroup.cachetmax" required>
+    <br>
+    <input type="number" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "battleGroup.nbgroupes" required>
+    <br>
+    <input type="number" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroup.prix" required>
+    <br>
+    <br>
+    <br>
+    <button [disabled]="!forme.form.valid">AddEvent</button>  
+</form>
+
