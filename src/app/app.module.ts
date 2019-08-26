@@ -16,6 +16,7 @@ import { AuthService } from './service/auth/auth.service';
 
 import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
+import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomebandComponent } from './homeband/homeband.component';
     HomeComponent,
     CreateEventComponent,
     HomebarComponent,
-    HomebandComponent
+    HomebandComponent,
+    LoginsidenavComponent
   ],
   imports: [
     FormsModule,
