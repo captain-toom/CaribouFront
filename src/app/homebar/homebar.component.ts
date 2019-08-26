@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../events.service';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -13,7 +13,7 @@ export class HomebarComponent implements OnInit {
 
   data;
 
-  constructor(private http : HttpClient,) { }
+  constructor(private http : HttpClient) { }
 
   ngOnInit() {
     this.http.get('http://localhost:8083/battlegroupes')    
@@ -22,13 +22,8 @@ export class HomebarComponent implements OnInit {
             console.log(response);
             this.data = response;
           }
-      )
-
-
+      );
 
   }
-
-
-
 
 }
