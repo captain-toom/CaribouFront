@@ -8,7 +8,12 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 import { HomeBarComponent } from './home-bar/home-bar.component';
+=======
+import { HomebarComponent } from './homebar/homebar.component';
+import { HomebandComponent } from './homeband/homeband.component';
+>>>>>>> b6ab2d5de3a81ca2f85f78c86edb754a5841bd4c
 
 @NgModule({
   declarations: [
@@ -16,7 +21,12 @@ import { HomeBarComponent } from './home-bar/home-bar.component';
     FooterComponent,
     LoginComponent,
     HomeComponent,
+<<<<<<< HEAD
     HomeBarComponent
+=======
+    HomebarComponent,
+    HomebandComponent
+>>>>>>> b6ab2d5de3a81ca2f85f78c86edb754a5841bd4c
   ],
   imports: [
     FormsModule,
