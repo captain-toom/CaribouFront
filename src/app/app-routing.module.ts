@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { CreateEventComponent } from './create-event/create-event.component';
 
 import { AuthGuard } from './service/auth/auth.guard';
+import { HomebarComponent } from './homebar/homebar.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'create_event',
     component: CreateEventComponent
+  },
+  {
+    path: 'home_bar',
+    component: HomebarComponent
   }
 ];
 
