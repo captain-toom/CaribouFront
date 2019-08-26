@@ -77,24 +77,25 @@ export class LoginComponent implements OnInit {
           if (res == true) {
             console.log("fuk of 1", JSON.stringify(resu));
 
-            if (resu == 'client') {
-              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
-              this.authService.login(this.model);
-              this.router.navigate(['/home']);
+            if (resu == 'client') {              
+              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));            
+              this.authService.login(this.model.username);              
             }
 
             
             if (resu == 'bar') {
+              this.model.type = 'bar';
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
-              this.router.navigate(['/homebar']);
+             
             }
 
             
             if (resu == 'groupe') {
+              this.model.type = 'client';
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
-              this.router.navigate(['/homeband']);
+              
             }
 
           }
