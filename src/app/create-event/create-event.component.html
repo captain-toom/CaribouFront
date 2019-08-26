@@ -1,15 +1,19 @@
-<form #forme ="ngForm" (ngSubmit)="addBattleGroup()" autocomplete="off">
-    <input type="time" placeholder="Date" name="date" #dateAction="ngModel" [(ngModel)]= "battleGroup.date" required>
+<form #forme ="ngForm" (ngSubmit)="addBattleGroupe()" autocomplete="off">
+    <input type="date" placeholder="Date" name="date" #dateAction="ngModel" [(ngModel)]= "battleGroupe.date" required>
     <br>
-    <input type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroup.description" required>
+    <input type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroupe.description" required>
     <br>
-    <input type="text" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "battleGroup.nom" required>
+    <input type="text" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "battleGroupe.nom" required>
     <br>
-    <input type="number" placeholder="Cachetmax" name="cachetmax" #nomAction="ngModel" [(ngModel)]= "battleGroup.cachetmax" required>
+    <input type="number" placeholder="Cachetmax" name="cachetmax" #nomAction="ngModel" [(ngModel)]= "battleGroupe.cachetmax" required>
     <br>
-    <input type="number" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "battleGroup.nbgroupes" required>
+    <input type="number" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "battleGroupe.nbgroupes" required>
     <br>
-    <input type="number" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroup.prix" required>
+    <input type="number" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroupe.prix" required>
+    <br>
+    <select name="genre" #selectval>
+        <option *ngFor = "let g of genres" value="{{g}}">{{g}}</option>
+    </select>
     <br>
     <br>
     <br>

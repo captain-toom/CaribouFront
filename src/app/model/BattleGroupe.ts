@@ -1,3 +1,6 @@
+import { Bar } from './Bar';
+import { Genre } from './Genre';
+
 export class BattleGroupe{
     date: Date;
     description: string;
