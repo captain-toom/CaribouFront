@@ -9,21 +9,33 @@
     </div>
     </div>
 
-
-<div class="container">    
-    <div class="row">
-        <div class='col-sm-4'> 
-            <h3>Boucles </h3>
-            <ul>
-                <li *ngFor="let e of data"> {{ e.nom }}  </li>
-            </ul>
-        </div>
-        <div class='col-sm-4'> 
-        </div>
-        <div class='col-sm-4'> 
-        </div>
+<div class='container'>
+        <h3>Liste de tous les Events  </h3>
+        <table class="table table-striped" >
+            <thead class="thead thead-dark">
+                <tr>
+                    <th>Date de l'événement</th>
+                    <th>Nom</th>
+                    <th>Genre</th>
+                    <th>Description</th>
+                    <th>Cachet Max</th>                    
+                    <th>Nb de groupe dans la soirée</th>
+                    <th>Prix d'entrée</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let e of data">
+                    <td> {{e.dateEvent | date:'EEEE d MMMM y' }}</td>
+                    <td> {{e.nom}}</td>
+                    <td> {{e.genre.nom}}</td>
+                    <td> {{e.description}}</td>
+                    <td> {{e.cachetmax}}</td>
+                    <td> {{e.nbgroupes}}</td>
+                    <td> {{e.prix}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</div>
 
 
 
