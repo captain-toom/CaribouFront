@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BattleGroupe } from "../model/BattleGroupe";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Bar } from '../model/Bar';
-import { Genre } from '../model/Genre';
 
 @Component({
   selector: 'app-create-event',
@@ -14,8 +12,6 @@ export class CreateEventComponent implements OnInit {
 
   genres;
   battleGroupe:BattleGroupe = new BattleGroupe();
-  bar:Bar = new Bar();
-  genre:Genre = new Genre();
   constructor(private http: HttpClient, private routeur: Router) { }
 
   ngOnInit() {
