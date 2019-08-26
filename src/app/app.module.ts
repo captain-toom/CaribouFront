@@ -10,6 +10,9 @@ import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CreateEventComponent } from './create-event/create-event.component';
 
+import { AuthService } from './service/auth/auth.service';
+
+
 import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
 
@@ -29,7 +32,7 @@ import { HomebandComponent } from './homeband/homeband.component';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
