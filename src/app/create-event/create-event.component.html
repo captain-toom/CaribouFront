@@ -1,5 +1,5 @@
 <form #forme ="ngForm" (ngSubmit)="addBattleGroupe()" autocomplete="off">
-    <input type="date" placeholder="Date" name="date" #dateAction="ngModel" [(ngModel)]= "battleGroupe.date" required>
+    <input type="date" name="dateEvent" #dateAction="ngModel" [(ngModel)]= "battleGroupe.dateEvent" required>
     <br>
     <input type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroupe.description" required>
     <br>
@@ -11,12 +11,12 @@
     <br>
     <input type="number" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroupe.prix" required>
     <br>
-    <select name="genre" #selectval>
-        <option *ngFor = "let g of genres" value="{{g}}">{{g}}</option>
+    <select name="genre" #genreAction="ngModel" [(ngModel)]= "battleGroupe.genre.id" required>
+        <option *ngFor = "let g of genres" value="{{g.id}}">{{g.nom}}</option>
     </select>
     <br>
     <br>
     <br>
-    <button [disabled]="!forme.form.valid">AddEvent</button>  
+    <button [disabled]="!forme.form.valid">AddEvent</button> 
 </form>
 

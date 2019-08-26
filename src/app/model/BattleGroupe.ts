@@ -1,16 +1,18 @@
+import { Genre } from './Genre';
+import { Bar } from './Bar';
 
 
 
 export class BattleGroupe{
-    date: Date;
+    dateEvent: Date;
     description: string;
     nom: string;
     visible_client: boolean;
     cachetmax: number;
     nbgroupes: number;
     prix: number;
-    bar_id: number;
-    genre_id: number;
+    bar: Bar;
+    genre: Genre;
     
 
     constructor(
@@ -22,8 +24,8 @@ export class BattleGroupe{
         this.nom = nom;
     }
 
-    public set setDate(date : Date) {
-        this.date = date;
+    public set setDateEvent(dateEvent : Date) {
+        this.dateEvent = dateEvent;
     }
 
     public set setDescription(description : string) {
@@ -44,11 +46,11 @@ export class BattleGroupe{
     }
 
     
-    public set setBar_id(bar_id : number) {
-        this.bar_id = bar_id;
+    public set setBar_id(bar : Bar) {
+        this.bar = bar;
     }
     
-    public set setGenre_id(genre_id : number) {
-        this.genre_id = genre_id;
+    public set setGenre_id(genre : Genre) {
+        this.genre = genre;
     }
 }
