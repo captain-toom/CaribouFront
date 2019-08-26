@@ -3,7 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+
 import { CreateEventComponent } from './create-event/create-event.component';
+
+import { AuthGuard } from './service/auth/auth.guard';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -13,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [AuthGuard],
     component: HomeComponent
   },
   {
@@ -23,6 +28,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
