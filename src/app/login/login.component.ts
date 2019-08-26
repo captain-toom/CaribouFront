@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Type } from '@angular/compiler';
 import { AuthService } from '../service/auth/auth.service';
-import { url } from 'inspector';
+
 import { map, tap } from 'rxjs/operators';
 import { from } from 'rxjs';
 
@@ -16,7 +16,7 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
   data;
   model: any = {};
-  typeruser;
+  typeruser: string;
   connect: boolean;
 
 
@@ -65,6 +65,7 @@ export class LoginComponent implements OnInit {
     //#endregion
 
     //#region debut première solution
+
     const verifUser = this.http.get('http://localhost:8083/connexion/request/' + this.model.username + '/' + this.model.password).toPromise();
     verifUser.then(res => {
       this.data = res;  // solution pour utiliser data after mais attention a quant tu l'utilise !
@@ -75,6 +76,27 @@ export class LoginComponent implements OnInit {
         resu => {
           if (res == true) {
             console.log("fuk of 1", JSON.stringify(resu));
+
+            if (resu == 'client') {
+              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
+              this.authService.login(this.model);
+              this.router.navigate(['/home']);
+            }
+
+            
+            if (resu == 'bar') {
+              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
+              this.authService.login(this.model);
+              this.router.navigate(['/homebar']);
+            }
+
+            
+            if (resu == 'groupe') {
+              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
+              this.authService.login(this.model);
+              this.router.navigate(['/homeband']);
+            }
+
           }
           else {
             console.log("fuk on 1");
@@ -82,22 +104,35 @@ export class LoginComponent implements OnInit {
         }
       );
       //#endregion fin premiere solution--------------------------------------------------------------------------------------------
-      this.laSuiteJeSaisPasCommentTuVeuxLAppeler(res); // deuxième solution (appel fuction)
+      // this.laSuiteJeSaisPasCommentTuVeuxLAppeler(res); // deuxième solution (appel fuction)
+
+
     });
+
   }
+
+
   //#region debut fonction deuxième solution
-  laSuiteJeSaisPasCommentTuVeuxLAppeler(verif) {
-    console.log("arthur dans la sauce 2 ", verif);
-    if (verif == true) {
-      this.http.get('http://localhost:8083/connexion/type/' + this.model.username, { responseType: 'text' }).subscribe(
-        res => {
-          console.log('fuk of 2', JSON.stringify(res));
-        }
-      )
-    }
-    else {
-      console.log("fuk on 2");
-    }
-  }
+  // laSuiteJeSaisPasCommentTuVeuxLAppeler(verif) {
+  //   console.log("arthur dans la sauce 2 ", verif);
+  //   if (verif == true) {
+  //     this.http.get('http://localhost:8083/connexion/type/' + this.model.username, { responseType: 'text' }).subscribe(
+  //       res => {
+  //         console.log('fuk of 2', JSON.stringify(res));
+  //         this.typeruser = JSON.stringify(res);
+  //         console.log("cet utilisateur est un" + this.typeruser);
+
+  //         if(this.typeruser=='client'){
+  //           localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
+  //         this.authService.login(this.model);
+  //         this.router.navigate(['/home']);
+  //         }          
+  //       }
+  //     )
+  //   }
+  //   else {
+  //     console.log("fuk on 2");
+  //   }
+  // }
   //#endregion
 }
