@@ -8,6 +8,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 
 import { AuthGuard } from './service/auth/auth.guard';
 import { HomebarComponent } from './homebar/homebar.component';
+import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'home_bar',
     component: HomebarComponent
+  },
+  {
+    path: 'subscribe_event_groupe',
+    component: SubscribeEventGroupeComponent
   }
 ];
 

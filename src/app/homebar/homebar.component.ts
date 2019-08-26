@@ -11,16 +11,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomebarComponent implements OnInit {
 
-  data;
+  allEvent;
+  myAllEvent;
+  my3OldEvent;
+  my3FuturEvent;
 
   constructor(private http : HttpClient) { }
 
   ngOnInit() {
-    this.http.get('http://localhost:8083/battlegroupes')    
+    // 1 
+    // avec l'id du bar en session
+    this.http.get('http://localhost:8083/battlegroupes/old/1')    
       .subscribe(
           response => {
             console.log(response);
-            this.data = response;
+            this.my3OldEvent = response;
+          }
+      );
+
+      this.http.get('http://localhost:8083/battlegroupes/futur/1')    
+      .subscribe(
+          response => {
+            console.log(response);
+            this.my3FuturEvent = response;
           }
       );
 

@@ -1,0 +1,20 @@
+<body>
+<table style="margin: auto " >
+    <thead>
+        <th>Nom</th>
+        <th>Bar</th>
+        <th>Capacité</th>
+        <th>Cachet</th>
+        <th>Genre de musique</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = 'let e of events' (click)=openevent(e)>
+            <td>{{e.nom}}</td>
+            <td>{{e.bar.nom}}</td>
+            <td>{{e.bar.capacitemax}}</td>
+            <td>{{e.cachetmax}}</td>
+            <td>{{e.genre.nom}}</td>
+        </tr>
+    </tbody>
+</table>
+</body>

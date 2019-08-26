@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor = "let e of data">
+                <tr *ngFor = "let e of my3OldEvent">
                     <td> {{e.dateEvent | date:'EEEE d MMMM y' }}</td>
                     <td> {{e.genre.nom}}</td>
                     <td> {{e.nom}}</td>
@@ -23,6 +23,15 @@
                     <td> {{e.nbgroupes}}</td>
                     <td> {{e.prix}}</td>
                 </tr>
+                <tr *ngFor = "let e of my3FuturEvent">
+                        <td> {{e.dateEvent | date:'EEEE d MMMM y' }}</td>
+                        <td> {{e.genre.nom}}</td>
+                        <td> {{e.nom}}</td>
+                        <td> {{e.description}}</td>
+                        <td> {{e.cachetmax}}</td>
+                        <td> {{e.nbgroupes}}</td>
+                        <td> {{e.prix}}</td>
+                    </tr>
             </tbody>
         </table>
     </div>
