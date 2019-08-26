@@ -1,1 +1,33 @@
-<p>homebar works!</p>
+<div class="container">
+    <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-center">
+    <img src="https://hoppedupcaribou.com/wp-content/uploads/2017/02/hopped-up-header.png"alt="CaribouLogo1"
+    width="150px"height="160px">
+    </div>
+    <div class="col-sm-4"></div>
+    </div>
+    </div>
+
+
+<div class="container">    
+    <div class="row">
+        <div class='col-sm-4'> 
+            <h3>Boucles </h3>
+            <ul>
+                <li *ngFor="let e of data"> {{ e.nom }}  </li>
+            </ul>
+        </div>
+        <div class='col-sm-4'> 
+        </div>
+        <div class='col-sm-4'> 
+        </div>
+    </div>
+</div>
+
+
+
+    <app-footer></app-footer>
+    
+    
+    <router-outlet></router-outlet>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsService } from '../events.service';
+import { HttpClient } from 'selenium-webdriver/http';
+
+
 
 @Component({
   selector: 'app-homebar',
@@ -7,9 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomebarComponent implements OnInit {
 
-  constructor() { }
+  data;
+
+  constructor(private http : HttpClient,) { }
 
   ngOnInit() {
+    this.http.get('http://localhost:8083/battlegroupes')    
+      .subscribe(
+          response => {
+            console.log(response);
+            this.data = response;
+          }
+      )
+
+
+
   }
+
+
+
 
 }
