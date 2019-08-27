@@ -4,6 +4,7 @@ import { Recherche } from '../model/Recherche';
 import { filter } from 'minimatch';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
+import { InscriptionGroupe } from '../model/IncriptionGroupe';
 
 @Component({
   selector: 'app-subscribe-event-groupe',
@@ -18,7 +19,7 @@ export class SubscribeEventGroupeComponent implements OnInit {
   visibleevent = false;
   genres;
   genreschecked = [];
-  inscrig;
+  inscrig: InscriptionGroupe=new InscriptionGroupe();
   recherche: Recherche = new Recherche();
   constructor(private http:HttpClient, private routeur: Router) { }
 
@@ -41,6 +42,8 @@ search(){
 }
 
 inscrire(e){
+  this.inscrig.event=e;
+  this.inscrig.groupe.id=1;
   this.http.post('http://localhost:8083/groupeinscri', this.inscrig)
      .subscribe(data =>{
 
