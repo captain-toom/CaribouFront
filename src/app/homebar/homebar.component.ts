@@ -13,8 +13,8 @@ export class HomebarComponent implements OnInit {
 
   allEvent;
   myAllEvent;
-  my3OldEvent;
-  my3FuturEvent;
+  myOldEvent;
+  myFuturEvent;
 
   constructor(private http : HttpClient) { }
 
@@ -25,7 +25,7 @@ export class HomebarComponent implements OnInit {
       .subscribe(
           response => {
             console.log(response);
-            this.my3OldEvent = response;
+            this.myOldEvent = response;
           }
       );
 
@@ -33,7 +33,7 @@ export class HomebarComponent implements OnInit {
       .subscribe(
           response => {
             console.log(response);
-            this.my3FuturEvent = response;
+            this.myFuturEvent = response;
           }
       );
 
