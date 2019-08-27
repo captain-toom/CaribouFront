@@ -22,6 +22,7 @@ import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
 import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
 import { RippleComponent } from './ripple/ripple.component';
 import { RainComponent } from './rain/rain.component';
+import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RainComponent } from './rain/rain.component';
     LoginsidenavComponent,
     SubscribeEventGroupeComponent,
     RippleComponent,
-    RainComponent
+    RainComponent,
+    InscriptionclientComponent
   ],
   imports: [
     FormsModule,
