@@ -1,9 +1,17 @@
-
 <div class='container'>
-        <h3>Events à Venir !!! </h3>
-        <h5>On vous y attends nombreux ... mais pas trop </h5>
+    <div class='row'>
+        <div class='col-sm-10'>
+                <h3>Events à Venir !!! </h3>
+                <h5>On vous y attends nombreux ... mais pas trop </h5>
+        </div>
+        <div class='col-sm-2'> 
+            <br>
+            <a href="createevent" class="btn btn-xs pull-right"><b>+</b> Add new events</a>
+        </div>
+    </div>
+
         <table class="table table-striped" >
-            <thead class="thead thead-dark">
+            <thead class="thead thead-dark">                    
                 <tr>
                     <th>Date de l'événement</th>
                     <th>Genre</th>
@@ -24,7 +32,12 @@
                     <td> {{e.cachetmax}}</td>
                     <td> {{e.nbgroupes}}</td>
                     <td> {{e.prix}}</td>
-                    <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                    <td class="text-center">
+                        <a class='btn btn-info btn-xs' href="#">
+                            <span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="#" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove"></span> Del</a>
+                    </td>
                 </tr>    
             </tbody>
         </table>
@@ -45,6 +58,7 @@
                             <th>Cachet Max</th>                    
                             <th>Nb de groupe dans la soirée</th>
                             <th>Prix d'entrée</th>
+                            <th>Groupe</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,6 +70,7 @@
                                     <td> {{e.cachetmax}}</td>
                                     <td> {{e.nbgroupes}}</td>
                                     <td> {{e.prix}}</td>
+                                    <td> CaribouTestEnFolie4Ever</td>
                             </tr>
                     </tbody>
         </table>
