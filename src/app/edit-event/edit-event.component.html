@@ -1,0 +1,21 @@
+<form #forme ="ngForm" (ngSubmit)="addBattleGroupe()" autocomplete="off">
+        <input type="date" value="event.date" name="dateEvent" #dateAction="ngModel" [(ngModel)]= "battleGroupe.dateEvent" required>
+        <br>
+        <input type="text" value="event.description" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroupe.description" required>
+        <br>
+        <input type="text" value="event.nom" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "battleGroupe.nom" required>
+        <br>
+        <input type="number" value="event.cachetmax"  placeholder="Cachetmax" name="cachetmax" #nomAction="ngModel" [(ngModel)]= "battleGroupe.cachetmax" required>
+        <br>
+        <input type="number" value="event.nbgroupes" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "battleGroupe.nbgroupes" required>
+        <br>
+        <input type="number" value="event.prix" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroupe.prix" required>
+        <br>
+        <select name="genre" value="event.genre.id" #genreAction="ngModel" [(ngModel)]= "battleGroupe.genre.id" required>
+            <option *ngFor = "let g of genres" value="{{g.id}}">{{g.nom}}</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <button [disabled]="!forme.form.valid">Modify</button> 
+    </form>

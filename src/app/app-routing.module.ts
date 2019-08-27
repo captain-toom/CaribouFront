@@ -7,6 +7,7 @@ import { AuthGuard } from './service/auth/auth.guard';
 import { HomebarComponent } from './homebar/homebar.component';
 import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
 import { HomebandComponent } from './homeband/homeband.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,10 @@ const routes: Routes = [
   data : {
     roles : ['GROUPE']
   }
+},
+{
+  path : 'edit_event', 
+  component: EditEventComponent
 },
 
 ];

@@ -20,6 +20,7 @@ import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
 import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscrib
     HomebarComponent,
     HomebandComponent,
     LoginsidenavComponent,
-    SubscribeEventGroupeComponent
+    SubscribeEventGroupeComponent,
+    EditEventComponent
   ],
   imports: [
     FormsModule,
