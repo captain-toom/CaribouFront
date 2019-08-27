@@ -5,12 +5,16 @@ import { BattleGroupe } from './model/BattleGroupe';
   providedIn: 'root'
 })
 export class EventsService {
-  event: BattleGroupe;
-  constructor(event: BattleGroupe) {
-    this.event=event;
+  event;
+  constructor() {
   }
 
   getEvent(){
-    return this.event;
+    return JSON.parse(localStorage.getItem('event'));
+  }
+
+  setEvent(event){
+    localStorage.setItem('event',JSON.stringify(event));
+    console.log(this.event);
   }
 }
