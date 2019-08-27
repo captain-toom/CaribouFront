@@ -31,37 +31,30 @@ export class HomebarComponent implements OnInit {
   ngOnInit() {
     const session = this.authService.getSession()
     console.log(session);
-    console.log(bar.login)
-    console.log(bar.id)
+    console.log(session.login)
+    console.log(session.id)
     // login donc son mail
 
-
-    this.http.get('http://localhost:8083/bar/mail/'+ bar.login)    
-    .subscribe(
-        response => {
-          console.log(response);
-          this.mybar = response;
-          console.log(this.mybar);
-          console.log(this.mybar.id);
-        }
-    );  
-
-
-    this.http.get('http://localhost:8083/battlegroupes/old1')    
+    this.http.get('http://localhost:8083/battlegroupes/old'+session.id)    
     .subscribe(
         response => {
           console.log(response);
           this.myOldEvent = response;
         }
     );
-
-    this.http.get('http://localhost:8083/battlegroupes/futur1')    
+      
+    this.http.get('http://localhost:8083/battlegroupes/futur'+session.id)    
     .subscribe(
         response => {
           console.log(response);
           this.myFuturEvent = response;
         }
     );
+
+
+
+
+
 
 
   }
