@@ -1,20 +1,57 @@
-<body>
+
+<button style="text-align: center" (click)=opensearch()>Recherche</button>
+<div *ngIf="visible">
+    <form #forme ="ngForm" (ngSubmit)="search()" autocomplete="off">
+        <input type="text" placeholder="Nom du bar" name="nom" #nomAction="ngModel" [(ngModel)]= "recherche.nom">
+        <br>
+        <input type="date" name="dateEvent" #dateminAction="ngModel" [(ngModel)]= "recherche.datemin">
+        <br>
+        <input type="date" name="dateEvent" #datemaxAction="ngModel" [(ngModel)]= "recherche.datemax">
+        <br>
+        <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetmaxAction="ngModel" [(ngModel)]= "recherche.cachetmax">
+        <br>
+        <input type="number" placeholder="Cachetmin" name="cachetmin" #cachetminAction="ngModel" [(ngModel)]= "recherche.cachetmin">
+        <br>
+        <input type="number" placeholder="capacitemax" name="capacitemax" #capacitemaxAction="ngModel" [(ngModel)]= "recherche.capacitemax">
+        <br>
+        <input type="number" placeholder="capacitemin" name="capacitemin" #capaciteminAction="ngModel" [(ngModel)]= "recherche.capacitemin">
+        <br>
+        <section class="example-section" *ngFor = "let g of genres">
+                <mat-checkbox  class="example-margin" name="g.nom" [(ngModel)]="genreschecked[g.id]">{{g.nom}}</mat-checkbox>
+        </section>
+        <br>
+        <br>
+        <br>
+        <button [disabled]="!forme.form.valid">Search</button> 
+    </form>
+</div>
 <table style="margin: auto " >
     <thead>
         <th>Nom</th>
         <th>Bar</th>
+        <th>Date</th>
         <th>Capacité</th>
         <th>Cachet</th>
         <th>Genre de musique</th>
+        <th>S'inscrire</th>
     </thead>
     <tbody>
-        <tr *ngFor = 'let e of events' (click)=openevent(e)>
+        <tr *ngFor = 'let e of eventsfiltred' (click)=openevent(e)>
             <td>{{e.nom}}</td>
             <td>{{e.bar.nom}}</td>
+            <td>{{e.dateEvent}}</td>
             <td>{{e.bar.capacitemax}}</td>
             <td>{{e.cachetmax}}</td>
             <td>{{e.genre.nom}}</td>
+            <td><button (click)="inscrire(e)">test</button></td>
         </tr>
     </tbody>
 </table>
-</body>
+<div *ngIf="visibleevent">
+    <p>{{event.nom}}</p>
+    <p>{{event.bar.nom}}</p>
+    <p>{{event.bar.capacitemax}}</p>
+    <p>{{event.cachetmax}}</p>
+    <p>{{event.genre.nom}}</p>
+    <button (click)="inscrire(event)">test</button>
+</div>
