@@ -13,32 +13,27 @@ export class AuthService {
   login(loginForm: any) {
     console.log('Tentative de connexion');
 
+    //On récupère le nom d'utilisateur ainsi que son type, et on utilise le type pour une redirection différente :)
     this.setUser({ login: loginForm.username });
     this.setTypeUser({ type: loginForm.typeuser });
-
     this.typeconnect = this.getTypeUser().type;
 
 
-    console.log(JSON.stringify(this.typeconnect));
-    console.log("client" == "client")
-    console.log(this.getTypeUser());
 
-    // On récupère l'url de redirection
-    console.log("IS THIS GOING ON");
-    console.log(this.typeconnect == "client");
 
     if ((this.typeconnect == "client") == true) {
+      this.setUser({ login: loginForm.username, roles: "CLIENT" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home';
       this.router.navigate([redirectUrl]);
       console.log("passage client")
 
     } else if (this.typeconnect == "bar") {
-
+      this.setUser({ login: loginForm.username, roles: "BAR" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home_bar';
       this.router.navigate([redirectUrl]);
 
-    } else if (this.typeconnect== "groupe") {
-
+    } else if (this.typeconnect == "groupe") {
+      this.setUser({ login: loginForm.username, roles: "GROUPE" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home_band';
       this.router.navigate([redirectUrl]);
 
@@ -47,7 +42,7 @@ export class AuthService {
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/login';
       this.router.navigate([redirectUrl]);
       console.log("ECHEC DE CONNEXION");
-      
+
     }
 
 
@@ -83,6 +78,15 @@ export class AuthService {
   }
   clearTypeUser() {
     localStorage.removeItem('type');
+  }
+
+  // METHODE DE VERIFICATION DES DROITS => cette fonctione retourne true ou fale => si un client veut se connecter sur page bar, renvoie false
+  hasAnyRole(roles: string[]) {
+    const user = this.getUser();
+    if (user.roles == roles) {
+      return true;
+    }
+    return false;
   }
 
 }

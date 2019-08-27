@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'home',
     canActivate: [AuthGuard],
-    component: HomeComponent
+    component: HomeComponent,
+    data : {
+      roles : ['CLIENT']
+    }
+    
   },
   {
     path: 'createevent',
@@ -26,7 +30,11 @@ const routes: Routes = [
   },
   {
     path: 'home_bar',
-    component: HomebarComponent
+    component: HomebarComponent,
+    canActivate: [AuthGuard],
+    data : {
+      roles : ['BAR']
+    }
   },
   {
     path: 'subscribe_event_groupe',
@@ -34,7 +42,11 @@ const routes: Routes = [
   },
 {
   path : 'home_band', 
-  component: HomebandComponent
+  component: HomebandComponent,
+  canActivate: [AuthGuard],
+  data : {
+    roles : ['GROUPE']
+  }
 },
 
 ];

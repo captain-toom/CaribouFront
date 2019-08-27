@@ -83,15 +83,11 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
             }
-
-
             if (resu == 'bar') {
               this.model.typeuser = "bar";
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
             }
-
-
             if (resu == 'groupe') {
               console.log(resu);
               this.model.typeuser = "groupe";
