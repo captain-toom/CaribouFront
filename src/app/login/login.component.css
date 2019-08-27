@@ -1,3 +1,7 @@
+#rain {
+    position: relative;
+    top: -170px !important;
+}
 .user_card {
     height: 400px;
     width: 350px;
@@ -5,7 +9,8 @@
     margin-bottom: auto;
     /* background: #f39c12; */
     background: whitesmoke;
-    position: relative;
+    position: absolute;
+    z-index: 2;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -14,7 +19,7 @@
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-    top: -120px;
+    top: 170px;
 
 }
 .brand_logo_container {
