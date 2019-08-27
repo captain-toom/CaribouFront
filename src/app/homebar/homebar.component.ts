@@ -20,6 +20,14 @@ export class HomebarComponent implements OnInit {
   myFuturEvent;
   mybar;
   addresse : String;
+
+  
+  visible= true;
+  voirCache(e) {
+    //requete hhtp modif set visible client 
+    // puis recharge de la page
+  }
+
   constructor(
     private http : HttpClient,
     private authService: AuthService
