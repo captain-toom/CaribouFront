@@ -20,12 +20,12 @@ import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
 import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
-<<<<<<< HEAD
+
 import { EditEventComponent } from './edit-event/edit-event.component';
-=======
+
 import { RippleComponent } from './ripple/ripple.component';
 import { RainComponent } from './rain/rain.component';
->>>>>>> 39955c434f040c06f8ad5a435baeaa7ac42dcc99
+
 
 @NgModule({
   declarations: [
@@ -38,12 +38,12 @@ import { RainComponent } from './rain/rain.component';
     HomebandComponent,
     LoginsidenavComponent,
     SubscribeEventGroupeComponent,
-<<<<<<< HEAD
-    EditEventComponent
-=======
+
+    EditEventComponent,
+
     RippleComponent,
     RainComponent
->>>>>>> 39955c434f040c06f8ad5a435baeaa7ac42dcc99
+
   ],
   imports: [
     FormsModule,
