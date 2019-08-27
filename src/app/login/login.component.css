@@ -4,7 +4,7 @@
     margin-top: auto;
     margin-bottom: auto;
     /* background: #f39c12; */
-    background: #F8B54B;
+    background: whitesmoke;
     position: relative;
     display: flex;
     justify-content: center;
@@ -34,6 +34,7 @@
 }
 .form_container {
     margin-top: 100px;
+    
 }
 .login_btn {
     width: 100%;
