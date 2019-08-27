@@ -25,6 +25,7 @@ import { RippleComponent } from './ripple/ripple.component';
 import { RainComponent } from './rain/rain.component';
 import { EventsService } from './events.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
