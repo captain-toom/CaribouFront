@@ -29,10 +29,10 @@ export class HomebarComponent implements OnInit {
   
 
   ngOnInit() {
-    const bar = this.authService.getUser()
-    console.log(bar);
+    const session = this.authService.getSession()
+    console.log(session);
     console.log(bar.login)
-    console.log('http://localhost:8083/bar/mail/'+ bar.login)
+    console.log(bar.id)
     // login donc son mail
 
 
