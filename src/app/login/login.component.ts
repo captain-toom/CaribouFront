@@ -16,7 +16,7 @@ import { from } from 'rxjs';
 export class LoginComponent implements OnInit {
   data;
   model: any = {};
-  typeruser: string;
+  typeuser: any;
   connect: boolean;
 
 
@@ -77,30 +77,31 @@ export class LoginComponent implements OnInit {
           if (res == true) {
             console.log("fuk of 1", JSON.stringify(resu));
 
-            if (resu == 'client') {              
-              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));            
-              this.authService.login(this.model.username);              
+            if (resu == 'client') {
+              this.model.typeuser = "client";
+              localStorage.setItem('type', JSON.stringify("client"));
+              localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
+              this.authService.login(this.model);
             }
 
-            
+
             if (resu == 'bar') {
-              this.model.type = 'bar';
+              this.model.typeuser = "bar";
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
-             
             }
 
-            
+
             if (resu == 'groupe') {
-              this.model.type = 'client';
+              console.log(resu);
+              this.model.typeuser = "groupe";
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
-              
+              console.log("je suis passé par ici");
             }
-
           }
           else {
-            console.log("fuk on 1");
+            console.log("TYPE DE CONNEXION INCONNU");
           }
         }
       );
