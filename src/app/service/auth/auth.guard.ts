@@ -37,8 +37,20 @@ export class AuthGuard implements CanActivate {
     if (!hasRoles) {
       // Si l'utilisateur na pas les habilitations : redirection vers la page d'accueil
       console.log('Vous n\'avez pas les droits');
+      const user = this.authService.getUser();
 
-      this.router.navigate(['/login']);
+      console.log("TESSST" + user.roles == 'CLIENT');
+      console.log(user.roles == 'CLIENT')
+
+      if (user.roles == 'CLIENT') {
+        this.router.navigate(['/home']);
+      } else if (user.roles == 'BAR') {
+        this.router.navigate(['/home_bar']);
+      } else if (user.roles == 'GROUPE') {
+        this.router.navigate(['/home_band']);
+      } else{
+        this.router.navigate(['/login']);
+      }
     }
 
     if (!isLoggedIn) {
