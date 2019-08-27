@@ -30,8 +30,6 @@ export class CreateEventComponent implements OnInit {
   }
 
    addBattleGroupe(){
-     console.log("objet battle " , this.battleGroupe)
-
      this.http.post('http://localhost:8083/battlegroupe', this.battleGroupe)
      .subscribe(data =>{
 

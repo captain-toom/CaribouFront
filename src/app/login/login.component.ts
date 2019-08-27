@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
       this.http.get('http://localhost:8083/connexion/type/' + this.model.username, { responseType: 'text' }).subscribe(
         resu => {
           if (res == true) {
+
             console.log("fuk of 1", JSON.stringify(resu));
 
             if (resu == 'client') {
@@ -89,11 +90,10 @@ export class LoginComponent implements OnInit {
               this.authService.login(this.model);
             }
             if (resu == 'groupe') {
-              console.log(resu);
               this.model.typeuser = "groupe";
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
-              console.log("je suis passé par ici");
+              
             }
           }
           else {
