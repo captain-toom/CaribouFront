@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Recherche } from '../model/Recherche';
 import { filter } from 'minimatch';
@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 import { InscriptionGroupe } from '../model/IncriptionGroupe';
 import { AuthService } from '../service/auth/auth.service';
+import { SubEvGrService } from '../sub-ev-gr.service';
 
 @Component({
   selector: 'app-subscribe-event-groupe',
@@ -16,23 +17,31 @@ export class SubscribeEventGroupeComponent implements OnInit {
   events;
   eventsfiltred;
   event;
+  subscribedevents;
   visible = false;
   visibleevent = false;
+  noninscrit=false;
   genres;
   genreschecked = [];
   inscrig: InscriptionGroupe=new InscriptionGroupe();
   recherche: Recherche = new Recherche();
-  constructor(private http:HttpClient, private routeur: Router, private authService: AuthService) { }
+  constructor(private http:HttpClient, private routeur: Router, private authService: AuthService, private subEvGrService: SubEvGrService, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
     const session = this.authService.getSession()
-    this.http.get("http://localhost:8083/battlegroupesfutur").subscribe(response =>{ this.events =response, this.eventsfiltred= response});
-    // this.http.get("http://localhost:8083/inscrig/event"+session.id).subscribe(response =>{ this.eventssubscribed});
+    this.subEvGrService.getsubevent().subscribe(response =>{ this.subscribedevents= response});
+    this.subEvGrService.getnonsubevent().subscribe(response =>{ this.events=response, this.eventsfiltred=response});
     this.http.get("http://localhost:8083/genres").subscribe(response =>{ this.genres =response});
   }
 openevent(e){
   this.event=e;
   this.visibleevent=true;
+  this.noninscrit=true;
+}
+openeventsub(e){
+  this.event=e;
+  this.visibleevent=true;
+  this.noninscrit=false;
 }
 
 opensearch(){
@@ -54,6 +63,14 @@ inscrire(e){
      },err =>{
      console.log(err);
      });
+
+  
+  this.subEvGrService.getsubevent().subscribe((response) =>{ this.subscribedevents= response; this.changeDetectorRefs.detectChanges();});
+  this.subEvGrService.getnonsubevent().subscribe((response) =>{ this.events=response, this.eventsfiltred=response; this.changeDetectorRefs.detectChanges();});
+  this.noninscrit=false;
+  ;
 }
+
+
 
 }

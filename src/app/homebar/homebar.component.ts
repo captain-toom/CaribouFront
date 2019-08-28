@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Bar } from '../model/Bar';
 import { AuthService } from '../service/auth/auth.service';
 import { BattleGroupe } from '../model/BattleGroupe';
+import {MaterialModule } from '../material';
 
 
 

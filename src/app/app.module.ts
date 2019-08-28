@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CreateEventComponent } from './create-event/create-event.component';
 
 import { AuthService } from './service/auth/auth.service';
+
 
 
 import { HomebarComponent } from './homebar/homebar.component';
@@ -31,6 +32,7 @@ import { CreationbarComponent } from './creationbar/creationbar.component';
 import { AmisComponent } from './amis/amis.component';
 import { MaterialModule } from './material';
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
+import { SubEvGrService } from './sub-ev-gr.service';
 
 
 
@@ -70,7 +72,7 @@ import { CreationgroupeComponent } from './creationgroupe/creationgroupe.compone
     MatCheckboxModule,
     MaterialModule
   ],
-  providers: [AuthService,EventsService],
+  providers: [AuthService,EventsService,SubEvGrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
