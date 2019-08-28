@@ -44,10 +44,7 @@
 </div>
 <router-outlet></router-outlet>
 
-<p>
-  Welcome home {{getLogin()}} !
-</p>
-<a (click)="logout()">Se déconnecter</a>
+
 
 <div class='container'>
   <div class='row'>
@@ -87,4 +84,9 @@
       </tbody>
     </table>
 </div>
+
+<p class="text-center" style="font-size: larger">
+    Connecté en tant que {{getLogin()}} 
+</p>
+  
 
