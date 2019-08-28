@@ -23,8 +23,6 @@ export class AuthService {
     this.typeconnect = this.getTypeUser().type;
 
 
-
-
     if ((this.typeconnect == "client") == true) {
       this.setUser({ login: loginForm.username, roles: "CLIENT" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home';

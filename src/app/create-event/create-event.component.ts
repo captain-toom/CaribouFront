@@ -36,6 +36,7 @@ export class CreateEventComponent implements OnInit {
      },err =>{
      console.log(err);
      });
+     this.routeur.navigate(['home_bar']);
   }
 
 }
