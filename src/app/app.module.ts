@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +16,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 import { AuthService } from './service/auth/auth.service';
 
 
+
 import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
@@ -29,6 +30,7 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
 import { CreationbarComponent } from './creationbar/creationbar.component';
 
 import { AmisComponent } from './amis/amis.component';
+import { SubEvGrService } from './sub-ev-gr.service';
 
 
 
@@ -63,9 +65,9 @@ import { AmisComponent } from './amis/amis.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
-  providers: [AuthService,EventsService],
+  providers: [AuthService,EventsService,SubEvGrService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
