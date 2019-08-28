@@ -1,37 +1,115 @@
-<form #forme ="ngForm" (ngSubmit)="modifyEvent()" autocomplete="off">
-        <input type="date" value="event.date" name="dateEvent" #dateAction="ngModel" [(ngModel)]= "event.dateEvent" required>
-        <br>
-        <input type="text" value="event.description" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "event.description" required>
-        <br>
-        <input type="text" value="event.nom" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "event.nom" required>
-        <br>
-        <input type="number" value="event.cachetmax"  placeholder="Cachetmax" name="cachetmax" #nomAction="ngModel" [(ngModel)]= "event.cachetmax" required>
-        <br>
-        <input type="number" value="event.nbgroupes" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "event.nbgroupes" required>
-        <br>
-        <input type="number" value="event.prix" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "event.prix" required>
-        <br>
-        <select name="genre" value="event.genre.id" #genreAction="ngModel" [(ngModel)]= "event.genre.id" required>
-            <option *ngFor = "let g of genres" value="{{g.id}}">{{g.nom}}</option>
-        </select>
-        <br>
-        <br>
-        <br>
-        <button [disabled]="!forme.form.valid">Modify</button> 
-    </form>
+<div class='container'>
+    <div class='row'>
 
-    <table>
-        <thead>
-            <th>Nom</th>
-            <th>Cachet</th>
-            <th>Description</th>
-        </thead>
-        <tbody>
-            <tr *ngFor ='let i of inscrig'>
-                <td>{{i.groupe.nom }}</td>
-                <td>{{i.groupe.cachet}}</td>
-                <td>{{i.groupe.description}}</td>
-                <td><button (click)="refuse(i)">Refuser</button></td>
-            </tr>
-        </tbody>
-    </table>
+
+        <div class='col-sm-6' id='ModifEvent'>
+            <div class="container h-100">
+                <div class="d-flex justify-content-center h-100">            
+                    <div class="user_card">
+                        <div class="d-flex justify-content-center">
+                            <div class="brand_logo_container">
+                                <img src="assets/LogoLogin.png" class="brand_logo" alt="Logo">
+                            </div>
+                        </div>
+
+                        <br><br> <br>
+                        <div class="d-flex justify-content-center form_container">
+                                <form #forme ="ngForm" (ngSubmit)="modifyEvent()" autocomplete="off">
+                                    <div class="input-group mb-1">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" value="event.nom" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "event.nom" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group mb-1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroupe.description" required  style="background: white">Description</textarea>
+                                            </div>
+                                    </div>
+                                    <div class="input-group mb-1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                            </div>
+                                            <div class="form-group">
+                                                    <input type="date" value="event.date" name="dateEvent" #dateAction="ngModel" [(ngModel)]= "event.dateEvent" required>
+                                            </div>
+                                    </div>
+                                    <div class="input-group mb-1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                            </div>
+                                            <div class="form-group">
+                                                <select name="genre" value="event.genre.id" #genreAction="ngModel" [(ngModel)]= "event.genre.id" required>
+                                                    <option *ngFor = "let g of genres" value="{{g.id}}">{{g.nom}}</option>
+                                                </select>
+                                            </div>
+                                    </div>
+
+                                    <div class="input-group mb-1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" value="event.nbgroupes" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "event.nbgroupes" required>
+                                            </div>
+                                    </div>
+                                    <div class="input-group mb-1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" value="event.cachetmax"  placeholder="Cachetmax" name="cachetmax" #nomAction="ngModel" [(ngModel)]= "event.cachetmax" required>
+                                            </div>
+                                    </div>
+                                    <div class="input-group mb-1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" value="event.prix" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "event.prix" required>
+                                            </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center mt-3 login_container form-group">
+                                            <div class="form-group">
+                                                    <button [disabled]="!forme.form.valid">Modify</button>  
+                                            </div>
+                                    </div>
+
+
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+
+        <div class='col-sm-6' id='GestionEvent'>
+                <table>
+                        <thead>
+                            <th>Nom</th>
+                            <th>Cachet</th>
+                            <th>Description</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor ='let i of inscrig'>
+                                <td>{{i.groupe.nom }}</td>
+                                <td>{{i.groupe.cachet}}</td>
+                                <td>{{i.groupe.description}}</td>
+                                <td><button (click)="refuse(i)">Refuser</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+        </div>
+
+    </div>
+
+</div>
