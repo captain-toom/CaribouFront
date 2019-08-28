@@ -31,8 +31,7 @@
                 <th></th>
                 <th>Nom</th>
                 <th>Email</th>
-                <th>Accepter</th>
-                <th>Refuser</th>
+                <th>Accepter/Refuser</th>
             </tr>
         </thead>
         <tbody class="text-center thead-dark">
@@ -42,9 +41,8 @@
                 <td>{{p.mail}}</td>
                 <td>
                     <button mat-raised-button color="primary" type="submit" (click)="Validfriend(p)">V</button>
-                
+                    <button mat-raised-button color="warn" type="submit" (click)="deletefriend(p)">X</button>
                 </td>
-                <td>    <button mat-raised-button color="warn" type="submit" (click)="deletefriend(p)">X</button></td>
             </tr>
         </tbody>
     </table>
