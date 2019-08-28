@@ -25,11 +25,11 @@ import { RippleComponent } from './ripple/ripple.component';
 import { RainComponent } from './rain/rain.component';
 import { EventsService } from './events.service';
 import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
-<<<<<<< HEAD
+
 import { CreationbarComponent } from './creationbar/creationbar.component';
-=======
+
 import { AmisComponent } from './amis/amis.component';
->>>>>>> ec1164706bb2995e14e29d9e1f9d51b9f99623fc
+
 
 
 @NgModule({
@@ -49,11 +49,11 @@ import { AmisComponent } from './amis/amis.component';
     RippleComponent,
     RainComponent,
     InscriptionclientComponent,
-<<<<<<< HEAD
-    CreationbarComponent
-=======
-    AmisComponent
->>>>>>> ec1164706bb2995e14e29d9e1f9d51b9f99623fc
+
+    CreationbarComponent,
+
+    AmisComponent,
+
     
 
   ],

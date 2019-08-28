@@ -12,6 +12,7 @@ import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component'
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { CreationbarComponent } from './creationbar/creationbar.component';
 
+import { AmisComponent } from './amis/amis.component';
 
 
 const routes: Routes = [
@@ -43,8 +44,14 @@ const routes: Routes = [
     component: HomeComponent,
     data: {
       roles: ['CLIENT']
-    }
-
+    },
+    children: [      
+      {
+        path: 'amis',        
+        component: AmisComponent,
+      }
+      
+    ]
   },
   {
     path: 'createevent',
@@ -62,18 +69,18 @@ const routes: Routes = [
     path: 'subscribe_event_groupe',
     component: SubscribeEventGroupeComponent
   },
-{
-  path : 'home_band', 
-  component: HomebandComponent,
-  canActivate: [AuthGuard],
-  data : {
-    roles : ['GROUPE']
-  }
-},
-{
-  path : 'edit_event', 
-  component: EditEventComponent
-},
+  {
+    path: 'home_band',
+    component: HomebandComponent,
+    canActivate: [AuthGuard],
+    data: {
+      roles: ['GROUPE']
+    }
+  },
+  {
+    path: 'edit_event',
+    component: EditEventComponent
+  },
 
 ];
 
@@ -83,3 +90,5 @@ const routes: Routes = [
   providers: [AuthGuard]
 })
 export class AppRoutingModule { }
+
+export const routingComponents = [AmisComponent]
