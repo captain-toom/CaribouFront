@@ -10,6 +10,8 @@ import { HomebandComponent } from './homeband/homeband.component';
 import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component'
 import { EditEventComponent } from './edit-event/edit-event.component';
+import { CreationbarComponent } from './creationbar/creationbar.component';
+
 import { AmisComponent } from './amis/amis.component';
 
 
@@ -24,6 +26,11 @@ const routes: Routes = [
   {
     path: 'inscriptionclient',
     component: InscriptionclientComponent
+
+  },
+  {
+    path: 'inscriptionbar',
+    component: CreationbarComponent
 
   },
 
@@ -58,17 +65,20 @@ const routes: Routes = [
       roles: ['BAR']
     }
   },
-  {
-    path: 'subscribe_event_groupe',
-    component: SubscribeEventGroupeComponent
-  },
+  
   {
     path: 'home_band',
     component: HomebandComponent,
     canActivate: [AuthGuard],
     data: {
       roles: ['GROUPE']
-    }
+    }, 
+    children: [      
+      {
+        path: 'subscribe_event_groupe',        
+        component: SubscribeEventGroupeComponent,
+      }
+    ]
   },
   {
     path: 'edit_event',
