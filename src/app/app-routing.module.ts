@@ -65,17 +65,20 @@ const routes: Routes = [
       roles: ['BAR']
     }
   },
-  {
-    path: 'subscribe_event_groupe',
-    component: SubscribeEventGroupeComponent
-  },
+  
   {
     path: 'home_band',
     component: HomebandComponent,
     canActivate: [AuthGuard],
     data: {
       roles: ['GROUPE']
-    }
+    }, 
+    children: [      
+      {
+        path: 'subscribe_event_groupe',        
+        component: SubscribeEventGroupeComponent,
+      }
+    ]
   },
   {
     path: 'edit_event',
