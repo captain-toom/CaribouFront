@@ -29,11 +29,8 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
 import { CreationbarComponent } from './creationbar/creationbar.component';
 
 import { AmisComponent } from './amis/amis.component';
-<<<<<<< HEAD
 import { MaterialModule } from './material';
-=======
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
->>>>>>> d9210c40792c7dca24aa1719337a37142eb7bf2d
 
 
 
