@@ -1,20 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-homeband',
   templateUrl: './homeband.component.html',
-  styleUrls: ['./homeband.component.css']
+  styleUrls: ['./homeband.component.css'],
+  providers: [AuthService]  
 })
 export class HomebandComponent implements OnInit {
 
-  constructor(  private router: Router) { }
+  constructor(  
+    private router: Router,
+    private authService: AuthService,
+    private http : HttpClient,) { }
 
   ngOnInit() {
   }
 
   getLogin() {
-    return JSON.parse(localStorage.getItem('user')).login;
+    return this.authService.getUser().login;
+   // return JSON.parse(localStorage.getItem('user')).login;
   }
   
   logout() {
@@ -22,5 +29,10 @@ export class HomebandComponent implements OnInit {
   
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
+  }
+  hasAnyRole(roles: string[]) {
+   
+
+    return this.authService.hasAnyRole(roles);
   }
 }
