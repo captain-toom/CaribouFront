@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Groupe } from '../model/groupe';
+import { Groupe } from '../model/Groupe';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
