@@ -1,1 +1,30 @@
-<p>homeband works!</p>
+<div class="fixed-top"> 
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+          style="background: linear-gradient(to right, #CD6549, #C64C2B, #CD6549) !important;">
+          <a class="navbar-brand" href="home_band">
+              <img src="https://hoppedupcaribou.com/wp-content/uploads/2017/02/hopped-up-header.png" width="30" height="30"
+                alt="">
+              HomeBand
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="subscribe_event_groupe" routerLinkActive="active">Subscribeeventgroupe</a>
+              </li>
+              <li class="nav-item">
+                    <a class="nav-link" (click)="logout()">Se déconnecter</a>
+              </li>
+      
+      
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+
+      <router-outlet></router-outlet>

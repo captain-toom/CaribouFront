@@ -28,4 +28,5 @@ export class InscriptionclientComponent implements OnInit {
     });
     this.routeur.navigate(['login']);
   }
+  
 }

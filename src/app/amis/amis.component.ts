@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-amis',
@@ -11,10 +12,22 @@ import { AuthService } from '../service/auth/auth.service';
 export class AmisComponent implements OnInit {
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private http : HttpClient
   ) { }
+  data;
 
   ngOnInit() {
+    const session = this.authService.getSession();
+    
+    this.http.get('http://localhost:8083/mesamis/'+session.id)    
+    .subscribe(
+        response => {
+          this.data = response;
+          console.log(response);         
+        }
+    );
+
   }
 
   getLogin() {

@@ -4,7 +4,7 @@
     <a class="navbar-brand" href="home">
       <img src="https://hoppedupcaribou.com/wp-content/uploads/2017/02/hopped-up-header.png" width="30" height="30"
         alt="">
-      CaribouLiveShow
+      Home
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,6 +29,10 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="futurevent" routerLinkActive="active">Futurs</a>
           </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" (click)="logout()">Se déconnecter</a>
+        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -40,10 +44,7 @@
 </div>
 <router-outlet></router-outlet>
 
-<p>
-  Welcome home {{getLogin()}} !
-</p>
-<a (click)="logout()">Se déconnecter</a>
+
 
 <div class='container'>
   <div class='row'>
@@ -83,4 +84,9 @@
       </tbody>
     </table>
 </div>
+
+<p class="text-center" style="font-size: larger">
+    Connecté en tant que {{getLogin()}} 
+</p>
+  
 
