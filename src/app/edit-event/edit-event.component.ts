@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
 })
 export class EditEventComponent implements OnInit {
   inscrig;
-  event:BattleGroupe=new BattleGroupe();
+  event;
+  id;
   constructor(private service: EventsService, private http: HttpClient, private routeur: Router) { }
 
   ngOnInit() {
     this.event = this.service.getEvent();
-    this.http.get("http://localhost:8083/inscrig/this.event.id").subscribe(response =>{ this.inscrig =response});
-    console.log(this.event);
+   this.http.get("http://localhost:8083/inscrig/"+this.event.id).subscribe(response =>{ this.inscrig =response});
   }
 
   modifyEvent(){
@@ -27,5 +27,15 @@ export class EditEventComponent implements OnInit {
      },err =>{
      console.log(err);
      });
+  }
+
+  refuse(i){
+    console.log(i);
+    this.http.post('http://localhost:8083/refusegroupe', i)
+    .subscribe(data =>{
+
+    },err =>{
+    console.log(err);
+    });
   }
 }

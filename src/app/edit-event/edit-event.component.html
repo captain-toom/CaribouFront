@@ -27,10 +27,11 @@
             <th>Description</th>
         </thead>
         <tbody>
-            <tr *ngFor = 'let i of inscrig'>
-                <td>{i.groupe.nom}</td>
-                <td>{i.groupe.cachet}</td>
-                <td>{i.groupe.description}</td>
+            <tr *ngFor ='let i of inscrig'>
+                <td>{{i.groupe.nom }}</td>
+                <td>{{i.groupe.cachet}}</td>
+                <td>{{i.groupe.description}}</td>
+                <td><button (click)="refuse(i)">Refuser</button></td>
             </tr>
         </tbody>
     </table>
