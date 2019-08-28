@@ -14,63 +14,70 @@ import { SubEvGrService } from '../sub-ev-gr.service';
   styleUrls: ['./subscribe-event-groupe.component.css']
 })
 export class SubscribeEventGroupeComponent implements OnInit {
+  id;
   events;
   eventsfiltred;
   event;
   subscribedevents;
   visible = false;
   visibleevent = false;
-  noninscrit=false;
+  noninscrit = false;
   genres;
   genreschecked = [];
-  inscrig: InscriptionGroupe=new InscriptionGroupe();
+  inscrig: InscriptionGroupe = new InscriptionGroupe();
   recherche: Recherche = new Recherche();
-  constructor(private http:HttpClient, private routeur: Router, private authService: AuthService, private subEvGrService: SubEvGrService, private changeDetectorRefs: ChangeDetectorRef) { }
+  constructor(private http: HttpClient, private routeur: Router, private authService: AuthService, private subEvGrService: SubEvGrService, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
     const session = this.authService.getSession()
-    this.subEvGrService.getsubevent().subscribe(response =>{ this.subscribedevents= response});
-    this.subEvGrService.getnonsubevent().subscribe(response =>{ this.events=response, this.eventsfiltred=response});
-    this.http.get("http://localhost:8083/genres").subscribe(response =>{ this.genres =response});
+    this.id = session.id;
+    this.http.get("http://localhost:8083/inscrig/event/" + this.id)
+
+    .subscribe(
+      response => { 
+        this.subscribedevents = response 
+      });
+
+    this.http.get("http://localhost:8083/noninscrig/event/" + this.id).subscribe(response => { this.events = response, this.eventsfiltred = response });
+    this.http.get("http://localhost:8083/genres").subscribe(response => { this.genres = response });
   }
-openevent(e){
-  this.event=e;
-  this.visibleevent=true;
-  this.noninscrit=true;
-}
-openeventsub(e){
-  this.event=e;
-  this.visibleevent=true;
-  this.noninscrit=false;
-}
+  openevent(e) {
+    this.event = e;
+    this.visibleevent = true;
+    this.noninscrit = true;
+  }
+  openeventsub(e) {
+    this.event = e;
+    this.visibleevent = true;
+    this.noninscrit = false;
+  }
 
-opensearch(){
-  this.visible=!this.visible;
-}
+  opensearch() {
+    this.visible = !this.visible;
+  }
 
-search(){
-  console.log(this.events);
-  this.eventsfiltred="ev of this.events| filter:recherche";
-}
+  search() {
+    console.log(this.events);
+    this.eventsfiltred = "ev of this.events| filter:recherche";
+  }
 
-inscrire(e){
-  this.inscrig.event=e;
-  this.inscrig.groupe.id=1;
-  this.inscrig.refused=false;
-  this.http.post('http://localhost:8083/groupeinscri', this.inscrig)
-     .subscribe(data =>{
-
-     },err =>{
-     console.log(err);
-     });
-
-  
-  this.subEvGrService.getsubevent().subscribe((response) =>{ this.subscribedevents= response; this.changeDetectorRefs.detectChanges();});
-  this.subEvGrService.getnonsubevent().subscribe((response) =>{ this.events=response, this.eventsfiltred=response; this.changeDetectorRefs.detectChanges();});
-  this.noninscrit=false;
-  ;
-}
+  inscrire(e) {
+    this.inscrig.event = e;
+    this.inscrig.groupe.id = 1;
+    this.inscrig.refused = false;
+    const d=this.http.post('http://localhost:8083/groupeinscri', this.inscrig).toPromise();
+      d.then(data => {
+        this.ngOnInit();
+      }, err => {
+        console.log(err);
+      });
 
 
+    this.noninscrit = false;
+    ;
+  }
 
-}
+
+  }
+
+

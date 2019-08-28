@@ -8,10 +8,10 @@ export class SubEvGrService {
 
   constructor(private http: HttpClient) { }
 
-  getsubevent(){
-    return this.http.get("http://localhost:8083/inscrig/event/"+1);   
+  getsubevent(id){
+    return this.http.get("http://localhost:8083/inscrig/event/"+id);   
   }
-  getnonsubevent(){
-    return this.http.get("http://localhost:8083/noninscrig/event/"+1);
+  getnonsubevent(id){
+    return this.http.get("http://localhost:8083/noninscrig/event/"+id);
   }
 }
