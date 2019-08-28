@@ -12,7 +12,6 @@ import { AuthService } from '../service/auth/auth.service';
 })
 export class AmisComponent implements OnInit {
 
-
   constructor(
     private router: Router,
     private authService: AuthService
