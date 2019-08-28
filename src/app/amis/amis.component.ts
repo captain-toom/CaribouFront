@@ -7,12 +7,8 @@ import { AuthService } from '../service/auth/auth.service';
   templateUrl: './amis.component.html',
   styleUrls: ['./amis.component.css'],
   providers: [AuthService]
-
-
 })
 export class AmisComponent implements OnInit {
-
-
   constructor(
     private router: Router,
     private authService: AuthService
@@ -20,7 +16,6 @@ export class AmisComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
   getLogin() {
     return this.authService.getUser().login;
