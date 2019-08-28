@@ -12,13 +12,13 @@ import { MaterialModule } from '../material'
 })
 export class AmisComponent implements OnInit {
   constructor(
-
     private router: Router,
     private authService: AuthService,
     private http: HttpClient  
   ) { }
   data;
   dataAttente;
+  BONJOUR;
 
   ngOnInit() {    
     this.go();  
@@ -43,7 +43,7 @@ export class AmisComponent implements OnInit {
   }
   deletefriend(x: any) {
     const session = this.authService.getSession();
-    const hoplala = this.http.delete('http://localhost:8083/friend/delete/' + session.id + '/' + x.id).toPromise();
+    const hoplala = this.http.delete('http://localhost:8083/friend/delete/' + session.id + '/' + x.id).toPromise();    
     
       hoplala.then(
         response => {
@@ -54,13 +54,13 @@ export class AmisComponent implements OnInit {
         }
       );
   } 
-
   Validfriend(v: any) {
     const session = this.authService.getSession();
-    this.http.delete('http://localhost:8083/friend/accept/' + session.id + '/' + v.id)
-      .subscribe(
+    const accept = this.http.put('http://localhost:8083/friend/accept/' + session.id + '/' + v.id, this.BONJOUR).toPromise();
+      accept.then(
         response => {
           console.log(response);
+          this.ngOnInit();     
         }, err => {
           console.log("BIJOUR" + err);
         }
@@ -78,8 +78,6 @@ export class AmisComponent implements OnInit {
   }
 
   hasAnyRole(roles: string[]) {
-
-
     return this.authService.hasAnyRole(roles);
   }
 

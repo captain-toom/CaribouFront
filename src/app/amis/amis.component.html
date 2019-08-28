@@ -1,6 +1,6 @@
 <div class="container">
   
-    <h5 class="text-center">Mes amis</h5>
+    <h5 class="text-center" style="color: black">Mes amis</h5>
     <table class="table table-striped table-dark">
         <thead class="thead thead-dark">
             <tr class="text-center"
@@ -16,14 +16,14 @@
                 <td>{{p.photo}}</td>
                 <td>{{p.nom}}</td>
                 <td>{{p.mail}}</td>
-                <td><button mat-raised-button color="warn"  (click)="deletefriend(p)">X</button></td>
+                <td><button mat-raised-button color="warn"(click)="deletefriend(p)">X</button></td>
             </tr>
         </tbody>
     </table></div>
 
 <div class="container">
 
-    <h5 class="text-center">Demandes en attente</h5>
+    <h5 class="text-center" style="color: black">Demandes en attente</h5>
     <table class="table table-striped table-dark">
         <thead class="thead thead-dark">
             <tr class="text-center"
@@ -41,7 +41,7 @@
                 <td>{{c.mail}}</td>
                 <td>        
 
-                    <button mat-raised-button color="primary" (click)="Validfriend(c)">V</button>  
+                    <button mat-raised-button color="primary" (click)="Validfriend(c)"><img src="data:image/png;base64,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" width="20"></button>  
 
                     <button mat-raised-button color="warn" (click)="deletefriend(c)">X</button>
 
