@@ -24,6 +24,7 @@ import { EditEventComponent } from './edit-event/edit-event.component';
 import { RippleComponent } from './ripple/ripple.component';
 import { RainComponent } from './rain/rain.component';
 import { EventsService } from './events.service';
+import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
 
 
 @NgModule({
@@ -37,9 +38,14 @@ import { EventsService } from './events.service';
     HomebandComponent,
     LoginsidenavComponent,
     SubscribeEventGroupeComponent,
+
     EditEventComponent,
+
     RippleComponent,
-    RainComponent
+    RainComponent,
+    InscriptionclientComponent
+    
+
   ],
   imports: [
     FormsModule,

@@ -7,11 +7,25 @@ import { AuthGuard } from './service/auth/auth.guard';
 import { HomebarComponent } from './homebar/homebar.component';
 import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
 import { HomebandComponent } from './homeband/homeband.component';
+import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
+import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component'
 import { EditEventComponent } from './edit-event/edit-event.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+
+  {
+    path: 'connexion',
+    component: LoginsidenavComponent
+  },
+
+  {
+    path: 'inscriptionclient',
+    component: InscriptionclientComponent
+
+  },
+
   {
     path: 'login',
     component: LoginComponent
@@ -20,10 +34,10 @@ const routes: Routes = [
     path: 'home',
     canActivate: [AuthGuard],
     component: HomeComponent,
-    data : {
-      roles : ['CLIENT']
+    data: {
+      roles: ['CLIENT']
     }
-    
+
   },
   {
     path: 'createevent',
@@ -33,8 +47,8 @@ const routes: Routes = [
     path: 'home_bar',
     component: HomebarComponent,
     canActivate: [AuthGuard],
-    data : {
-      roles : ['BAR']
+    data: {
+      roles: ['BAR']
     }
   },
   {
