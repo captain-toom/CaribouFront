@@ -31,7 +31,7 @@ export class AmisComponent implements OnInit {
     );
 
   }
-  deletefriend(){
+  deletefriend(p : any){
     
   }
 
