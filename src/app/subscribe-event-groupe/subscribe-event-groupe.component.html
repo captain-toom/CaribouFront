@@ -1,4 +1,23 @@
-
+<table style="margin: auto " >
+    <thead>
+        <th>Nom</th>
+        <th>Bar</th>
+        <th>Date</th>
+        <th>Capacité</th>
+        <th>Cachet</th>
+        <th>Genre de musique</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = 'let e of subscribedevents' (click)=openeventsub(e)>
+            <td>{{e.nom}}</td>
+            <td>{{e.bar.nom}}</td>
+            <td>{{e.dateEvent}}</td>
+            <td>{{e.bar.capacitemax}}</td>
+            <td>{{e.cachetmax}}</td>
+            <td>{{e.genre.nom}}</td>
+        </tr>
+    </tbody>
+</table>
 <button style="text-align: center" (click)=opensearch()>Recherche</button>
 <div *ngIf="visible">
     <form #forme ="ngForm" (ngSubmit)="search()" autocomplete="off">
@@ -36,14 +55,14 @@
         <th>S'inscrire</th>
     </thead>
     <tbody>
-        <tr *ngFor = 'let e of eventsfiltred' (click)=openevent(e)>
-            <td>{{e.nom}}</td>
-            <td>{{e.bar.nom}}</td>
-            <td>{{e.dateEvent}}</td>
-            <td>{{e.bar.capacitemax}}</td>
-            <td>{{e.cachetmax}}</td>
-            <td>{{e.genre.nom}}</td>
-            <td><button (click)="inscrire(e)">test</button></td>
+        <tr *ngFor = 'let e of eventsfiltred' >
+            <td (click)=openevent(e)>{{e.nom}}</td>
+            <td (click)=openevent(e)>{{e.bar.nom}}</td>
+            <td (click)=openevent(e)>{{e.dateEvent}}</td>
+            <td (click)=openevent(e)>{{e.bar.capacitemax}}</td>
+            <td (click)=openevent(e)>{{e.cachetmax}}</td>
+            <td (click)=openevent(e)>{{e.genre.nom}}</td>
+            <td><button (click)="inscrire(e)">S'inscrire</button></td>
         </tr>
     </tbody>
 </table>
@@ -53,5 +72,5 @@
     <p>{{event.bar.capacitemax}}</p>
     <p>{{event.cachetmax}}</p>
     <p>{{event.genre.nom}}</p>
-    <button (click)="inscrire(event)">test</button>
+    <button *ngIf="noninscrit" (click)="inscrire(event)">S'inscrire</button>
 </div>
