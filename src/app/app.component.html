@@ -8,8 +8,11 @@ width="150px"height="160px" >
 <div class="col-sm-4"></div>
 </div>
 </div>
-<div class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+
+
+<div class="fixed-top" *ngIf="mainnav == true" >
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
       style="background: linear-gradient(to right, #CD6549, #C64C2B, #CD6549) !important;">
       <a class="navbar-brand" routerLink="login">
         <img src="https://hoppedupcaribou.com/wp-content/uploads/2017/02/hopped-up-header.png" width="30" height="30"
@@ -31,7 +34,7 @@ width="150px"height="160px" >
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" routerLink="inscriptionclient" >Client</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item">Bar</a>
+              <a class="dropdown-item" routerLink="inscriptionbar">Bar</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item">Groupe</a>
             </div>
@@ -39,5 +42,10 @@ width="150px"height="160px" >
       </div>
     </nav>
   </div>
+
+  
+
+
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>
