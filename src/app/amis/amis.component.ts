@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
@@ -12,17 +12,19 @@ import { MaterialModule } from '../material'
 })
 export class AmisComponent implements OnInit {
   constructor(
-    
+
     private router: Router,
     private authService: AuthService,
-    private http : HttpClient
+    private http: HttpClient  
   ) { }
   data;
   dataAttente;
 
-  ngOnInit() {
+  ngOnInit() {    
+    this.go();  
+  }
+  go() {
     const session = this.authService.getSession();
-    
     this.http.get('http://localhost:8083/mesamis/'+session.id)    
     .subscribe(
         response => {
@@ -38,20 +40,31 @@ export class AmisComponent implements OnInit {
           console.log(response);         
         }
     );
-
   }
-  deletefriend(p : any){
+  deletefriend(x: any) {
     const session = this.authService.getSession();
-    this.http.delete('http://localhost:8083/friend/delete/'+session.id+'/'+p.id)    
-    .subscribe(
+    const hoplala = this.http.delete('http://localhost:8083/friend/delete/' + session.id + '/' + x.id).toPromise();
+    
+      hoplala.then(
         response => {
-          this.data = response;
-          console.log(response);         
-        }, err =>{
+          console.log(response);
+          this.ngOnInit();      
+        }, err => {
           console.log("BIJOUR" + err);
         }
-        
-    );    
+      );
+  } 
+
+  Validfriend(v: any) {
+    const session = this.authService.getSession();
+    this.http.delete('http://localhost:8083/friend/accept/' + session.id + '/' + v.id)
+      .subscribe(
+        response => {
+          console.log(response);
+        }, err => {
+          console.log("BIJOUR" + err);
+        }
+      );
   }
 
   getLogin() {
@@ -61,11 +74,11 @@ export class AmisComponent implements OnInit {
 
   logout() {
     console.log('Tentative de déconnexion');
-    return this.authService.logout();  
+    return this.authService.logout();
   }
 
   hasAnyRole(roles: string[]) {
-   
+
 
     return this.authService.hasAnyRole(roles);
   }
