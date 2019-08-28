@@ -59,8 +59,9 @@ const routes: Routes = [
   },
   {
     path: 'home_bar',
-    component: HomebarComponent,
     canActivate: [AuthGuard],
+    component: HomebarComponent,
+    
     data: {
       roles: ['BAR']
     }
@@ -68,8 +69,9 @@ const routes: Routes = [
   
   {
     path: 'home_band',
-    component: HomebandComponent,
     canActivate: [AuthGuard],
+    component: HomebandComponent,
+   
     data: {
       roles: ['GROUPE']
     }, 
