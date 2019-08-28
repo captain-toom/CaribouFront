@@ -4,7 +4,8 @@ import { Groupe } from './Groupe';
 export class InscriptionGroupe{
     event: BattleGroupe =new BattleGroupe();
     groupe: Groupe = new Groupe();
-    refused: boolean;
+  refused: boolean;
+    
 
     constructor(){}
 

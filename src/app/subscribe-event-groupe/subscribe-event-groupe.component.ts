@@ -47,7 +47,7 @@ search(){
 inscrire(e){
   this.inscrig.event=e;
   this.inscrig.groupe.id=1;
-  // this.inscrig.refused=false;
+  this.inscrig.refused=false;
   this.http.post('http://localhost:8083/groupeinscri', this.inscrig)
      .subscribe(data =>{
 
