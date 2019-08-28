@@ -1,10 +1,28 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+
+
+
 
 <div class='container'>
-        <h3>Events à Venir !!! </h3>
-        <h5>On vous y attends nombreux ... mais pas trop </h5>
+    <div class='row'>
+        <div class='col-sm-10'>
+                <h3>Events à Venir !!! </h3>
+                <h5>On vous y attends nombreux ... mais pas trop </h5>
+        </div>
+        <div class='col-sm-2'> 
+            <br><br><br>
+            <a href="createevent" class="btn btn-xs pull-right"> <span class='glyphicon glyphicon-plus-sign'></span> Add new events</a>
+        </div>
+    </div>
+
         <table class="table table-striped" >
-            <thead class="thead thead-dark">
+            <thead class="thead thead-dark" id='titre'>                    
                 <tr>
+                    <th>Rendre Visible aux clients</th>
                     <th>Date de l'événement</th>
                     <th>Genre</th>
                     <th>Nom</th>                    
@@ -17,6 +35,22 @@
             </thead>
             <tbody>
                 <tr *ngFor = "let e of myFuturEvent">
+
+                    <td class="text-center"> 
+
+                        <div id="visibleGroupe" *ngIf="e.visibleClient==false">
+                            <span class='glyphicon glyphicon-eye-close'></span>
+                            <a class='btn' (click) ="voirCache(e)">         
+                                <span class='glyphicon glyphicon-ok'></span>
+                            </a>
+                        </div>
+
+
+                        <div id="visibleClient" *ngIf="e.visibleClient==true" >
+                            <span class='glyphicon glyphicon-eye-open'></span>
+                        </div>
+                    </td>
+
                     <td> {{e.dateEvent | date:'EEEE d MMMM y' }}</td>
                     <td> {{e.genre.nom}}</td>
                     <td> {{e.nom}}</td>
@@ -24,7 +58,13 @@
                     <td> {{e.cachetmax}}</td>
                     <td> {{e.nbgroupes}}</td>
                     <td> {{e.prix}}</td>
-                    <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                    <td class="text-center">
+                        <a class='btn btn-info btn-xs' href="#">
+                            <span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="#" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove"></span> Del</a>
+                            
+                    </td>
                 </tr>    
             </tbody>
         </table>
@@ -45,6 +85,7 @@
                             <th>Cachet Max</th>                    
                             <th>Nb de groupe dans la soirée</th>
                             <th>Prix d'entrée</th>
+                            <th>Groupe</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -56,6 +97,7 @@
                                     <td> {{e.cachetmax}}</td>
                                     <td> {{e.nbgroupes}}</td>
                                     <td> {{e.prix}}</td>
+                                    <td> CaribouTestEnFolie4Ever</td>
                             </tr>
                     </tbody>
         </table>

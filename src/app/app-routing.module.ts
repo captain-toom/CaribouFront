@@ -9,6 +9,7 @@ import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscrib
 import { HomebandComponent } from './homeband/homeband.component';
 import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component'
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 
 const routes: Routes = [
@@ -54,14 +55,18 @@ const routes: Routes = [
     path: 'subscribe_event_groupe',
     component: SubscribeEventGroupeComponent
   },
-  {
-    path: 'home_band',
-    component: HomebandComponent,
-    canActivate: [AuthGuard],
-    data: {
-      roles: ['GROUPE']
-    }
-  },
+{
+  path : 'home_band', 
+  component: HomebandComponent,
+  canActivate: [AuthGuard],
+  data : {
+    roles : ['GROUPE']
+  }
+},
+{
+  path : 'edit_event', 
+  component: EditEventComponent
+},
 
 ];
 
