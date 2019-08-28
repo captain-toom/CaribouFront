@@ -3,6 +3,7 @@ import { EventsService } from '../events.service';
 import { HttpClient } from '@angular/common/http';
 import { Bar } from '../model/Bar';
 import { AuthService } from '../service/auth/auth.service';
+import { BattleGroupe } from '../model/BattleGroupe';
 
 
 
@@ -23,8 +24,15 @@ export class HomebarComponent implements OnInit {
 
   
   visible= true;
-  voirCache(e) {
-    //requete hhtp modif set visible client 
+  voirCache(e : BattleGroupe) {
+    //requete hhtp modif set visible client
+    this.http.put('http://localhost:8083/battleGroupesVisibleClient/'+e.id, e)    
+    .subscribe(
+        response => {
+          console.log(response);
+          this.ngOnInit();
+        }
+    ); 
     // puis recharge de la page
   }
 
