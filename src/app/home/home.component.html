@@ -20,7 +20,8 @@
           <a class="nav-link" routerLink="amis" routerLinkActive="active">Amis</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
             Evénements
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,11 +33,54 @@
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-danger btn-primary" type="submit" (click)="logout()">Déconnexion</button>    
       </form>
     </div>
   </nav>
 </div>
+<router-outlet></router-outlet>
+
 <p>
   Welcome home {{getLogin()}} !
 </p>
 <a (click)="logout()">Se déconnecter</a>
+
+<div class='container'>
+  <div class='row'>
+      <div class='col-sm-10'>
+              <h3>Events à Venir !!! </h3>
+      </div>
+      <div class='col-sm-2'> 
+                    
+      </div>
+  </div>
+</div>
+
+
+<div class='container'>
+  <table class="table table-striped" >
+      <thead class="thead thead-dark" id='titre'>                    
+          <tr>            
+              <th>Date de l'événement</th>
+              <th>Genre</th>
+              <th>Nom</th>                    
+              <th>Description</th>
+              <th>Bar</th>                                
+              <th>Prix d'entrée</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor = "let e of FuturEvent"> 
+                <td> {{e.dateEvent | date:'EEEE d MMMM y' }}</td>
+                <td> {{e.genre.nom}}</td>
+                <td> {{e.nom}}</td>
+                <td> {{e.description}}</td>
+                <td> {{e.bar.nom}}</td>
+                <td> {{e.prix}} €</td>
+                <td>       </td>
+            </tr>        
+      </tbody>
+    </table>
+</div>
+

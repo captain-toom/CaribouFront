@@ -4,6 +4,7 @@ import { Bar } from './Bar';
 
 
 export class BattleGroupe{
+    id : number;
     dateEvent: Date;
     description: string;
     nom: string;
