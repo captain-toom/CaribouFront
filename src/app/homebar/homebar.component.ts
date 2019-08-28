@@ -38,8 +38,8 @@ export class HomebarComponent implements OnInit {
 
   constructor(
     private http : HttpClient,
-    private authService: AuthService
-    
+    private authService: AuthService,
+    private service: EventsService
     ) { }
 
   
@@ -67,14 +67,8 @@ export class HomebarComponent implements OnInit {
         }
     );
 
-
-
-
-
-
-
   }
-
-
-
+  passevent(e){
+    this.service.setEvent(e);
+  }
 }
