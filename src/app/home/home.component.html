@@ -1,3 +1,30 @@
+
+
+    <div class = "mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class = "mdl-layout__header">
+           <!-- Top row, always visible -->
+           <div class = "mdl-layout__header-row">
+              <!-- Title -->
+              <span class = "mdl-layout-title">DEV14 de CACA</span>          
+           </div>
+        <!-- Tabs -->
+           
+        </header>
+        
+        <div class = "mdl-layout__drawer">
+           <span class = "mdl-layout-title">HTML5 Tutorial</span>
+           <nav class = "mdl-navigation">
+              <a class = "mdl-navigation__link" href = "">Home</a>
+              <a class = "mdl-navigation__link" href = "">About</a>    
+           </nav>
+        </div>
+        
+        
+     </div>
+    
+    
+
+
 <div class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
     style="background: linear-gradient(to right, #CD6549, #C64C2B, #CD6549) !important;">
@@ -42,11 +69,12 @@
     </div>
   </nav>
 </div>
+<router-outlet></router-outlet>
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">
 
     <div class="user_card">
-        <router-outlet></router-outlet>
+    
       <div class='container'>
         <div class='row'>
           <div class='col-sm-10'>
@@ -57,10 +85,8 @@
           </div>
         </div>
       </div>
-
-
       <div class='container'>
-        <table class="table">
+        <table class="table table-dark text-center">
           <thead class="thead thead-dark" id='titre'>
             <tr>
               <th>Date de l'événement</th>
@@ -69,7 +95,8 @@
               <th>Description</th>
               <th>Bar</th>
               <th>Prix d'entrée</th>
-              <th>Action</th>
+              <th>Voir l'évennement</th>
+              <th>S'inscrire</th>
             </tr>
           </thead>
           <tbody>
@@ -80,7 +107,12 @@
               <td> {{e.description}}</td>
               <td> {{e.bar.nom}}</td>
               <td> {{e.prix}} €</td>
-              <td> </td>
+              <td>
+                  <mat-icon (click)="inscrire()" >remove_red_eye</mat-icon>        
+              </td>
+              <td>               
+                  <mat-icon (click)="inscrire()" >touch_app</mat-icon>               
+              </td>
             </tr>
           </tbody>
         </table>
