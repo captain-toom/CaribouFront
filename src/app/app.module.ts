@@ -29,6 +29,7 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
 import { CreationbarComponent } from './creationbar/creationbar.component';
 
 import { AmisComponent } from './amis/amis.component';
+import { MaterialModule } from './material';
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
 
 
@@ -66,7 +67,8 @@ import { CreationgroupeComponent } from './creationgroupe/creationgroupe.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MaterialModule
   ],
   providers: [AuthService,EventsService],
   bootstrap: [AppComponent]

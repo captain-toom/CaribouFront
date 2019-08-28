@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { MaterialModule } from '../material'
 
 @Component({
   selector: 'app-amis',
@@ -11,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AmisComponent implements OnInit {
   constructor(
+    
     private router: Router,
     private authService: AuthService,
     private http : HttpClient
@@ -28,6 +30,9 @@ export class AmisComponent implements OnInit {
         }
     );
 
+  }
+  deletefriend(p : any){
+    
   }
 
   getLogin() {
