@@ -17,7 +17,7 @@ export class EditEventComponent implements OnInit {
 
   ngOnInit() {
     this.event = this.service.getEvent();
-   this.http.get("http://localhost:8083/inscrig/"+this.event.id).subscribe(response =>{ this.inscrig =response});
+   this.http.get("http://localhost:8083/inscrig/event/"+this.event.id).subscribe(response =>{ this.inscrig =response});
   }
 
   modifyEvent(){

@@ -5,6 +5,7 @@ import { filter } from 'minimatch';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 import { InscriptionGroupe } from '../model/IncriptionGroupe';
+import { AuthService } from '../service/auth/auth.service';
 
 @Component({
   selector: 'app-subscribe-event-groupe',
@@ -21,10 +22,12 @@ export class SubscribeEventGroupeComponent implements OnInit {
   genreschecked = [];
   inscrig: InscriptionGroupe=new InscriptionGroupe();
   recherche: Recherche = new Recherche();
-  constructor(private http:HttpClient, private routeur: Router) { }
+  constructor(private http:HttpClient, private routeur: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    const session = this.authService.getSession()
     this.http.get("http://localhost:8083/battlegroupesfutur").subscribe(response =>{ this.events =response, this.eventsfiltred= response});
+    // this.http.get("http://localhost:8083/inscrig/event"+session.id).subscribe(response =>{ this.eventssubscribed});
     this.http.get("http://localhost:8083/genres").subscribe(response =>{ this.genres =response});
   }
 openevent(e){
