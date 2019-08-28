@@ -29,6 +29,7 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
 import { CreationbarComponent } from './creationbar/creationbar.component';
 
 import { AmisComponent } from './amis/amis.component';
+import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
 
 
 
@@ -53,6 +54,8 @@ import { AmisComponent } from './amis/amis.component';
     CreationbarComponent,
 
     AmisComponent,
+
+    CreationgroupeComponent,
 
     
 

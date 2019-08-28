@@ -71,4 +71,10 @@ export class HomebarComponent implements OnInit {
   passevent(e){
     this.service.setEvent(e);
   }
+
+  logout() {
+    console.log('Tentative de déconnexion');
+    return this.authService.logout();  
+   
+  }
 }
