@@ -25,6 +25,7 @@ import { RippleComponent } from './ripple/ripple.component';
 import { RainComponent } from './rain/rain.component';
 import { EventsService } from './events.service';
 import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
+import { AmisComponent } from './amis/amis.component';
 
 
 @NgModule({
@@ -40,10 +41,11 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
     SubscribeEventGroupeComponent,
 
     EditEventComponent,
-
+    
     RippleComponent,
     RainComponent,
-    InscriptionclientComponent
+    InscriptionclientComponent,
+    AmisComponent
     
 
   ],
