@@ -1,0 +1,137 @@
+<div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <app-ripple></app-ripple>
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+    
+                    <div class="brand_logo_container">
+                        <img src="assets/LogoLogin.png" class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+    
+                <div class="d-flex justify-content-center form_container">
+    
+                    <form #forme="ngForm" (ngSubmit)="addBar()" autocomplete="off">
+                        <div class="input-group mb-2 justify-content-center" id="titlecard" >
+                            <h5 style="color:#5A471B">Inscription Groupe</h5>
+    
+                        </div>
+                        <div class="float-left">
+                        
+    
+                        <div class="input-group mb-2 justify-content-center">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+    
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nom" class="form-control" placeholder="Nom du Groupe"
+                                    [(ngModel)]="Groupe.nom" #nom="ngModel" required>
+    
+                            </div>
+    
+                        </div>
+                        <div class="input-group mb-2 justify-content-center">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+        
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="mail" class="form-control" placeholder="Identifiant (Email)"
+                                        [(ngModel)]="Groupe.mail" #mail="ngModel" required>
+        
+                                </div>
+        
+                            </div>
+                        <div class="input-group mb-2 justify-content-center">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+        
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="description" class="form-control" placeholder="Description"
+                                        [(ngModel)]="Groupe.description" #description="ngModel" required>
+        
+                                </div>
+        
+                            </div>
+    
+                            
+    
+                                <div class="input-group mb-2 justify-content-center">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="number" name="cachet" class="form-control" placeholder="Cachet"
+                                                [(ngModel)]="Groupe.cachet" #cachet="ngModel" required>
+                
+                                        </div>
+                
+                                    </div>
+    
+    
+                        <div class="input-group mb-2 justify-content-center">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="mdp" class="form-control" [(ngModel)]="Groupe.mdp"
+                                    #password="ngModel" placeholder='Mot de passe' required>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <div class="input-group mb-3">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <div class="form-group" [ngClass]="">
+                                        <input type="file" name="photo" class="form-control" src="" 
+                                        [(ngModel)]="Groupe.photo" #photo="ngModel" >
+        
+                                </div>
+                            </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <div class="form-group" [ngClass]="">
+                                    <input type="file" name="son" class="form-control" src="" 
+                                    [(ngModel)]="Groupe.son" #son="ngModel" >
+    
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <div class="form-group" [ngClass]="">
+                                    <input type="file" name="video" class="form-control" src="" 
+                                    [(ngModel)]="Groupe.video" #video="ngModel" >
+    
+                            </div>
+                        </div>
+                    </div>
+    
+    
+    
+                        <div class="d-flex justify-content-center mt-3 login_container form-group">
+                            <div class="form-group">
+                                <button id="buttgroupe" class="btn login_btn pull-right" [disabled]="!forme.form.valid">Inscription</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    
+                <div class="mt-4">
+    
+                    <div class="d-flex justify-content-center links">
+                        <a><br> <br></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
