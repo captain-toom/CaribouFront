@@ -1,10 +1,18 @@
 .table{
     text-align: center;
+    color: black;
+}
+h3 {
+    color: steelblue;
 }
 
 .thead{
     font-size: x-large !important;
-    text-align: center !important;
+    text-align: center !important;    
+    background-color: steelblue;
+}
+th {
+    color: white !important;
 }
 
 #titre{
@@ -29,6 +37,8 @@
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-    
-
 }
+
+.p{
+    color: steelblue !important;
+} 
