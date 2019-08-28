@@ -18,6 +18,7 @@ export class AmisComponent implements OnInit {
     private http : HttpClient
   ) { }
   data;
+  dataAttente;
 
   ngOnInit() {
     const session = this.authService.getSession();
@@ -30,9 +31,27 @@ export class AmisComponent implements OnInit {
         }
     );
 
+    this.http.get('http://localhost:8083/mesamis/attente/'+session.id)    
+    .subscribe(
+        response => {
+          this.dataAttente = response;
+          console.log(response);         
+        }
+    );
+
   }
   deletefriend(p : any){
-    
+    const session = this.authService.getSession();
+    this.http.delete('http://localhost:8083/friend/delete/'+session.id+'/'+p.id)    
+    .subscribe(
+        response => {
+          this.data = response;
+          console.log(response);         
+        }, err =>{
+          console.log("BIJOUR" + err);
+        }
+        
+    );    
   }
 
   getLogin() {
