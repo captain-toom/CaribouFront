@@ -11,7 +11,7 @@ width="150px"height="160px" >
 </div>
 
 
-<div class="fixed-top">
+<div class="fixed-top" *ngIf="mainnav == true" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
       style="background: linear-gradient(to right, #CD6549, #C64C2B, #CD6549) !important;">
       <a class="navbar-brand" routerLink="login">
@@ -34,7 +34,7 @@ width="150px"height="160px" >
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" routerLink="inscriptionclient" >Client</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item">Bar</a>
+              <a class="dropdown-item" routerLink="inscriptionbar">Bar</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item">Groupe</a>
             </div>
@@ -43,6 +43,7 @@ width="150px"height="160px" >
     </nav>
   </div>
 
+  
 
 
 <router-outlet></router-outlet>

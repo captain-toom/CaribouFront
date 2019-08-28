@@ -1,0 +1,125 @@
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <app-ripple></app-ripple>
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+
+                <div class="brand_logo_container">
+                    <img src="assets/LogoLogin.png" class="brand_logo" alt="Logo">
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center form_container">
+
+                <form #forme="ngForm" (ngSubmit)="addBar()" autocomplete="off">
+                    <div class="input-group mb-2 justify-content-center">
+                        <h5 style="color:#5A471B">Inscription Bar</h5>
+
+                    </div>
+                    <div class="input-group mb-2 justify-content-center">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="mail" class="form-control" placeholder="Identifiant (Email)"
+                                [(ngModel)]="Bar.mail" #mail="ngModel" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group mb-2 justify-content-center">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="nom" class="form-control" placeholder="Nom du bar"
+                                [(ngModel)]="Bar.nom" #nom="ngModel" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group mb-2 justify-content-center">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+    
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="nom_gerant" class="form-control" placeholder="Nom du gérant"
+                                    [(ngModel)]="Bar.nom_gerant" #nom_gerant="ngModel" required>
+    
+                            </div>
+    
+                        </div>
+
+                        <div class="input-group mb-2 justify-content-center">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+        
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="tel" class="form-control" placeholder="Téléphone"
+                                        [(ngModel)]="Bar.tel" #tel="ngModel" required>
+        
+                                </div>
+        
+                            </div>
+
+                            <div class="input-group mb-2 justify-content-center">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+            
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" name="capacitemax" class="form-control" placeholder="Capacité Maximum"
+                                            [(ngModel)]="Bar.capacitemax" #capacitemax="ngModel" required>
+            
+                                    </div>
+            
+                                </div>
+
+
+                    <div class="input-group mb-2 justify-content-center">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="mdp" class="form-control" [(ngModel)]="Bar.mdp"
+                                #password="ngModel" placeholder='Mot de passe' required>
+
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <div class="form-group" [ngClass]="">
+                                <input type="file" name="photo" class="form-control" src="" 
+                                [(ngModel)]="Bar.photo" #photo="ngModel" >
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="d-flex justify-content-center mt-3 login_container form-group">
+                        <div class="form-group">
+                            <button class="btn login_btn pull-right" [disabled]="!forme.form.valid">Inscription</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mt-4">
+
+                <div class="d-flex justify-content-center links">
+                    <a><br> <br></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

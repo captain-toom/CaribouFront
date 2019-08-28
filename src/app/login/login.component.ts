@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Type } from '@angular/compiler';
 import { AuthService } from '../service/auth/auth.service';
+import {AppComponent } from '../app.component'
 
 import { map, tap } from 'rxjs/operators';
 import { from } from 'rxjs';
@@ -18,12 +19,13 @@ export class LoginComponent implements OnInit {
   model: any = {};
   typeuser: any;
   connect: boolean;
-
+  
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private appcomponent: AppComponent,
   ) { }
 
   ngOnInit() {
@@ -83,16 +85,19 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('type', JSON.stringify("client"));
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
+              this.appcomponent.mainnav=false;
             }
             if (resu == 'bar') {
               this.model.typeuser = "bar";
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
+              this.appcomponent.mainnav=false;
             }
             if (resu == 'groupe') {
               this.model.typeuser = "groupe";
               localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
               this.authService.login(this.model);
+              this.appcomponent.mainnav=false
               
             }
           }
