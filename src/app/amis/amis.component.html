@@ -35,13 +35,13 @@
             </tr>
         </thead>
         <tbody class="text-center thead-dark">
-            <tr *ngFor="let p of dataAttente">
-                <td>{{p.photo}}</td>
-                <td>{{p.nom}}</td>
-                <td>{{p.mail}}</td>
+            <tr *ngFor="let c of dataAttente">
+                <td>{{c.photo}}</td>
+                <td>{{c.nom}}</td>
+                <td>{{c.mail}}</td>
                 <td>
-                    <button mat-raised-button color="primary" type="submit" (click)="Validfriend(p)">V</button>
-                    <button mat-raised-button color="warn" type="submit" (click)="deletefriend(p)">X</button>
+                    <button mat-raised-button color="primary" type="submit" (click)="Validfriend(c)">V</button>
+                    <button mat-raised-button color="warn" type="submit" (click)="deletefriend(c)">X</button>
                 </td>
             </tr>
         </tbody>
