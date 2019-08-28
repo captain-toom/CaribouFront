@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Bar } from '../model/Bar';
 import { AuthService } from '../service/auth/auth.service';
 import { BattleGroupe } from '../model/BattleGroupe';
+import {MaterialModule } from '../material';
 
 
 
@@ -70,5 +71,11 @@ export class HomebarComponent implements OnInit {
   }
   passevent(e){
     this.service.setEvent(e);
+  }
+
+  logout() {
+    console.log('Tentative de déconnexion');
+    return this.authService.logout();  
+   
   }
 }

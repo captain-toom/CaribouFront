@@ -1,6 +1,13 @@
+#buttgroupe{
+    top: 300px;
+    left: 50px !important;
+}
+#titlecard{
+    top: -50px !important;
+}
 .user_card {
     height: 600px;
-    width: 350px;
+    width: 1050px;
     margin-top: auto;
     margin-bottom: auto;
     /* background: #f39c12; */
@@ -34,7 +41,7 @@
     
 }
 .form_container {
-    margin-top: 100px;
+    margin-top: 160px;
     
 }
 .login_btn {

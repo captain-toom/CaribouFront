@@ -30,6 +30,8 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
 import { CreationbarComponent } from './creationbar/creationbar.component';
 
 import { AmisComponent } from './amis/amis.component';
+import { MaterialModule } from './material';
+import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
 import { SubEvGrService } from './sub-ev-gr.service';
 
 
@@ -56,6 +58,8 @@ import { SubEvGrService } from './sub-ev-gr.service';
 
     AmisComponent,
 
+    CreationgroupeComponent,
+
     
 
   ],
@@ -66,6 +70,7 @@ import { SubEvGrService } from './sub-ev-gr.service';
     BrowserAnimationsModule,
     HttpClientModule,
     MatCheckboxModule,
+    MaterialModule
   ],
   providers: [AuthService,EventsService,SubEvGrService],
   bootstrap: [AppComponent]
