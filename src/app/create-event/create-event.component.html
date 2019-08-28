@@ -1,22 +1,98 @@
-<form #forme ="ngForm" (ngSubmit)="addBattleGroupe()" autocomplete="off">
-    <input type="date" name="dateEvent" #dateAction="ngModel" [(ngModel)]= "battleGroupe.dateEvent" required>
-    <br>
-    <input type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroupe.description" required>
-    <br>
-    <input type="text" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "battleGroupe.nom" required>
-    <br>
-    <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetAction="ngModel" [(ngModel)]= "battleGroupe.cachetmax" required>
-    <br>
-    <input type="number" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "battleGroupe.nbgroupes" required>
-    <br>
-    <input type="number" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroupe.prix" required>
-    <br>
-    <select name="genre" #genreAction="ngModel" [(ngModel)]= "battleGroupe.genre.id" required>
-        <option *ngFor = "let g of genres" value="{{g.id}}">{{g.nom}}</option>
-    </select>
-    <br>
-    <br>
-    <br>
-    <button [disabled]="!forme.form.valid">AddEvent</button> 
-</form>
+<div class="container h-100">
+        <div class="d-flex justify-content-center h-100">            
+            <div class="user_card">
+
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <img src="assets/LogoLogin.png" class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+    
+                <br><br> <br>
+
+                <div class="d-flex justify-content-center form_container">
+                    <form name="form" (ngSubmit)="addBattleGroupe()" autocomplete="off">
+                        
+
+                            <div class="input-group mb-1">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>    
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Nom" name="nom" #nomAction="ngModel" [(ngModel)]= "battleGroupe.nom" required> 
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" type="text" placeholder="Description" name="description" #descriptionAction="ngModel" [(ngModel)]= "battleGroupe.description" required  style="background: white"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-1">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                            <input type="date" name="dateEvent" #dateAction="ngModel" [(ngModel)]= "battleGroupe.dateEvent" required>
+                                    </div>
+                            </div>
+
+                            <div class="input-group mb-1">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                            <select name="genre" #genreAction="ngModel" [(ngModel)]= "battleGroupe.genre.id" required>
+                                                    <option *ngFor = "let g of genres" value="{{g.id}}">{{g.nom}}</option>
+                                            </select>
+                                    </div>
+                            </div>
+
+                            <div class="input-group mb-1">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="number" placeholder="Nbgroupes" name="nbgroupes" #nbgroupesAction="ngModel" [(ngModel)]= "battleGroupe.nbgroupes" required>
+                                    </div>
+                            </div>
+
+                            <div class="input-group mb-1">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                            <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetAction="ngModel" [(ngModel)]= "battleGroupe.cachetmax" required>
+                                    </div>
+                            </div>
+
+                            <div class="input-group mb-1">
+                                    <div class="input-group-append ">
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <div class="form-group">
+                                            <input type="number" placeholder="Prix" name="prix" #prixAction="ngModel" [(ngModel)]= "battleGroupe.prix" required>
+                                    </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-3 login_container form-group">
+                                <div class="form-group">
+                                    <button [disabled]="!forme.form.valid">AddEvent</button> 
+                                </div>
+                            </div>
+
+
+                        
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+</div>
+            
 

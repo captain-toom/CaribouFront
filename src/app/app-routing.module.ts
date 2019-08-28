@@ -50,7 +50,7 @@ const routes: Routes = [
     component: HomeComponent,
     data: {
       roles: ['CLIENT']
-    },
+    },    
     children: [      
       {
         path: 'amis',        
