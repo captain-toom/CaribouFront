@@ -20,6 +20,12 @@ import { HomebarComponent } from './homebar/homebar.component';
 import { HomebandComponent } from './homeband/homeband.component';
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component';
 import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscribe-event-groupe.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { RippleComponent } from './ripple/ripple.component';
+import { RainComponent } from './rain/rain.component';
+import { EventsService } from './events.service';
+import { InscriptionclientComponent } from './inscriptionclient/inscriptionclient.component';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +37,15 @@ import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscrib
     HomebarComponent,
     HomebandComponent,
     LoginsidenavComponent,
-    SubscribeEventGroupeComponent
+    SubscribeEventGroupeComponent,
+
+    EditEventComponent,
+
+    RippleComponent,
+    RainComponent,
+    InscriptionclientComponent
+    
+
   ],
   imports: [
     FormsModule,
@@ -41,7 +55,7 @@ import { SubscribeEventGroupeComponent } from './subscribe-event-groupe/subscrib
     HttpClientModule,
     MatCheckboxModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
