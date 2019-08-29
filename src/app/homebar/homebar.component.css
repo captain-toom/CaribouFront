@@ -42,3 +42,11 @@ th {
 .p{
     color: steelblue !important;
 } 
+
+.smallIcone{
+    font-size: small;
+}
+
+.bigIcone{
+    font-size: xx-large;
+}
