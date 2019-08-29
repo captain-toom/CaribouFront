@@ -80,9 +80,4 @@ export class HomebarComponent implements OnInit {
     return this.authService.logout(); 
    
   }
-  myprofil() {
-    console.log('go my profil');
-    return this.authService.logout(); 
-   
-  }
 }
