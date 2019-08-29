@@ -17,15 +17,16 @@ export class AmisComponent implements OnInit {
     private authService: AuthService,
     private http: HttpClient  
   ) { }
+
   data;
   dataAttente;
   BONJOUR;
   nbDemande : number;
 
-  ngOnInit() {  
-    
+  ngOnInit() {      
     this.go();  
   }
+  
   go() {
     const session = this.authService.getSession();
     this.http.get('http://localhost:8083/mesamis/'+session.id)    

@@ -35,6 +35,7 @@ import { CreationgroupeComponent } from './creationgroupe/creationgroupe.compone
 import { SubEvGrService } from './sub-ev-gr.service';
 import { MatTableModule } from '@angular/material';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
+import { MyProfilBarComponent } from './my-profil-bar/my-profil-bar.component';
 
 
 
@@ -63,6 +64,7 @@ import { UploadimageComponent } from './uploadimage/uploadimage.component';
     CreationgroupeComponent,
 
     UploadimageComponent,
+    MyProfilBarComponent,
 
     
 
