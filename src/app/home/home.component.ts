@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
     private http : HttpClient,
   ) { }
 
+  inscrire(){
+    console.log("BJR");
+  }
+
   ngOnInit() {
     this.http.get('http://localhost:8083/battlegroupes/client')    
     .subscribe(
