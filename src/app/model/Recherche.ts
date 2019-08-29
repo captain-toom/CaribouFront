@@ -1,18 +1,18 @@
 
-import { Genre } from './Genre';
 
 export class Recherche{
     nom: string;
+    bar:string;
     datemax: Date;
     datemin: Date;
     cachetmax: number;
     cachetmin: number;
     capacitemax: number;
     capacitemin: number;
-    genre: Genre = new Genre();
+    genre: string;
 
     constructor(
-        
+
     ){}
 
     
@@ -20,13 +20,27 @@ export class Recherche{
         this.nom = nom;
     }
 
+    
+    public set setBar(bar : string) {
+        this.bar = bar;
+    }
+    
+
     public set setCachetmax(cachetmax : number) {
-        this.cachetmax = cachetmax;
+       this.cachetmax = cachetmax;
     }
     
     public set setCachetmin(cachetmin : number) {
-        this.cachetmin = cachetmin;
+         this.cachetmin = cachetmin;
     }
+
+    public set setDatemax(datemax : Date) {
+        this.datemax = datemax;
+     }
+     
+     public set setDatemin(datemin : Date) {
+          this.datemin = datemin;
+     }
     
     public set setCapacitemax(capacitemax : number) {
         this.capacitemax = capacitemax;
@@ -36,7 +50,7 @@ export class Recherche{
         this.capacitemin = capacitemin;
     }
 
-    public set setGenre(genre : Genre) {
+    public set setGenre(genre : string) {
         this.genre = genre;
     }
 }
