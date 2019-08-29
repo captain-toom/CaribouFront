@@ -12,7 +12,6 @@
     </nav>
   </div>
 </div> -->
-
 <div class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
     style="background: linear-gradient(to right, #CD6549, #C64C2B, #CD6549) !important;">
@@ -34,7 +33,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="amis" routerLinkActive="active">Amis</a>
         </li>
-        
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
@@ -46,72 +45,75 @@
             <a class="dropdown-item" routerLink="futurevent" routerLinkActive="active">Futurs</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Se déconnecter</a>
-        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        <button class="btn btn-danger btn-primary" type="submit" (click)="logout()">Déconnexion</button>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="sample1" placeholder="Rechercher">
+
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+          Rechercher
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="logout()">
+          Déconnexion
+        </button>
+
       </form>
     </div>
   </nav>
 </div>
 <router-outlet></router-outlet>
-
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">
-
     <div class="user_card">
 
-      <div class='container'>
-        <div class='row'>
-          <div class='col-sm-10'>
-            <h3 style="color: black">Events à Venir !!! </h3>
-          </div>
-          <div class='col-sm-2'>
+      <h3 class="text-center" style="color: black; font-family: 'Enriqueta'; letter-spacing: 2px">Prochain
+        évennements<span matBadge="{{nbEvents}}" matBadgeOverlap="false"></span></h3>
 
+      <div class="row">
+        <ul style="color: black" *ngFor="let e of FuturEvent">
+          <div class="col-sm-3">
+            <div class="card" style="width: 22rem;">
+              <img class="card-img-top"
+                src="https://townsquare.media/site/295/files/2018/02/ThinkstockPhotos-833572242.jpg?w=980&q=75"
+                alt="Card image cap">
+              <div class="card-body">
+                <div class="text-center">
+
+                  <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
+                    {{e.dateEvent | date:'EEEE d MMMM y' }}</h5>
+
+                  <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
+                    {{e.nom}} - Prix d'entrée : {{e.prix}}€
+                  </p>
+
+                  <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(122, 122, 122)" class="text-center">
+                    Lieu : {{e.bar.nom}} - Style : {{e.genre.nom}}
+                  </p>
+
+
+
+                  <button type="button" class="mdl-chip" (click)="voirEvent(e)">
+                    <span class="mdl-chip mdl-chip--deletable">
+                      <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Voir l'évennement</span>
+                      <button type="button" class="mdl-chip__action" >
+                        <i class="material-icons">remove_red_eye</i></button>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class='container'>
-        <table class="table table-dark text-center">
-          <thead class="thead thead-dark" id='titre'>
-            <tr>
-              <th>Date de l'événement</th>
-              <th>Genre</th>
-              <th>Nom</th>
-              <th>Description</th>
-              <th>Bar</th>
-              <th>Prix d'entrée</th>
-              <th>Voir l'évennement</th>
-              <th>S'inscrire</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let e of FuturEvent">
-              <td> {{e.dateEvent | date:'EEEE d MMMM y' }}</td>
-              <td> {{e.genre.nom}}</td>
-              <td> {{e.nom}}</td>
-              <td> {{e.description}}</td>
-              <td> {{e.bar.nom}}</td>
-              <td> {{e.prix}} €</td>
-              <td>
-                <mat-icon (click)="inscrire()">remove_red_eye</mat-icon>
-              </td>
-              <td>
-                <mat-icon (click)="inscrire()">touch_app</mat-icon>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        </ul>
       </div>
 
-      <p class="text-center" style="font-size: larger; color: black">
-        Connecté en tant que {{getLogin()}}
+
+      <p class="text-center" style="font-size: larger; color: black; font-family: 'Roboto'">
+        Connecté en tant que :
       </p>
-
+      <p class="text-center" style="font-size: xx-large; color: black; font-family: 'Roboto'; letter-spacing: 2px">
+      {{getLogin()}}
+      </p>
     </div>
   </div>
 </div>
