@@ -70,10 +70,8 @@ data;
     
     console.log("apres maj session");
     console.log(this.User);  
-    const session = this.authService.getSession() 
-    this.User = session;  
-    console.log("apres maj user");
-    console.log(this.User); 
+
+ 
 
     // renvoyer vers home
     console.log("juste avant de renvoyer vers home");
