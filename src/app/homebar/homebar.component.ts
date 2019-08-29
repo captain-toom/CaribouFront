@@ -55,6 +55,7 @@ export class HomebarComponent implements OnInit {
     this.http.get('http://localhost:8083/battlegroupes/old'+session.id)    
     .subscribe(
         response => {
+          console.log("oldEvent");
           console.log(response);
           this.myOldEvent = response;
         }
@@ -63,6 +64,7 @@ export class HomebarComponent implements OnInit {
     this.http.get('http://localhost:8083/battlegroupes/futur'+session.id)    
     .subscribe(
         response => {
+          console.log("futurEvent");
           console.log(response);
           this.myFuturEvent = response;
         }
@@ -75,7 +77,12 @@ export class HomebarComponent implements OnInit {
 
   logout() {
     console.log('Tentative de déconnexion');
-    return this.authService.logout();  
+    return this.authService.logout(); 
+   
+  }
+  myprofil() {
+    console.log('go my profil');
+    return this.authService.logout(); 
    
   }
 }
