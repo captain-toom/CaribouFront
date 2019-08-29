@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Type } from '@angular/compiler';
 import { AuthService } from '../service/auth/auth.service';
-import {AppComponent } from '../app.component'
+import {AppComponent } from '../app.component';
+import {MaterialModule } from '../material';
 
 import { map, tap } from 'rxjs/operators';
 import { from } from 'rxjs';
@@ -26,9 +27,15 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private appcomponent: AppComponent,
+    private materialmodule : MaterialModule
   ) { }
 
   ngOnInit() {
+    document.body.classList.add('bg-img');
+  }
+
+  getConnected(){
+    this.router.navigate(['/connexion']);
   }
 
   login() {

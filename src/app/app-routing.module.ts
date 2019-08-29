@@ -55,8 +55,7 @@ const routes: Routes = [
       {
         path: 'amis',        
         component: AmisComponent,
-      }
-      
+      }      
     ]
   },
   {
