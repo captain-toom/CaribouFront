@@ -17,6 +17,7 @@ export class HomebandComponent implements OnInit {
     private http : HttpClient,) { }
 
   ngOnInit() {
+    document.body.classList.remove('bg-img');
   }
 
   getLogin() {

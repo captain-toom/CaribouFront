@@ -46,6 +46,7 @@ export class HomebarComponent implements OnInit {
   
 
   ngOnInit() {
+    document.body.classList.remove('bg-img');
     const session = this.authService.getSession()
     console.log(session);
     console.log(session.login)

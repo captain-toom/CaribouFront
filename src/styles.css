@@ -3,23 +3,28 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .bg-img
-{
-    background-image: url('https://jondi.fr/wp-content/uploads/2014/01/concert-rock.jpg');
-	background-position:center;
-	height: 100% !important;
+{	background-size: 100%;
+	background-color: whitesmoke;
+	background-image:
+	linear-gradient(to bottom, rgba(255, 255, 255, 0.37) 45%,  rgba(236, 211, 70, 0)), url('https://jondi.fr/wp-content/uploads/2014/01/concert-rock.jpg');
 	width: 100% !important;
+	background-position-x: center;
+	height: 100% !important;
+	
+	
+	
 }
 
-body {
-/*	margin: 0;
+/* body {
+	margin: 0;
 	width: 100%;
 	height: 100vh;
 	font-family: "Exo", sans-serif;
 	color: #fff;
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
-	animation: gradientBG 15s ease infinite;*/
-}
+	animation: gradientBG 15s ease infinite;
+} 
 
 
 @keyframes gradientBG {
@@ -32,4 +37,4 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
-}
+} */
