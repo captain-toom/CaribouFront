@@ -30,13 +30,12 @@
     </nav>
 </div>
 
-
-<router-outlet></router-outlet>
-
-<div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-        
-        <div class="user_card">              
+<div class="container">
+    <br><br><br><br>
+        <a class="nav-link" routerLink="edit_event" routerLinkActive="active">PAR ICI CHEF</a>
+        <router-outlet></router-outlet>
+</div>
+             
             <div class='container'>
                 <div class='row'>
                     <div class='col-sm-10'>
@@ -89,7 +88,9 @@
                             <td> {{e.nbgroupes}}</td>
                             <td> {{e.prix}} €</td>
                             <td class="text-center">
-                                <a class='btn btn-info btn-xs' href="edit_event" (click)="passevent(e)">
+
+                               
+                                <a class='btn btn-info btn-xs' href="home_bar/edit_event" (click)="passevent(e)">
                                     <mat-icon class='smallIcone'>build</mat-icon> Edit</a>
                                 <a href="#" class="btn btn-danger btn-xs">
                                     <mat-icon class='smallIcone'>delete</mat-icon> Del</a>
@@ -137,12 +138,3 @@
 
 
             <app-footer></app-footer>
-
-
-            <router-outlet></router-outlet>
-
-
-
-        </div>
-    </div>
-</div>

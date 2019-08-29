@@ -81,14 +81,14 @@ const routes: Routes = [
         path: 'myProfil_bar',
         component: MyProfilBarComponent,
       },  
-
+      {
+        path:'edit_event',
+        component:EditEventComponent
+      },
     ]
   },
 
-  {
-    path:'edit_event',
-    component:EditEventComponent
-  },
+ 
   {
     path: 'createevent',
     component: CreateEventComponent
