@@ -76,21 +76,24 @@ const routes: Routes = [
     data: {
       roles: ['BAR']
     },
-    children: [      
+    children: [    
       {
         path: 'myProfil_bar',
         component: MyProfilBarComponent,
-      },
-      {
-        path:'edit_event',
-        component:EditEventComponent
-      },
-      {
-        path: 'createevent',
-        component: CreateEventComponent
-      },
+      },  
+
     ]
   },
+
+  {
+    path:'edit_event',
+    component:EditEventComponent
+  },
+  {
+    path: 'createevent',
+    component: CreateEventComponent
+  },
+
   
   {
     path: 'home_band',
