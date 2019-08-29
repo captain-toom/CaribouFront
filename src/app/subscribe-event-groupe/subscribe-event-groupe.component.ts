@@ -70,8 +70,8 @@ export class SubscribeEventGroupeComponent implements OnInit {
     });
     this.http.get("http://localhost:8083/genres").subscribe(response => { this.genres = response });
 
-    this.recherche.bar="";
-    this.recherche.genre="";
+    // this.recherche.bar=null;
+    this.recherche.genre=null;
     this.recherche.cachetmax=1000000000;
     this.recherche.cachetmin=0;
     this.recherche.datemax= new Date("3000-01-01");
@@ -94,9 +94,9 @@ export class SubscribeEventGroupeComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  search() {
-    this.data.filter=this.recherche.bar+','+this.recherche.genre+','+this.recherche.cachetmax+','+this.recherche.cachetmin+','+this.recherche.datemax+','+this.recherche.datemin+','+this.recherche.capacitemax+','+this.recherche.capacitemin;
-  }
+  // search() {
+  //   this.data.filter=this.recherche.bar+','+this.recherche.genre+','+this.recherche.cachetmax+','+this.recherche.cachetmin+','+this.recherche.datemax+','+this.recherche.datemin+','+this.recherche.capacitemax+','+this.recherche.capacitemin;
+  // }
 
   inscrire(e) {
     this.inscrig.event = e;
