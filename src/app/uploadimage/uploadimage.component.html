@@ -1,0 +1,48 @@
+
+<div class="container h-100">
+        <br><br><br><br>
+    <div class="d-flex justify-content-center h-100">
+            <app-ripple></app-ripple>
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                    
+                <div class="brand_logo_container">
+                    <img src="assets/LogoLogin.png" class="brand_logo" alt="Logo">
+                </div>
+            </div>
+
+            <div >
+                    <div>   
+                <h3>Image Uploading Module</h3>
+            </div>
+
+                    <div >
+                        <input type="file" (change)="onFileChanged($event)">
+                    
+                        <img [src]="imgURL" height="200" *ngIf="imgURL">
+                    </div>
+                    
+                    <input type="button" (click)="onUpload()" value="upload">
+                    
+                    <!-- <hr />
+                    <div>
+                    Received Image:
+                    
+                    {{ receivedImageData['pic'] | json}}
+                    <img [src]="convertedImage" >
+                </div> -->
+                </div>
+                </div>
+                </div>
+                </div>
+
+
+
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br>
+                <br>
+                <br>
+                <br>
+                <br>

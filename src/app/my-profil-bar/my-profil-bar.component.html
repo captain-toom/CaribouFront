@@ -1,0 +1,87 @@
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <div id='photoProfilNull' *ngIf='User.photo ==null'>
+                    <img src="assets/LogoLogin.png" class="brand_logo" alt="Logo">
+                    </div>
+                    <div id='photoProfil' *ngIf='!User.photo == null'> 
+                    <!-- <User.photo class="brand_logo" alt="Logo"> -->
+                    </div>                                   
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form #forme="ngForm" (ngSubmit)="modifyProfil()" autocomplete="off">
+                        <div>
+                            <h3 class='text-center'>Bienvenue {{User.nom}}</h3>
+                        </div>
+                    <div class="input-group mb-1">
+                        
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <div class="form-group">
+                                <label for="name" >Nom du bar :</label>
+                            <input type="text" value="User.nom" placeholder="Nom du Bar" name="nom" #nomAction="ngModel"
+                                [(ngModel)]="User.nom" required id='name'>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-1">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <div class="form-group">
+                                <label for="mel" >Login/Mail :</label>
+                            <input type="text" value="User.mail" name="mail" #dateAction="ngModel"
+                                [(ngModel)]="User.mail" required id='mel'>
+                        </div>
+
+                    </div>
+
+                    <div class="input-group mb-1">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <div class="form-group">
+                                <label for="nameG" >Nom du Gérant :</label>
+                            <input type="text" value="User.nomGerant" name="nomGerant" #dateAction="ngModel"
+                                [(ngModel)]="User.nomGerant" required id='nameG'>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <div class="form-group">
+                                <label for="tel" >Télphone du bar :</label>
+                            <input type="text" value="User.tel" name="tel" #dateAction="ngModel"
+                                [(ngModel)]="User.tel" required id='tel'>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-1">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <div class="form-group">
+                                <label for="capMax" >Capacité maximale du bar :</label>
+                            <input type="number" value="User.capacitemax" placeholder="capacitemax"
+                                name="capacitemax" #nomAction="ngModel" [(ngModel)]="User.capacitemax" required id='capMax'>
+                                <!-- <p> personnes</p> -->
+                        </div>
+                    </div>
+
+
+                    <div class="d-flex justify-content-center mt-3 login_container form-group">
+                        <div class="form-group">
+                            <button [disabled]="!forme.form.valid">Modify</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+

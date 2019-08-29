@@ -3,19 +3,32 @@ import { BattleGroupe } from '../model/BattleGroupe';
 import { EventsService } from '../events.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth/auth.service';
+import {MaterialModule } from '../material';
+import { Bar } from '../model/Bar';
+
+
+
 
 @Component({
   selector: 'app-edit-event',
   templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
+  styleUrls: ['./edit-event.component.css'],
+  providers: [AuthService]
 })
 export class EditEventComponent implements OnInit {
   inscrig;
   event;
   id;
-  constructor(private service: EventsService, private http: HttpClient, private routeur: Router) { }
+  constructor(
+    private service: EventsService, 
+    private http: HttpClient, 
+    private routeur: Router,
+    private authService: AuthService) 
+    { }
 
   ngOnInit() {
+    const session = this.authService.getSession();
     this.event = this.service.getEvent();
    this.http.get("http://localhost:8083/inscrig/event/"+this.event.id).subscribe(response =>{ this.inscrig =response});
   }
@@ -37,5 +50,19 @@ export class EditEventComponent implements OnInit {
     },err =>{
     console.log(err);
     });
+  }
+
+  getLogin() {
+    return this.authService.getUser().login;
+    //return JSON.parse(localStorage.getItem('user')).login;
+  }
+
+  logout() {
+    console.log('Tentative de déconnexion');
+    return this.authService.logout();
+  }
+
+  hasAnyRole(roles: string[]) {
+    return this.authService.hasAnyRole(roles);
   }
 }

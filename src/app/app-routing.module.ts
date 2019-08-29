@@ -14,6 +14,8 @@ import { CreationbarComponent } from './creationbar/creationbar.component';
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component'
 
 import { AmisComponent } from './amis/amis.component';
+import { UploadimageComponent } from './uploadimage/uploadimage.component';
+import { MyProfilBarComponent } from './my-profil-bar/my-profil-bar.component';
 
 
 const routes: Routes = [
@@ -44,6 +46,7 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  
   {
     path: 'home',
     canActivate: [AuthGuard],
@@ -55,12 +58,14 @@ const routes: Routes = [
       {
         path: 'amis',        
         component: AmisComponent,
-      }      
+            
+      },
+      { 
+        path: 'uploadimage',
+        component: UploadimageComponent,
+      }
+      
     ]
-  },
-  {
-    path: 'createevent',
-    component: CreateEventComponent
   },
   {
     path: 'home_bar',
@@ -69,8 +74,25 @@ const routes: Routes = [
     
     data: {
       roles: ['BAR']
-    }
+    },
+    children: [    
+      {
+        path: 'myProfil_bar',
+        component: MyProfilBarComponent,
+      },  
+      {
+        path:'edit_event',
+        component:EditEventComponent
+      },
+    ]
   },
+
+ 
+  {
+    path: 'createevent',
+    component: CreateEventComponent
+  },
+
   
   {
     path: 'home_band',
@@ -87,10 +109,9 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'edit_event',
-    component: EditEventComponent
-  },
+
+
+  
 
 ];
 

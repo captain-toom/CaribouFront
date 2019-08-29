@@ -1,8 +1,8 @@
 #home {
     background-color: white;
     clip-path: url(#cache);
-    position: relative;
-    z-index: 1;
+    
+    
   }
   
   #red {

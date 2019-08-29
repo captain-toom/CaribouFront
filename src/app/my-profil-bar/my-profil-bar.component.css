@@ -1,23 +1,9 @@
-<<<<<<< HEAD
-
-
-
-=======
-#rainmain{
-    top: -500px !important;
-    
-}
-#logomainpage{
-    top: 50px !important;
-    
-}
->>>>>>> 2d4bd44e67c8e517e7209d64fe7c5f74c9800d66
-/* .user_card {
-    height: 400px;
+.user_card {
+    height: 600px;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    
+    /* background: #f39c12; */
     background: whitesmoke;
     position: absolute;
     z-index: 2;
@@ -29,7 +15,7 @@
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-    top: 170px;
+    
 
 }
 .brand_logo_container {
@@ -78,5 +64,4 @@
 }
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #c0392b !important;
-} */
-
+}

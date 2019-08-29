@@ -3,6 +3,7 @@ import { Client } from '../model/Client'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-inscriptionclient',
   templateUrl: './inscriptionclient.component.html',
@@ -11,8 +12,11 @@ import { Router } from '@angular/router';
 export class InscriptionclientComponent implements OnInit {
   Client:Client = new Client();
   constructor(private http: HttpClient, private routeur: Router) { }
-  nomprenom:String;
+  
+ 
 
+
+ 
   ngOnInit() {
 
     

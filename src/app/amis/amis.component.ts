@@ -17,6 +17,7 @@ export class AmisComponent implements OnInit {
     private authService: AuthService,
     private http: HttpClient  
   ) { }
+
   data;
   dataAttente;
   BONJOUR;
