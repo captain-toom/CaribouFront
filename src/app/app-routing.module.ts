@@ -58,6 +58,7 @@ const routes: Routes = [
       {
         path: 'amis',        
         component: AmisComponent,
+            
       },
       { 
         path: 'uploadimage',
@@ -66,13 +67,6 @@ const routes: Routes = [
       
     ]
   },
-
-
-
-
-
-
-
   {
     path: 'home_bar',
     canActivate: [AuthGuard],

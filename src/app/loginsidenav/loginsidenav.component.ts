@@ -21,6 +21,7 @@ export class LoginsidenavComponent implements OnInit {
     private authService: AuthService) {  }
 
   ngOnInit() {
+    document.body.classList.add('bg-img');
   }
   login() {
     //#region ici il ya ton ancien code ARTHUR ALIAS SHELBY

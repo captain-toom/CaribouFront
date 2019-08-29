@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.classList.remove('bg-img');
     this.http.get('http://localhost:8083/battlegroupes/client')    
     .subscribe(
         response => {

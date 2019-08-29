@@ -2,6 +2,13 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.bg-img
+{
+    background-image: url('https://jondi.fr/wp-content/uploads/2014/01/concert-rock.jpg');
+	background-position:center;
+	height: 100% !important;
+	width: 100% !important;
+}
 
 body {
 /*	margin: 0;

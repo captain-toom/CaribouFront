@@ -1,29 +1,17 @@
-
-
-    <div class = "mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-        <header class = "mdl-layout__header">
-           <!-- Top row, always visible -->
-           <div class = "mdl-layout__header-row">
-              <!-- Title -->
-              <span class = "mdl-layout-title">DEV14 de CACA</span>          
-           </div>
-        <!-- Tabs -->
-           
-        </header>
-        
-        <div class = "mdl-layout__drawer">
-           <span class = "mdl-layout-title">HTML5 Tutorial</span>
-           <nav class = "mdl-navigation">
-              <a class = "mdl-navigation__link" href = "">Home</a>
-              <a class = "mdl-navigation__link" href = "">About</a>    
-           </nav>
-        </div>
-        
-        
-     </div>
-    
-    
-
+<!-- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">DEV14 de CACA</span>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">HTML5 Tutorial</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Home</a>
+      <a class="mdl-navigation__link" href="">About</a>
+    </nav>
+  </div>
+</div> -->
 
 <div class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
@@ -72,12 +60,11 @@
 </div>
 <router-outlet></router-outlet>
 
-
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">
 
     <div class="user_card">
-    
+
       <div class='container'>
         <div class='row'>
           <div class='col-sm-10'>
@@ -111,10 +98,10 @@
               <td> {{e.bar.nom}}</td>
               <td> {{e.prix}} €</td>
               <td>
-                  <mat-icon (click)="inscrire()" >remove_red_eye</mat-icon>        
+                <mat-icon (click)="inscrire()">remove_red_eye</mat-icon>
               </td>
-              <td>               
-                  <mat-icon (click)="inscrire()" >touch_app</mat-icon>               
+              <td>
+                <mat-icon (click)="inscrire()">touch_app</mat-icon>
               </td>
             </tr>
           </tbody>

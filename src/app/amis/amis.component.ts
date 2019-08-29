@@ -23,11 +23,7 @@ export class AmisComponent implements OnInit {
   BONJOUR;
   nbDemande : number;
 
-  ngOnInit() {      
-    this.go();  
-  }
-  
-  go() {
+  ngOnInit() {  
     const session = this.authService.getSession();
     this.http.get('http://localhost:8083/mesamis/'+session.id)    
     .subscribe(
@@ -36,7 +32,6 @@ export class AmisComponent implements OnInit {
           console.log(response);         
         }
     );
-
     this.http.get('http://localhost:8083/mesamis/attente/'+session.id)    
     .subscribe(
         response => {
@@ -45,12 +40,12 @@ export class AmisComponent implements OnInit {
           console.log(this.nbDemande);
           console.log(response);         
         }
-    );
+    ); 
   }
+
   deletefriend(x: any) {
     const session = this.authService.getSession();
     const hoplala = this.http.delete('http://localhost:8083/friend/delete/' + session.id + '/' + x.id).toPromise();    
-
       hoplala.then(
         response => {
           console.log(response);
@@ -60,6 +55,7 @@ export class AmisComponent implements OnInit {
         }
       );
   } 
+  
   Validfriend(v: any) {
     const session = this.authService.getSession();
     const accept = this.http.put('http://localhost:8083/friend/accept/' + session.id + '/' + v.id, this.BONJOUR).toPromise();
