@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 import { InscriptionGroupe } from '../model/IncriptionGroupe';
 import { AuthService } from '../service/auth/auth.service';
 import { SubEvGrService } from '../sub-ev-gr.service';
+import { MatTableModule } from '@angular/material'  ;
+
+
 
 @Component({
   selector: 'app-subscribe-event-groupe',
@@ -26,19 +29,26 @@ export class SubscribeEventGroupeComponent implements OnInit {
   genreschecked = [];
   inscrig: InscriptionGroupe = new InscriptionGroupe();
   recherche: Recherche = new Recherche();
+  columnsToDisplay=['nom','bar','dateEvent','capacite','cachetmax','genre'];
   constructor(private http: HttpClient, private routeur: Router, private authService: AuthService, private subEvGrService: SubEvGrService, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
     const session = this.authService.getSession()
     this.id = session.id;
     this.http.get("http://localhost:8083/inscrig/event/" + this.id)
-
     .subscribe(
       response => { 
         this.subscribedevents = response 
       });
 
-    this.http.get("http://localhost:8083/noninscrig/event/" + this.id).subscribe(response => { this.events = response, this.eventsfiltred = response });
+    this.http.get("http://localhost:8083/noninscrig/event/" + this.id).subscribe(response => { 
+      this.events = response, 
+      this.eventsfiltred = response
+      this.eventsfiltred.forEach(element => {
+        element.bar=element.bar.nom;
+        element.genre=element.genre.nom;   
+      });
+    });
     this.http.get("http://localhost:8083/genres").subscribe(response => { this.genres = response });
   }
   openevent(e) {
@@ -74,8 +84,8 @@ export class SubscribeEventGroupeComponent implements OnInit {
 
 
     this.noninscrit = false;
-    ;
   }
+
 
 
   }

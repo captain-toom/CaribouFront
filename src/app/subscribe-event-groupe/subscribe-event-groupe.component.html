@@ -44,7 +44,7 @@
         <button [disabled]="!forme.form.valid">Search</button> 
     </form>
 </div>
-<table style="margin: auto " >
+<!-- <table style="margin: auto " >
     <thead>
         <th>Nom</th>
         <th>Bar</th>
@@ -65,7 +65,44 @@
             <td><button (click)="inscrire(e)">S'inscrire</button></td>
         </tr>
     </tbody>
+</table> -->
+
+<div>
+<table mat-table [dataSource]="eventsfiltred">
+    <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let e">{{e.nom}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="bar">
+        <th mat-header-cell *matHeaderCellDef>Bar</th>
+        <td mat-cell *matCellDef="let e">{{e.bar}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="capacite">
+        <th mat-header-cell *matHeaderCellDef>Capacite</th>
+        <td mat-cell *matCellDef="let e">{{e.capacite}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateEvent">
+        <th mat-header-cell *matHeaderCellDef>DateEvent</th>
+        <td mat-cell *matCellDef="let e">{{e.dateEvent}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cachetmax">
+        <th mat-header-cell *matHeaderCellDef>Cachetmax</th>
+        <td mat-cell *matCellDef="let e">{{e.cachetmax}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <td mat-cell *matCellDef="let e">{{e.genre}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef= "columnsToDisplay"></tr>
+    <tr mat-row *matRowDef= "let myRowData; columns:columnsToDisplay"></tr>
 </table>
+</div>
 <div *ngIf="visibleevent">
     <p>{{event.nom}}</p>
     <p>{{event.bar.nom}}</p>

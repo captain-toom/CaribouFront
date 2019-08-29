@@ -33,6 +33,7 @@ import { AmisComponent } from './amis/amis.component';
 import { MaterialModule } from './material';
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
 import { SubEvGrService } from './sub-ev-gr.service';
+import { MatTableModule } from '@angular/material';
 
 
 
@@ -70,7 +71,8 @@ import { SubEvGrService } from './sub-ev-gr.service';
     BrowserAnimationsModule,
     HttpClientModule,
     MatCheckboxModule,
-    MaterialModule
+    MaterialModule,
+    MatTableModule,
   ],
   providers: [AuthService,EventsService,SubEvGrService],
   bootstrap: [AppComponent]
