@@ -14,6 +14,7 @@ import { CreationbarComponent } from './creationbar/creationbar.component';
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component'
 
 import { AmisComponent } from './amis/amis.component';
+import { UploadimageComponent } from './uploadimage/uploadimage.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,10 @@ const routes: Routes = [
       {
         path: 'amis',        
         component: AmisComponent,
+      },
+      { 
+        path: 'uploadimage',
+        component: UploadimageComponent,
       }
       
     ]

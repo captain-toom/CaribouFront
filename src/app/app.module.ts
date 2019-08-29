@@ -34,6 +34,7 @@ import { MaterialModule } from './material';
 import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
 import { SubEvGrService } from './sub-ev-gr.service';
 import { MatTableModule } from '@angular/material';
+import { UploadimageComponent } from './uploadimage/uploadimage.component';
 
 
 
@@ -60,6 +61,8 @@ import { MatTableModule } from '@angular/material';
     AmisComponent,
 
     CreationgroupeComponent,
+
+    UploadimageComponent,
 
     
 
