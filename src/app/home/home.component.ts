@@ -10,16 +10,20 @@ import { HttpClient } from '@angular/common/http';
   providers: [AuthService]
 })
 export class HomeComponent implements OnInit {
+
+
   FuturEvent;
+
+
   constructor(
     private router: Router,
     private authService: AuthService,
     private http: HttpClient,
   ) { }
+
+
   nbEvents;
-  inscrire() {
-    console.log("BJR");
-  }
+
 
   ngOnInit() {
     document.body.classList.remove('bg-img');
@@ -32,6 +36,17 @@ export class HomeComponent implements OnInit {
         }
       );
   }
+
+  getEvent() {
+    return JSON.parse(localStorage.getItem('event'));
+  }
+
+  setEvent(event: any) {
+    localStorage.setItem('event', JSON.stringify(event));
+  }
+  voirEvent(e){
+    this.setEvent({id: e.id, date : e.date, nom : e.nom, description : e.description, genre : e.genre.nom, prix : e.prix, ngGroupe : e.ngGroupe, bar : e.bar})
+    this.router.navigate(['/event']);  }
 
   getLogin() {
     return this.authService.getUser().login;

@@ -1,0 +1,111 @@
+<br><b><br><br><br>
+
+
+
+
+
+    <div class="container">
+        <div class="container text-center">
+            <h1 style=" font-family: 'Permanent Marker'; color:  rgba(66, 66, 66, 0.911)" class="card-text">
+                {{event.nom}}</h1>
+        </div>
+        <div class="card card-center" style="width: 75rem;">
+            <h4 class="text-center" style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911)">
+                Description : {{event.description}}
+            </h4>
+
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-sm-4">
+                        <p
+                            style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                            Style : {{event.genre}}
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p
+                            style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                            Prix : {{event.prix}} €
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p
+                            style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                            Lieu : {{event.bar.nom}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Le lieu</h1>
+        <div class="card card-center" style="width: 75rem;">
+
+            <h4 class="text-center" style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911)">
+                {{event.bar.nom}}
+            </h4>
+
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-sm-4">
+                        <p
+                            style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                            Gérant : {{event.bar.nomGerant}}
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p
+                            style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                            Capacité : {{event.bar.capacitemax}} personnes
+                        </p>
+                    </div>
+                    <div class="col-sm-4">
+                        <p
+                            style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                            Téléphone : {{event.bar.tel}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Les groupes :
+        </h1>
+        <div class="card card-center" style="width: 75rem;">        
+
+            <div class="card-body">
+               <p>IL FAUDRA ICI FAIRE UN LET P OF DATA AVEC TOUS LES GROUPES INSCRITS LES BB</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 
+    <ul style="color: black" *ngFor="let p of dataAttente">
+
+        <div class="card" style="width: 20rem;">
+            <img class="card-img-top" src="https://www.fcgb.net/forums/styles/FCGB/theme/images/user4.png"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 style=" font-family: 'Roboto'; color: rgba(187, 116, 30, 0.76)" class="card-text">
+                    {{p.nom}}</h5>
+                <p style="font-family: 'Roboto'; letter-spacing: 1px; color: darkgray"></p>
+                <span class="mdl-chip mdl-chip--deletable">
+                    <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Accepter</span>
+                    <button type="button" class="mdl-chip__action" (click)="Validfriend(p)"><i
+                            class="material-icons">done</i></button>
+                    &nbsp;
+                    <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Refuser</span>
+                    <button type="button" class="mdl-chip__action" (click)="deletefriend(p)"><i
+                            class="material-icons">cancel</i></button>
+                </span>
+            </div>
+        </div>
+        </div>
+    </ul>
+    </div> -->
