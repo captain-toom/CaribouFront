@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -80,6 +81,12 @@ import { PageEventComponent } from './page-event/page-event.component';
     MatCheckboxModule,
     MaterialModule,
     MatTableModule,
+    
+
+
+    // angular.module("app", ["hm.readmore"]);
+
+
   ],
   providers: [AuthService,EventsService,SubEvGrService],
   bootstrap: [AppComponent]

@@ -71,16 +71,78 @@
                 </div>
             </div>
         </div>
-        <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Les groupes :
-        </h1>
-        <div class="card card-center" style="width: 75rem;">        
 
-            <div class="card-body">
-               <p>IL FAUDRA ICI FAIRE UN LET P OF DATA AVEC TOUS LES GROUPES INSCRITS LES BB</p>
+        <div *ngIf='adejavote' class="text-center">
+            <h4 class="text-center" style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(219, 87, 54, 0.911)">
+                Vous avez voté pour cet événement
+            </h4>
+            <button class="mdl-button mdl-js-button mdl-button--raised" (click)="annulerVote()">
+                Annuler mon vote</button>
+        </div>
+
+        <div *ngIf='!votesVisible'>
+            <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Les groupes
+                :
+            </h1>
+
+            <div class="row">
+                <ul style="color: black" *ngFor="let g of datainscrits">
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 22rem;">
+                            <img class="card-img-top"
+                                src="data:image/jpeg;base64,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"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
+                                        {{g.nom}}</h5>
+                                    <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
+                                        Le groupe : {{g.description}} </p>
+
+                                </div>
+                                <div class="text-center">
+                                    <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
+                                        Je vote pour ce groupe :
+                                    </p>
+                                    <button
+                                        class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+                                        (click)="vote(g)">
+                                        <i class="material-icons">favorite</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
             </div>
         </div>
 
+
+
+        <div *ngIf="votesVisible">
+            <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Le vote :
+            </h1>
+            <div class="row">
+                <ul style="color: black" *ngFor="let g of datainscrits">
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 22rem;">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
+                                        {{g.nom}}</h5>
+                                </div>
+                                <p
+                                    style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
+                                    Votes : {{(getNbVotes(g))}} 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
     </div>
+    <br><br><br><br><br><br><br><br>
 
 
 

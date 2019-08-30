@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
 
   hasAnyRole(roles: string[]) {
 
-
     return this.authService.hasAnyRole(roles);
   }
 
