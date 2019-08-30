@@ -27,7 +27,7 @@ th {
     margin-bottom: auto;
     /* background: #f39c12; */
     background: whitesmoke;
-    position: absolute;
+
     z-index: 2;
     display: flex;
     justify-content: center;
