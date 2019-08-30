@@ -1,4 +1,5 @@
-export class Client{
+export class Client {
+    id: number;
     nom: string;
     mail: string;
     mdp: string;
