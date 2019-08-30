@@ -1,74 +1,106 @@
-<table style="margin: auto " >
-    <thead>
-        <th>Nom</th>
-        <th>Bar</th>
-        <th>Date</th>
-        <th>Capacité</th>
-        <th>Cachet</th>
-        <th>Genre de musique</th>
-    </thead>
-    <tbody>
-        <tr *ngFor = 'let e of subscribedevents' (click)=openeventsub(e)>
-            <td>{{e.nom}}</td>
-            <td>{{e.bar.nom}}</td>
-            <td>{{e.dateEvent}}</td>
-            <td>{{e.bar.capacitemax}}</td>
-            <td>{{e.cachetmax}}</td>
-            <td>{{e.genre.nom}}</td>
-        </tr>
-    </tbody>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="tot">
+<table mat-table [dataSource]="datasub">
+    <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let e">{{e.nom}}</td>
+    </ng-container>
+    
+    <ng-container matColumnDef="bar">
+        <th mat-header-cell *matHeaderCellDef>Bar</th>
+        <td mat-cell *matCellDef="let e">{{e.bar.nom}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="capacite">
+        <th mat-header-cell *matHeaderCellDef>Capacite</th>
+        <td mat-cell *matCellDef="let e">{{e.bar.capacitemax}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateEvent">
+        <th mat-header-cell *matHeaderCellDef>DateEvent</th>
+        <td mat-cell *matCellDef="let e">{{e.dateEvent}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cachetmax">
+        <th mat-header-cell *matHeaderCellDef>Cachetmax</th>
+        <td mat-cell *matCellDef="let e">{{e.cachetmax}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <td mat-cell *matCellDef="let e">{{e.genre.nom}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Se désinscire</th>
+            <td mat-cell *matCellDef="let e">
+                <button mat-button>Check</button>
+            </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef= "columnsToDisplay; sticky: true"></tr>
+    <tr mat-row *matRowDef= "let myRowData; columns:columnsToDisplay" (click)="openeventsub(myRowData)"></tr>
 </table>
-<button style="text-align: center" (click)=opensearch()>Recherche</button>
-<div *ngIf="visible">
+<br>
+<br>
+<br>
+
+
+<div class="rech">
+<button class="recherche" (click)=opensearch()>Recherche</button>
+</div>
+<div *ngIf="visible" class="formul">
     <form #forme ="ngForm" (ngSubmit)="search()" autocomplete="off">
-        <input type="text" placeholder="Nom du bar" name="nom" #nomAction="ngModel" [(ngModel)]= "recherche.bar">
+        <label>Nom du Bar</label>
+        <input type="text" name="nom" #nomAction="ngModel" [(ngModel)]= "recherche.bar">
         <br>
+        <label>Genre</label>
         <select name="genre" #genreAction="ngModel" [(ngModel)]= "recherche.genre">
             <option *ngFor = "let g of genres" value="{{g.nom}}">{{g.nom}}</option>
         </select>
-        <br>
+        
+        <div class="in">
+        <label>Cachet</label>
+        <label><</label>
         <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetmaxAction="ngModel" [(ngModel)]= "recherche.cachetmax">
         <br>
+        <label>></label>
         <input type="number" placeholder="Cachetmin" name="cachetmin" #cachetminAction="ngModel" [(ngModel)]= "recherche.cachetmin">
-        <br>
+        </div>
+
+        <div class="in">
+        <label>Date</label>
+        <label><</label>
         <input type="date" name="dateEventmax" #datemaxAction="ngModel" [(ngModel)]= "recherche.datemax">
         <br>
+        <label>></label>
         <input type="date" name="dateEventmin" #dateminAction="ngModel" [(ngModel)]= "recherche.datemin">
-        <br>
+        </div>
+
+        <div class="in">
+        <label>Capacité</label>
+        <label><</label>
         <input type="number" placeholder="capacitemax" name="capacitemax" #capacitemaxAction="ngModel" [(ngModel)]= "recherche.capacitemax">
         <br>
+        <label>></label>
         <input type="number" placeholder="capacitemin" name="capacitemin" #capaciteminAction="ngModel" [(ngModel)]= "recherche.capacitemin">
+        </div>
+
         <br>
         <br>
         <br>
-        <br>
-        <button [disabled]="!forme.form.valid">Search</button> 
+        <button  [disabled]="!forme.form.valid">Search</button> 
     </form>
 </div>
-<!-- <table style="margin: auto " >
-    <thead>
-        <th>Nom</th>
-        <th>Bar</th>
-        <th>Date</th>
-        <th>Capacité</th>
-        <th>Cachet</th>
-        <th>Genre de musique</th>
-        <th>S'inscrire</th>
-    </thead>
-    <tbody>
-        <tr *ngFor = 'let e of eventsfiltred' >
-            <td (click)=openevent(e)>{{e.nom}}</td>
-            <td (click)=openevent(e)>{{e.bar.nom}}</td>
-            <td (click)=openevent(e)>{{e.dateEvent}}</td>
-            <td (click)=openevent(e)>{{e.bar.capacitemax}}</td>
-            <td (click)=openevent(e)>{{e.cachetmax}}</td>
-            <td (click)=openevent(e)>{{e.genre.nom}}</td>
-            <td><button (click)="inscrire(e)">S'inscrire</button></td>
-        </tr>
-    </tbody>
-</table> -->
 
-<div>
 <table mat-table [dataSource]="data">
     <ng-container matColumnDef="nom">
         <th mat-header-cell *matHeaderCellDef>Nom</th>
@@ -100,10 +132,17 @@
         <td mat-cell *matCellDef="let e">{{e.genre.nom}}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef= "columnsToDisplay"></tr>
-    <tr mat-row *matRowDef= "let myRowData; columns:columnsToDisplay"></tr>
+     <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>S'inscrire</th>
+        <td mat-cell *matCellDef="let e">
+            <button mat-button (click)="inscrire(e)">Check</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef= "columnsToDisplay; sticky: true"></tr>
+    <tr mat-row *matRowDef= "let myRowData; columns:columnsToDisplay" (click)="openevent(myRowData)"></tr>
 </table>
-</div>
+
 <div *ngIf="visibleevent">
     <p>{{event.nom}}</p>
     <p>{{event.bar.nom}}</p>
@@ -112,3 +151,12 @@
     <p>{{event.genre.nom}}</p>
     <button *ngIf="noninscrit" (click)="inscrire(event)">S'inscrire</button>
 </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
