@@ -100,6 +100,7 @@ export class AuthService {
   getTypeUser() {
     return JSON.parse(localStorage.getItem('type'));
   }
+  
 
   setTypeUser(type: any) {
     localStorage.setItem('type', JSON.stringify(type));

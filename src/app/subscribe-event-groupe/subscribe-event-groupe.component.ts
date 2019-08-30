@@ -70,8 +70,8 @@ export class SubscribeEventGroupeComponent implements OnInit {
     });
     this.http.get("http://localhost:8083/genres").subscribe(response => { this.genres = response });
 
-    // this.recherche.bar=null;
-    this.recherche.genre=null;
+    this.recherche.bar=" ";
+    this.recherche.genre=" ";
     this.recherche.cachetmax=1000000000;
     this.recherche.cachetmin=0;
     this.recherche.datemax= new Date("3000-01-01");

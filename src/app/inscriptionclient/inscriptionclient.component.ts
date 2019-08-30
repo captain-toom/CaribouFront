@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class InscriptionclientComponent implements OnInit {
   Client:Client = new Client();
-  constructor(private http: HttpClient, private routeur: Router) { }
+  constructor(private http: HttpClient, private routeur: Router) { };
   
  
 
@@ -25,7 +25,7 @@ export class InscriptionclientComponent implements OnInit {
 
   addClient(){
     this.http.post('http://localhost:8083/addclient', this.Client)
-    .subscribe(data =>{
+    .subscribe(res =>{
 
     },err =>{
     console.log(err);
