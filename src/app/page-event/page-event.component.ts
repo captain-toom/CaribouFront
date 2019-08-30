@@ -30,7 +30,10 @@ export class PageEventComponent implements OnInit {
   v;
   adejavote = false;
   data;
+  nbv=[];
   ngOnInit() {
+    this.autoVote = false;
+    this.adejavote = false;
     this.event = this.getEvent();
     const session = this.authService.getSession();
     const recupGroupe = this.http.get('http://localhost:8083/groupes/inscrits/valides/' + this.event.id).toPromise();
@@ -45,25 +48,29 @@ export class PageEventComponent implements OnInit {
             this.votesVisible = this.data;
           }
         );
+        console.log("1: ");
         console.log(response);
         this.datainscrits = response;
+        
       }, err => {
         console.log("BIJOUR" + err);
       });
-
+      
   }
-
-  getNbVotes(g){
+  getVotes(groupe){
     console.log("check1");
     if( (this.adejavote == true) && (this.votesVisible==true)){
       console.log("check2");
-      console.log("Le groupe : "+ g.id);      
+      console.log("Le groupe : "+ groupe.id);    
+      //  this.http.get('http://localhost:8083/votes/battlegroupe/'+this.event.id+'/groupe/'+groupe.id).subscribe(
+      //    response => {          
+      //     this.data = response;
+      //   });
+      return this.data;
     }else{
       return 0;
-    }
-    
+    }    
   }
-
   annulerVote(){
     const session = this.authService.getSession();
     const deletVote = this.http.delete('http://localhost:8083/votes/delete/battlegroupe/'+session.id +'/'+this.event.id ).toPromise();
@@ -72,7 +79,7 @@ export class PageEventComponent implements OnInit {
           this.data = response;
           console.log("a deja voté : "+this.data)
           this.adejavote = false;
-          this.votesVisible = false;
+          this.votesVisible = false;          
         });      
   }
 
@@ -104,11 +111,29 @@ export class PageEventComponent implements OnInit {
       );
 
     }
+    this.teste();
   }
 
   setEvent(event: any) {
     localStorage.setItem('event', JSON.stringify(event));
   }
 
+  teste(){
+    this.datainscrits.forEach( element => {
+      const recupVote = this.http.get('http://localhost:8083/votes/battlegroupe/'+this.event.id+'/groupe/'+element.id).toPromise();
+      recupVote.then(
+      response => {          
+        this.nbv.push({groupe: element, nb: response});
+        console.log(this.nbv[this.nbv.length-1]);
+      });
+    }
+    
+    );
+    console.log("testtest");
+    console.log(this.nbv);
+    
+    console.log("testfin");
+
+  }
 
 }
