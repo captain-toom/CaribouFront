@@ -1,7 +1,6 @@
-
 <div class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-    style="background: linear-gradient(to right, #956A30, #F9EAC1, #956A30) !important;">
+        style="background: linear-gradient(to right, #956A30, #F9EAC1, #956A30) !important;">
         <a class="navbar-brand" href="home_bar">
             <img src="https://hoppedupcaribou.com/wp-content/uploads/2017/02/hopped-up-header.png" width="30"
                 height="30" alt="">
@@ -21,149 +20,152 @@
                     <a class="nav-link" (click)="logout()">Se déconnecter</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="myProfil_bar" routerLinkActive="active">Une MyProfil</a>                    
+                    <a class="nav-link" routerLink="myProfil_bar" routerLinkActive="active">Modif MyProfil</a>
                 </li>
-                
+
 
             </ul>
         </div>
     </nav>
 </div>
 
+<router-outlet></router-outlet>
+
 <div class="container">
     <br><br><br><br>
-        <!-- <a class="nav-link" routerLink="edit_event" routerLinkActive="active">PAR ICI CHEF</a> -->
-        <router-outlet></router-outlet>
+    <!-- <a class="nav-link" routerLink="edit_event" routerLinkActive="active">PAR ICI CHEF</a> -->
+   
+</div>
+<p class="text-center" style="font-size: larger; color: black; font-family: 'Roboto'">
+    Connecté en tant que :
+</p>
+<p class="text-center" style="font-size: xx-large; color: black; font-family: 'Roboto'; letter-spacing: 2px">
+    {{getLogin()}}
+</p>
+<h3 class="text-center" style="color: black; font-family: 'Enriqueta'; letter-spacing: 2px">Prochains
+    évennements<span matBadge="{{nbEventsP}}" matBadgeOverlap="false"></span></h3>
+
+<div id="visibleGroupe">
+
+    <a class='btn' href="">
+
+    </a>
 </div>
 
-<p class="text-center" style="font-size: larger; color: black; font-family: 'Roboto'">
-        Connecté en tant que :
-      </p>
-      <p class="text-center" style="font-size: xx-large; color: black; font-family: 'Roboto'; letter-spacing: 2px">
-      {{getLogin()}}
-      </p>
-   
-        <h3 class="text-center" style="color: black; font-family: 'Enriqueta'; letter-spacing: 2px">Prochains
-          évennements<span matBadge="{{nbEventsP}}" matBadgeOverlap="false"></span></h3>
 
-          <div id="visibleGroupe">
-                
-                <a class='btn' href="">
-                             
-                </a>                           
-        </div>
-
-  
-        <div class="row">
-          <ul style="color: black" *ngFor="let e of myFuturEvent">
-            <div class="col-sm-3">
-              <div class="card" style="width: 22rem;">
+<div class="row">
+    <ul style="color: black" *ngFor="let e of myFuturEvent">
+        <div class="col-sm-3">
+            <div class="card" style="width: 22rem;">
                 <img class="card-img-top"
-                  src="https://townsquare.media/site/295/files/2018/02/ThinkstockPhotos-833572242.jpg?w=980&q=75"
-                  alt="Card image cap">
+                    src="https://townsquare.media/site/295/files/2018/02/ThinkstockPhotos-833572242.jpg?w=980&q=75"
+                    alt="Card image cap">
                 <div class="card-body">
-                  <div class="text-center">
+                    <div class="text-center">
                         <div id="visibleClient" *ngIf="e.visibleClient==true">
-                                <mat-icon class='bigIcone'>people_alt</mat-icon>
+                            <mat-icon class='bigIcone'>people_alt</mat-icon>
                         </div>
                         <div id="visibleClient" *ngIf="e.visibleClient==false">
-                                <mat-icon class='bigIcone'>music_note</mat-icon>
+                            <mat-icon class='bigIcone'>music_note</mat-icon>
                         </div>
 
-                    <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
-                      {{e.dateEvent | date:'EEEE d MMMM y' }}</h5>
-  
-                    <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
-                      {{e.nom}} -  {{e.description}}
-                    </p>
-
-                    <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
-                        Prix du cachet max : {{e.cachetmax}}€ - Prix d'entrée : {{e.prix}}€
-                    </p>
-  
-                    <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(122, 122, 122)" class="text-center">
-                      Groupe : {{e.nbgroupes}} - Style : {{e.genre.nom}}
-                    </p>
-  
-  
-  
-                    <button type="button" class="mdl-chip" (click)="passevent(e)">
-                      <span class="mdl-chip mdl-chip--deletable">
-                        <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Edit</span>
-                        <button type="button" class="mdl-chip__action" >
-                            <mat-icon class='smallIcone'>build</mat-icon>
-                        </button>
-                      </span>
-                    </button>
-
-                    <button type="button" class="mdl-chip" >
-                            <span class="mdl-chip mdl-chip--deletable">
-                              <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Del</span>
-                              <button type="button" class="mdl-chip__action" >
-                                    <mat-icon class='smallIcone'>delete</mat-icon>
-                                </button>
-                            </span>
-                    </button>
-
-                    <br>
-                    <div id="visibleGroupe" *ngIf="e.visibleClient==false">
-                            <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Rendre visible aux clients</span>
-                            <a class='btn' (click)="voirCache(e)">
-                                <mat-icon >done_outline</mat-icon>                                
-                            </a>                           
-                    </div>
-                    <div id="visibleGroupe" *ngIf="e.visibleClient==true">
-                        <br>
-                                                
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ul>
-        </div>
-  
-  <br><hr><br>
-
-      
-            <h3 class="text-center" style="color: black; font-family: 'Enriqueta'; letter-spacing: 2px">Anciens
-              évennements<span matBadge="{{nbEventsP}}" matBadgeOverlap="false"></span></h3>
-      
-            <div class="row">
-              <ul style="color: black" *ngFor="let e of myOldEvent">
-                <div class="col-sm-3">
-                  <div class="card" style="width: 22rem;">
-                    <img class="card-img-top"
-                      src="https://townsquare.media/site/295/files/2018/02/ThinkstockPhotos-833572242.jpg?w=980&q=75"
-                      alt="Card image cap">
-                    <div class="card-body">
-                      <div class="text-center">
-                            <div id="visibleGroupe" *ngIf="e.visibleClient==false">
-                                    <mat-icon class='bigIcone'>music_note</mat-icon>                               
-                            </div>
-                            <div id="visibleClient" *ngIf="e.visibleClient==true">
-                                    <mat-icon class='bigIcone'>people_alt</mat-icon>
-                            </div>
                         <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
-                          {{e.dateEvent | date:'EEEE d MMMM y' }}</h5>
-      
+                            {{e.dateEvent | date:'EEEE d MMMM y' }}</h5>
+
                         <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
-                          {{e.nom}} -  {{e.description}}
+                            {{e.nom}} - {{e.description}}
                         </p>
-    
+
                         <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
                             Prix du cachet max : {{e.cachetmax}}€ - Prix d'entrée : {{e.prix}}€
                         </p>
-      
-                        <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(122, 122, 122)" class="text-center">
-                          Groupe : {{e.nbgroupes}} - Style : {{e.genre.nom}}
+
+                        <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(122, 122, 122)"
+                            class="text-center">
+                            Groupe : {{e.nbgroupes}} - Style : {{e.genre.nom}}
                         </p>
-                      </div>
+
+
+
+                        <button type="button" class="mdl-chip" (click)="passevent(e)">
+                            <span class="mdl-chip mdl-chip--deletable">
+                                <span class="mdl-chip__text"
+                                    style="font-family: 'Roboto'; letter-spacing: 1px">Edit</span>
+                                <button type="button" class="mdl-chip__action">
+                                    <mat-icon class='smallIcone'>build</mat-icon>
+                                </button>
+                            </span>
+                        </button>
+
+                        <button type="button" class="mdl-chip">
+                            <span class="mdl-chip mdl-chip--deletable">
+                                <span class="mdl-chip__text"
+                                    style="font-family: 'Roboto'; letter-spacing: 1px">Del</span>
+                                <button type="button" class="mdl-chip__action">
+                                    <mat-icon class='smallIcone'>delete</mat-icon>
+                                </button>
+                            </span>
+                        </button>
+
+                        <br>
+                        <div id="visibleGroupe" *ngIf="e.visibleClient==false">
+                            <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Rendre
+                                visible aux clients</span>
+                            <a class='btn' (click)="voirCache(e)">
+                                <mat-icon>done_outline</mat-icon>
+                            </a>
+                        </div>
+                        <div id="visibleGroupe" *ngIf="e.visibleClient==true">
+                            <br>
+
+                        </div>
                     </div>
-                  </div>
                 </div>
-             </ul>
             </div>
-             
+        </div>
+    </ul>
+</div>
+
+<br>
+<hr><br>
 
 
+<h3 class="text-center" style="color: black; font-family: 'Enriqueta'; letter-spacing: 2px">Anciens
+    évennements<span matBadge="{{nbEventsP}}" matBadgeOverlap="false"></span></h3>
+
+<div class="row">
+    <ul style="color: black" *ngFor="let e of myOldEvent">
+        <div class="col-sm-3">
+            <div class="card" style="width: 22rem;">
+                <img class="card-img-top"
+                    src="https://townsquare.media/site/295/files/2018/02/ThinkstockPhotos-833572242.jpg?w=980&q=75"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <div class="text-center">
+                        <div id="visibleGroupe" *ngIf="e.visibleClient==false">
+                            <mat-icon class='bigIcone'>music_note</mat-icon>
+                        </div>
+                        <div id="visibleClient" *ngIf="e.visibleClient==true">
+                            <mat-icon class='bigIcone'>people_alt</mat-icon>
+                        </div>
+                        <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
+                            {{e.dateEvent | date:'EEEE d MMMM y' }}</h5>
+
+                        <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
+                            {{e.nom}} - {{e.description}}
+                        </p>
+
+                        <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(85, 85, 85)">
+                            Prix du cachet max : {{e.cachetmax}}€ - Prix d'entrée : {{e.prix}}€
+                        </p>
+
+                        <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(122, 122, 122)"
+                            class="text-center">
+                            Groupe : {{e.nbgroupes}} - Style : {{e.genre.nom}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+</div>

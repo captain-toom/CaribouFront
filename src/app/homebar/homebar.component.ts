@@ -25,7 +25,7 @@ export class HomebarComponent implements OnInit {
   addresse : String;
   nbEventsF;
   nbEventsP;
-  
+  User;
   visible= true;
 
 
@@ -34,29 +34,30 @@ export class HomebarComponent implements OnInit {
     private authService: AuthService,
     private service: EventsService,
     private router: Router,
-
     ) { }
 
   
 
   ngOnInit() {
-    document.body.classList.remove('bg-img');
-    const session = this.authService.getSession()
-    console.log(session);
-    console.log(session.login)
-    console.log(session.id)
-    // login donc son mail
 
-    this.http.get('http://localhost:8083/battlegroupes/futur'+session.id)    
-    .subscribe(
+    console.log(this.authService.getSession().id)
+    console.log("connexion reussie")
+    document.body.classList.remove('bg-img');
+    const session = this.authService.getSession();
+    console.log(session)
+    
+      this.http.get('http://localhost:8083/battlegroupes/futur'+this.authService.getSession().id).subscribe(
         response => {
           this.nbEventsF = Object.keys(response).length;
           console.log("futurEvent");
           console.log(response);
           this.myFuturEvent = response;
-        }
-    );
+        });   
+ 
+    
+    // login donc son mail 
 
+        
     this.http.get('http://localhost:8083/battlegroupes/old'+session.id)    
     .subscribe(
         response => {
@@ -66,9 +67,6 @@ export class HomebarComponent implements OnInit {
           this.myOldEvent = response;
         }
     );
-      
-
-
   }
   passevent(e){
     this.service.setEvent(e);

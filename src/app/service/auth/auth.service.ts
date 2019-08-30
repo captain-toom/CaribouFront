@@ -26,38 +26,40 @@ export class AuthService {
     if ((this.typeconnect == "client") == true) {
       this.setUser({ login: loginForm.username, roles: "CLIENT" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home';
-      this.http.get('http://localhost:8083/client/mail/'+this.getUser().login)
-      .subscribe(
+      const go = this.http.get('http://localhost:8083/client/mail/' + this.getUser().login).toPromise();
+      go.then(
         response => {
           this.data = response;
-          this.setSession({id: this.data.id, mail : this.data.mail, photo : this.data.photo })
-          }
+          this.setSession({ id: this.data.id, mail: this.data.mail, photo: this.data.photo });
+          this.router.navigate([redirectUrl]);
+        }
       );
-      this.router.navigate([redirectUrl]);
-   
+
+
 
     } else if (this.typeconnect == "bar") {
       this.setUser({ login: loginForm.username, roles: "BAR" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home_bar';
-      this.http.get('http://localhost:8083/bar/mail/'+this.getUser().login)
-      .subscribe(
+      const go = this.http.get('http://localhost:8083/bar/mail/' + this.getUser().login).toPromise();
+      go.then(
         response => {
           this.data = response;
-          this.setSession({id: this.data.id, mail : this.data.mail, photo : this.data.photo, nom : this.data.nom, nomGerant : this.data.nomGerant, tel : this.data.tel, capacitemax : this.data.capacitemax })
-          }
+          this.setSession({ id: this.data.id, mail: this.data.mail, photo: this.data.photo, nom: this.data.nom, nomGerant: this.data.nomGerant, tel: this.data.tel, capacitemax: this.data.capacitemax })
+          this.router.navigate([redirectUrl]);
+        }
       );
-      this.router.navigate([redirectUrl]);
+
 
     } else if (this.typeconnect == "groupe") {
       this.setUser({ login: loginForm.username, roles: "GROUPE" });
       const redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/home_band';
-      this.http.get('http://localhost:8083/groupe/mail/'+this.getUser().login)
-      .subscribe(
-        response => {
-          this.data = response;
-          this.setSession({id: this.data.id, mail : this.data.mail, photo : this.data.photo, nom : this.data.nom, description : this.data.description, cachet : this.data.cachet, son : this.data.son, video: this.data.video })
+      const go = this.http.get('http://localhost:8083/groupe/mail/' + this.getUser().login).toPromise();
+        go.then(
+          response => {
+            this.data = response;
+            this.setSession({ id: this.data.id, mail: this.data.mail, photo: this.data.photo, nom: this.data.nom, description: this.data.description, cachet: this.data.cachet, son: this.data.son, video: this.data.video })
           }
-      );
+        );
       this.router.navigate([redirectUrl]);
 
     } else {

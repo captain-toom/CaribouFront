@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -62,8 +63,6 @@ export class HomeComponent implements OnInit {
   }
 
   hasAnyRole(roles: string[]) {
-
-
     return this.authService.hasAnyRole(roles);
   }
 
