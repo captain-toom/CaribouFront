@@ -11,7 +11,8 @@ import { InscriptionclientComponent } from './inscriptionclient/inscriptionclien
 import { LoginsidenavComponent } from './loginsidenav/loginsidenav.component'
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { CreationbarComponent } from './creationbar/creationbar.component';
-import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component'
+import { CreationgroupeComponent } from './creationgroupe/creationgroupe.component';
+import {PageEventComponent} from './page-event/page-event.component';
 
 import { AmisComponent } from './amis/amis.component';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
@@ -87,6 +88,11 @@ const routes: Routes = [
     ]
   },
 
+  {
+    path : 'event',
+    component : PageEventComponent
+  },
+
  
   {
     path: 'createevent',
@@ -109,9 +115,6 @@ const routes: Routes = [
       }
     ]
   },
-
-
-  
 
 ];
 

@@ -5,6 +5,7 @@ import { Bar } from '../model/Bar';
 import { AuthService } from '../service/auth/auth.service';
 import { BattleGroupe } from '../model/BattleGroupe';
 import {MaterialModule } from '../material';
+import { Router } from '@angular/router';
 
 
 
@@ -22,25 +23,18 @@ export class HomebarComponent implements OnInit {
   myFuturEvent;
   mybar;
   addresse : String;
-
+  nbEventsF;
+  nbEventsP;
   
   visible= true;
-  voirCache(e : BattleGroupe) {
-    //requete hhtp modif set visible client
-    this.http.put('http://localhost:8083/battleGroupesVisibleClient/'+e.id, e)    
-    .subscribe(
-        response => {
-          console.log(response);
-          this.ngOnInit();
-        }
-    ); 
-    // puis recharge de la page
-  }
+
 
   constructor(
     private http : HttpClient,
     private authService: AuthService,
-    private service: EventsService
+    private service: EventsService,
+    private router: Router,
+
     ) { }
 
   
@@ -53,23 +47,27 @@ export class HomebarComponent implements OnInit {
     console.log(session.id)
     // login donc son mail
 
+    this.http.get('http://localhost:8083/battlegroupes/futur'+session.id)    
+    .subscribe(
+        response => {
+          this.nbEventsF = Object.keys(response).length;
+          console.log("futurEvent");
+          console.log(response);
+          this.myFuturEvent = response;
+        }
+    );
+
     this.http.get('http://localhost:8083/battlegroupes/old'+session.id)    
     .subscribe(
         response => {
+          this.nbEventsP = Object.keys(response).length;
           console.log("oldEvent");
           console.log(response);
           this.myOldEvent = response;
         }
     );
       
-    this.http.get('http://localhost:8083/battlegroupes/futur'+session.id)    
-    .subscribe(
-        response => {
-          console.log("futurEvent");
-          console.log(response);
-          this.myFuturEvent = response;
-        }
-    );
+
 
   }
   passevent(e){
@@ -81,4 +79,35 @@ export class HomebarComponent implements OnInit {
     return this.authService.logout(); 
    
   }
+
+  voirCache(e : BattleGroupe) {
+    //requete hhtp modif set visible client
+    this.http.put('http://localhost:8083/battleGroupesVisibleClient/'+e.id, e)    
+    .subscribe(
+        response => {
+          console.log(response);
+          this.ngOnInit();
+        }
+    ); 
+    // puis recharge de la page
+  }
+
+
+
+  getEvent() {
+    return JSON.parse(localStorage.getItem('event'));
+  }
+  setEvent(event: any) {
+    localStorage.setItem('event', JSON.stringify(event));
+  }
+  getLogin() {
+    return this.authService.getUser().login;
+  }
+  hasAnyRole(roles: string[]) {
+    return this.authService.hasAnyRole(roles);
+  }
+  voirEvent(e){
+    this.setEvent({id: e.id, date : e.date, nom : e.nom, description : e.description, genre : e.genre.nom, prix : e.prix, ngGroupe : e.ngGroupe, cachetMax : e.cachetmax})
+    this.router.navigate(['/event']);  }
+
 }

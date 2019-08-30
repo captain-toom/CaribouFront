@@ -23,6 +23,7 @@ export class SubscribeEventGroupeComponent implements OnInit {
   data;
   event;
   subscribedevents;
+  datasub;
   visible = false;
   visibleevent = false;
   noninscrit = false;
@@ -30,7 +31,7 @@ export class SubscribeEventGroupeComponent implements OnInit {
   genreschecked = [];
   inscrig: InscriptionGroupe = new InscriptionGroupe();
   recherche: Recherche = new Recherche();
-  columnsToDisplay: string[]=['nom','bar','dateEvent','capacite','cachetmax','genre'];
+  columnsToDisplay=['nom','bar','dateEvent','capacite','cachetmax','genre','actions'];
   constructor(private http: HttpClient, private routeur: Router, private authService: AuthService, private subEvGrService: SubEvGrService, private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -39,7 +40,8 @@ export class SubscribeEventGroupeComponent implements OnInit {
     this.http.get("http://localhost:8083/inscrig/event/" + this.id)
     .subscribe(
       response => { 
-        this.subscribedevents = response 
+        this.subscribedevents = response,
+        this.datasub = new MatTableDataSource(this.subscribedevents);
       });
 
     this.http.get("http://localhost:8083/noninscrig/event/" + this.id).subscribe(response => { 
@@ -70,8 +72,8 @@ export class SubscribeEventGroupeComponent implements OnInit {
     });
     this.http.get("http://localhost:8083/genres").subscribe(response => { this.genres = response });
 
-    this.recherche.bar=" ";
-    this.recherche.genre=" ";
+    this.recherche.bar="";
+    this.recherche.genre="";
     this.recherche.cachetmax=1000000000;
     this.recherche.cachetmin=0;
     this.recherche.datemax= new Date("3000-01-01");
@@ -94,9 +96,9 @@ export class SubscribeEventGroupeComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  // search() {
-  //   this.data.filter=this.recherche.bar+','+this.recherche.genre+','+this.recherche.cachetmax+','+this.recherche.cachetmin+','+this.recherche.datemax+','+this.recherche.datemin+','+this.recherche.capacitemax+','+this.recherche.capacitemin;
-  // }
+  search() {
+     this.data.filter=this.recherche.bar+','+this.recherche.genre+','+this.recherche.cachetmax+','+this.recherche.cachetmin+','+this.recherche.datemax+','+this.recherche.datemin+','+this.recherche.capacitemax+','+this.recherche.capacitemin;
+  }
 
   inscrire(e) {
     this.inscrig.event = e;
