@@ -38,6 +38,8 @@ import { MatTableModule } from '@angular/material';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
 import { MyProfilBarComponent } from './my-profil-bar/my-profil-bar.component';
 import { PageEventComponent } from './page-event/page-event.component';
+import { MyprofilclientComponent } from './myprofilclient/myprofilclient.component';
+import { MyprofilgroupeComponent } from './myprofilgroupe/myprofilgroupe.component';
 
 
 
@@ -68,6 +70,8 @@ import { PageEventComponent } from './page-event/page-event.component';
     UploadimageComponent,
     MyProfilBarComponent,
     PageEventComponent,
+    MyprofilclientComponent,
+    MyprofilgroupeComponent,
 
     
 

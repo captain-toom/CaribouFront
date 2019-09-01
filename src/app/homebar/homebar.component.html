@@ -16,15 +16,22 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="createevent" routerLinkActive="active"> Add new Events </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" (click)="logout()">Se déconnecter</a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" routerLink="myProfil_bar" routerLinkActive="active">Modif MyProfil</a>
                 </li>
 
 
             </ul>
+            <form class="form-inline my-2 my-lg-0">
+       
+        
+       
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="background-color: #956A30" (click)="logout()">
+                  Déconnexion
+                </button>
+        
+              </form>
         </div>
     </nav>
 </div>

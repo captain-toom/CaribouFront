@@ -14,14 +14,24 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" routerLink="subscribe_event_groupe" routerLinkActive="active">Subscribeeventgroupe</a>
+                <a class="nav-link" routerLink="subscribe_event_groupe" routerLinkActive="active">S'inscrire à un événement</a>
               </li>
               <li class="nav-item">
-                    <a class="nav-link" (click)="logout()">Se déconnecter</a>
-              </li>
+                  <a class="nav-link" routerLink="myProfil_groupe" routerLinkActive="active">Profil Groupe</a>
+                </li>
+              
       
       
             </ul>
+            <form class="form-inline my-2 my-lg-0">
+       
+        
+       
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="background-color: #956A30" (click)="logout()">
+                Déconnexion
+              </button>
+      
+            </form>
           </div>
         </nav>
       </div>
