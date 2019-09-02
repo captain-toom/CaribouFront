@@ -109,12 +109,12 @@ export class PageEventComponent implements OnInit {
     return JSON.parse(localStorage.getItem('event'));
   }
 
-  getLogin() {
+  getLoginRole() {
     return this.authService.getUser().roles;
     //return JSON.parse(localStorage.getItem('user')).login;
   }
   vote(g) {
-    if (this.getLogin() == 'CLIENT') {
+    if (this.getLoginRole() == 'CLIENT') {
       console.log("Client connecté, vote autorisé")
       const session = this.authService.getSession();  
       const recupVote = this.http.post('http://localhost:8083/votes/battlegroupe/' + session.id + '/' + g.id + '/' + this.event.id, this.v).toPromise();
@@ -135,6 +135,25 @@ export class PageEventComponent implements OnInit {
 
   setEvent(event: any) {
     localStorage.setItem('event', JSON.stringify(event));
+  }
+
+  getLogin() {
+    return this.authService.getUser().login;
+    //return JSON.parse(localStorage.getItem('user')).login;
+  }
+
+  logout() {
+    console.log('Tentative de déconnexion');
+    return this.authService.logout();
+    //localStorage.removeItem('user');
+    // localStorage.removeItem('type');
+    //this.router.navigate(['/login']);
+  }
+
+  
+
+  hasAnyRole(roles: string[]) {
+    return this.authService.hasAnyRole(roles);
   }
 
 
