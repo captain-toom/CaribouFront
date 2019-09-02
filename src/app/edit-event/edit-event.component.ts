@@ -7,6 +7,7 @@ import { AuthService } from '../service/auth/auth.service';
 import {MaterialModule } from '../material';
 import { Bar } from '../model/Bar';
 import { Genre } from '../model/Genre';
+import { HomebarComponent } from '../homebar/homebar.component';
 
 
 
@@ -26,6 +27,7 @@ export class EditEventComponent implements OnInit {
   bar:Bar = new Bar();
   battleGroupe:BattleGroupe = new BattleGroupe();
   constructor(
+    private homebar : HomebarComponent,
     private service: EventsService, 
     private http: HttpClient, 
     private routeur: Router,
@@ -52,13 +54,23 @@ export class EditEventComponent implements OnInit {
   }
 
   modifyEvent(){
-    this.http.post('http://localhost:8083/battlegroupeedit', this.event)
-     .subscribe(data =>{
-
-     },err =>{
-     console.log(err);
-     });
+    const getelement = this.http.post('http://localhost:8083/battlegroupeedit', this.event).toPromise();
+    console.log("modif ok");
+    console.log(this.event);
+    getelement.then(data => {
+      console.log("try nav");
+      this.homebar.ngOnInit();
+      this.routeur.navigate(['home_bar']);
+     
+    });
+ 
+   
   }
+
+ 
+ 
+
+
 
   refuse(i){
     console.log(i);
