@@ -24,7 +24,8 @@ export class CreateEventComponent implements OnInit {
     private http: HttpClient, 
     private routeur: Router,
     private authService: AuthService,
-    private service: EventsService,) 
+    private service: EventsService,)
+    
     { }
 
   ngOnInit() {
