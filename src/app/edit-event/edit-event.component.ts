@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/auth/auth.service';
 import {MaterialModule } from '../material';
 import { Bar } from '../model/Bar';
+import { Genre } from '../model/Genre';
 
 
 
@@ -20,6 +21,10 @@ export class EditEventComponent implements OnInit {
   inscrig;
   event;
   id;
+  genres;
+  genre:Genre = new Genre();
+  bar:Bar = new Bar();
+  battleGroupe:BattleGroupe = new BattleGroupe();
   constructor(
     private service: EventsService, 
     private http: HttpClient, 
@@ -30,7 +35,20 @@ export class EditEventComponent implements OnInit {
   ngOnInit() {
     const session = this.authService.getSession();
     this.event = this.service.getEvent();
+    this.bar.id=1;
+    this.battleGroupe.bar=this.bar;
+    this.genre.id=1;
+    this.battleGroupe.genre=this.genre;
    this.http.get("http://localhost:8083/inscrig/event/"+this.event.id).subscribe(response =>{ this.inscrig =response});
+   this.http.get("http://localhost:8083/genres")
+   .subscribe(responses =>{
+     console.log(responses);
+
+     this.genres =responses; 
+     console.log('this genre');
+     console.log(this.genre);
+    });
+
   }
 
   modifyEvent(){
