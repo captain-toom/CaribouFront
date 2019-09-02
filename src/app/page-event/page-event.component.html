@@ -86,7 +86,7 @@
             </h1>
 
             <div class="row">
-                <ul style="color: black" *ngFor="let g of datainscrits">
+                <ul style="color: black" *ngFor="let g of datainscrits.data">
                     <div class="col-sm-3">
                         <div class="card" style="width: 22rem;">
                             <img class="card-img-top"
@@ -123,17 +123,17 @@
             <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Le vote :
             </h1>
             <div class="row">
-                <ul style="color: black" *ngFor="let groupe of datainscrits">
+                <ul style="color: black" *ngFor="let groupe of datainscrits.data">
                     <div class="col-sm-3">
                         <div class="card" style="width: 22rem;">
                             <div class="card-body">
                                 <div class="text-center">
                                     <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
-                                        {{groupe.nom}}</h5>
+                                       {{groupe.nom}}</h5>
                                 </div>
-                                <p *ngIf="votesVisible && adejavote"
+                                <p
                                     style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
-                                    Votes : {{getVotes(groupe)}} 
+                                    Votes : {{datainscrits.nbv}}
                                 </p>
                             </div>
                         </div>
