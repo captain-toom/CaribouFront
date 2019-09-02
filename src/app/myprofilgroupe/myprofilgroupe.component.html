@@ -16,63 +16,59 @@
                     <div>
                         <h3 class='text-center'>Bienvenue {{User.nom}}</h3>
                     </div>
-                    <div class="input-group mb-1  justify-content-center">
-
+                    <div class="input-group mb-2 justify-content-center">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Nom du bar :</label>
-                            <input type="text" value="User.nom" placeholder="Nom du Bar" name="nom" #nomAction="ngModel"
-                                [(ngModel)]="User.nom" class="form-control" required id='name'>
-                        </div>
-                    </div>
 
-                    <div class="input-group mb-1  justify-content-center">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                         <div class="form-group">
-                            <label for="mel">Login/Mail :</label>
-                            <input type="text" value="User.mail" name="mail" #dateAction="ngModel"
-                                [(ngModel)]="User.mail" class="form-control" required id='mel'>
+                            <input type="text" name="nom" class="form-control" placeholder="Nom du Groupe"
+                                [(ngModel)]="User.nom" #nom="ngModel" required>
+
                         </div>
 
                     </div>
+                    <div class="input-group mb-2 justify-content-center">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
 
-                    <div class="input-group mb-1  justify-content-center">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
                         <div class="form-group">
-                            <label for="nameG">Nom du Gérant :</label>
-                            <input type="text" value="User.nomGerant" name="nomGerant" #dateAction="ngModel"
-                                [(ngModel)]="User.nomGerant" class="form-control" required id='nameG'>
+                            <input type="text" name="mail" class="form-control" placeholder="Identifiant (Email)"
+                                [(ngModel)]="User.mail" #mail="ngModel" required>
+
                         </div>
+
                     </div>
-                    <div class="input-group mb-1  justify-content-center">
+                    <div class="input-group mb-2 justify-content-center">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
+
                         </div>
                         <div class="form-group">
-                            <label for="tel">Télphone du bar :</label>
-                            <input type="text" value="User.tel" name="tel" #dateAction="ngModel" [(ngModel)]="User.tel"
-                                class="form-control" required id='tel'>
+                            <input type="text" name="description" class="form-control" placeholder="Description"
+                                [(ngModel)]="User.description" #description="ngModel" required>
+
                         </div>
+
                     </div>
 
-                    <div class="input-group mb-1 justify-content-center">
+
+
+                    <div class="input-group mb-2 justify-content-center">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
+
                         </div>
                         <div class="form-group">
-                            <label for="capMax">Capacité maximale du bar :</label>
-                            <input type="number" value="User.capacitemax" placeholder="capacitemax" name="capacitemax"
-                                class="form-control" #nomAction="ngModel" [(ngModel)]="User.capacitemax" required
-                                id='capMax'>
-                            <!-- <p> personnes</p> -->
+                            <input type="number" name="cachet" class="form-control" placeholder="Cachet"
+                                [(ngModel)]="User.cachet" #cachet="ngModel" required>
+
                         </div>
+
                     </div>
+
+
                     <div class="input-group mb-2 justify-content-center">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -83,26 +79,26 @@
 
                         </div>
                     </div>
+
+
+
                     <div class="d-flex justify-content-center mt-3 login_container form-group">
                         <div class="form-group">
                             <button [disabled]="!forme.form.valid">Modify</button>
                         </div>
                     </div>
 
-
                 </form>
             </div>
         </div>
     </div>
+</div>
 
-    <br><br><br><br><br><br>
-    
-    <br><br><br><br><br><br>
-    
-    <br><br><br><br><br><br>
-    
-    
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    <br><br><br><br><br><br>
-    
+
+
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>

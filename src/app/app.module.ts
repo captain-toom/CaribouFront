@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -37,6 +38,8 @@ import { MatTableModule } from '@angular/material';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
 import { MyProfilBarComponent } from './my-profil-bar/my-profil-bar.component';
 import { PageEventComponent } from './page-event/page-event.component';
+import { MyprofilclientComponent } from './myprofilclient/myprofilclient.component';
+import { MyprofilgroupeComponent } from './myprofilgroupe/myprofilgroupe.component';
 
 
 
@@ -67,6 +70,8 @@ import { PageEventComponent } from './page-event/page-event.component';
     UploadimageComponent,
     MyProfilBarComponent,
     PageEventComponent,
+    MyprofilclientComponent,
+    MyprofilgroupeComponent,
 
     
 
@@ -80,6 +85,12 @@ import { PageEventComponent } from './page-event/page-event.component';
     MatCheckboxModule,
     MaterialModule,
     MatTableModule,
+    
+
+
+    // angular.module("app", ["hm.readmore"]);
+
+
   ],
   providers: [AuthService,EventsService,SubEvGrService],
   bootstrap: [AppComponent]

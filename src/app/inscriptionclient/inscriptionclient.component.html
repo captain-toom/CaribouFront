@@ -14,10 +14,12 @@
             <div class="d-flex justify-content-center form_container">
                 
                 <form #forme ="ngForm" (ngSubmit)="addClient()" autocomplete="off" enctype="multipart/form-data">
-                        <div class="input-group mb-2 justify-content-center">
-                                <h5 style="color:#5A471B">Inscription Client</h5>
-        
-                            </div>
+                    
+                    <div class="input-group mb-2 justify-content-center" id="titlecard" >
+                        <h5 style="color:#5A471B">Inscription Client</h5>
+
+                    </div>
+                    <br><br><br><br>
                     <div class="input-group mb-2 justify-content-center">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -66,17 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <div class="form-group" >
-                            <input type="file" name="photo" class="form-control" src="" 
-                                [(ngModel)]="Client.photo" #photo="ngModel" (change)="onFileChanged($event)">
-                                <img [src]="imgURL" height="200" *ngIf="imgURL">
-
-                        </div>
-                    </div>
+                    
 
 
                     
@@ -87,10 +79,7 @@
                     </div>
                 </form>
 
-                Received Image:
-                {{ receivedImageData['pic'] | json}}
-                 
-                <img [src]="convertedImage" >
+               
                 
 
             </div>

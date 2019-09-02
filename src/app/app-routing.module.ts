@@ -17,6 +17,8 @@ import {PageEventComponent} from './page-event/page-event.component';
 import { AmisComponent } from './amis/amis.component';
 import { UploadimageComponent } from './uploadimage/uploadimage.component';
 import { MyProfilBarComponent } from './my-profil-bar/my-profil-bar.component';
+import { MyprofilclientComponent } from './myprofilclient/myprofilclient.component';
+import { MyprofilgroupeComponent } from './myprofilgroupe/myprofilgroupe.component';
 
 
 const routes: Routes = [
@@ -64,6 +66,10 @@ const routes: Routes = [
       { 
         path: 'uploadimage',
         component: UploadimageComponent,
+      },
+      {
+        path: 'myProfil_Client',
+        component: MyprofilclientComponent,
       }
       
     ]
@@ -108,7 +114,11 @@ const routes: Routes = [
     data: {
       roles: ['GROUPE']
     }, 
-    children: [      
+    children: [ 
+      {
+        path: 'myProfil_groupe',
+        component: MyprofilgroupeComponent,
+      },     
       {
         path: 'subscribe_event_groupe',        
         component: SubscribeEventGroupeComponent,
