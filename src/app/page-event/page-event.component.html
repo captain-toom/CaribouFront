@@ -1,3 +1,32 @@
+<div class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+    style="background: linear-gradient(to right, #956A30, #F9EAC1, #956A30) !important;">
+      <a class="navbar-brand" href="home">
+        <img src="https://hoppedupcaribou.com/wp-content/uploads/2017/02/hopped-up-header.png" width="30" height="30"
+          alt="">
+        Home
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+     
+  
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+         
+                  
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="background-color: #956A30" (click)="logout()">
+            Déconnexion
+          </button>
+  
+        </form>
+      </div>
+    </nav>
+  </div>
 <br><b><br><br><br>
 
 
@@ -86,7 +115,7 @@
             </h1>
 
             <div class="row">
-                <ul style="color: black" *ngFor="let g of datainscrits">
+                <ul style="color: black" *ngFor="let g of datainscrits.data">
                     <div class="col-sm-3">
                         <div class="card" style="width: 22rem;">
                             <img class="card-img-top"
@@ -123,17 +152,17 @@
             <h1 style=" font-family: 'Permanent Marker'; color: rgba(66, 66, 66, 0.911)" class="text-center">Le vote :
             </h1>
             <div class="row">
-                <ul style="color: black" *ngFor="let groupe of datainscrits">
+                <ul style="color: black" *ngFor="let groupe of datainscrits.data">
                     <div class="col-sm-3">
                         <div class="card" style="width: 22rem;">
                             <div class="card-body">
                                 <div class="text-center">
                                     <h5 style=" font-family: 'Roboto'; color: rgba(87, 49, 2, 0.76)" class="card-text">
-                                        {{groupe.nom}}</h5>
+                                       {{groupe.nom}}</h5>
                                 </div>
-                                <p *ngIf="votesVisible && adejavote"
+                                <p
                                     style="font-family: 'Roboto'; letter-spacing: 1px; color: rgba(82, 82, 81, 0.911); font-size: large">
-                                    Votes : {{getVotes(groupe)}} 
+                                    Votes : {{datainscrits.nbv}}
                                 </p>
                             </div>
                         </div>
@@ -173,3 +202,4 @@
         </div>
     </ul>
     </div> -->
+    

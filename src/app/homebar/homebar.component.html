@@ -14,11 +14,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/createevent" routerLinkActive="active"> Ajouter nouveau Evenement </a>
+                    <a class="nav-link" routerLink="createevent" routerLinkActive="active"> Ajouter un nouvel événement </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="myProfil_bar" routerLinkActive="active">Modif MonProfil</a>
+                    <a class="nav-link" routerLink="myProfil_bar" routerLinkActive="active">Mon Profil</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -57,7 +57,7 @@
     </a>
 </div>
 
-
+<div class="container">
 <div class="row">
     <ul style="color: black" *ngFor="let e of myFuturEvent">
         <div class="col-sm-3">
@@ -130,6 +130,7 @@
         </div>
     </ul>
 </div>
+</div>
 
 <br>
 <hr><br>
@@ -138,6 +139,7 @@
 <h3 class="text-center" style="color: black; font-family: 'Enriqueta'; letter-spacing: 2px">Anciens
     évennements<span matBadge="{{nbEventsP}}" matBadgeOverlap="false"></span></h3>
 
+    <div class="container">
 <div class="row">
     <ul style="color: black" *ngFor="let e of myOldEvent">
         <div class="col-sm-3">
@@ -173,4 +175,5 @@
             </div>
         </div>
     </ul>
+</div>
 </div>

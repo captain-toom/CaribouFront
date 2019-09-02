@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../service/auth/auth.service';
-import { Response } from 'selenium-webdriver/http';
+import { Vote } from '../model/vote';
+import { stringify } from 'querystring';
+import { DataInscrit } from '../model/DataInscrit';
 
 @Component({
   selector: 'app-page-event',
@@ -19,8 +21,10 @@ export class PageEventComponent implements OnInit {
   ) { }
 
   event;
-  datainscrits
+  datainscrits :DataInscrit =  new DataInscrit();
   votesVisible = false;
+  lesvotes: Vote[];
+  unvote : Vote;
 
 
 
@@ -30,7 +34,7 @@ export class PageEventComponent implements OnInit {
   v;
   adejavote = false;
   data;
-  nbv=[];
+  nbv = [];
   ngOnInit() {
     this.autoVote = false;
     this.adejavote = false;
@@ -40,69 +44,84 @@ export class PageEventComponent implements OnInit {
     recupGroupe.then(
       response => {
 
-        this.http.get('http://localhost:8083/client/avote/'+session.id +'/'+this.event.id ).subscribe(
+        this.http.get('http://localhost:8083/client/avote/' + session.id + '/' + this.event.id).subscribe(
           response => {
             this.data = response;
-            console.log("a deja voté : "+this.data)
+            console.log("a deja voté : " + this.data)
             this.adejavote = this.data;
             this.votesVisible = this.data;
           }
         );
         console.log("1: ");
         console.log(response);
-        this.datainscrits = response;
-        
+        this.datainscrits.data = response;
+
       }, err => {
         console.log("BIJOUR" + err);
       });
-      
+
   }
-  getVotes(groupe){
-    console.log("check1");
-    if( (this.adejavote == true) && (this.votesVisible==true)){
+  getVotes() {
+    console.log('datainscrit ' , this.datainscrits);
+      this.datainscrits.data.forEach(element => { 
+        console.log(this.event.id);
+        console.log(element.id);
+        const recupVote = this.http.get('http://localhost:8083/votes/battlegroupe/' + this.event.id + '/groupe/' + element.id).toPromise();   
+        recupVote.then(
+          response => {           
+            this.datainscrits.nbv.push(response);
+            console.log('LE VOTE: ', response)
+
+
+          
+            // console.log("je passe ici")
+            // this.lesvotes.groupe.push(element);
+            // console.log('les groupes :' );
+            // console.log (element)
+            // this.lesvotes.nbVote.push(Number(response)); 
+            // console.log ('les votes : ');
+            // console.log(this.lesvotes.nbVote);    
+          }
+        );
+      });
+
+      console.log('dainscrit fin ' , this.datainscrits)
       console.log("check2");
-      console.log("Le groupe : "+ groupe.id);    
-      //  this.http.get('http://localhost:8083/votes/battlegroupe/'+this.event.id+'/groupe/'+groupe.id).subscribe(
-      //    response => {          
-      //     this.data = response;
-      //   });
-      return this.data;
-    }else{
-      return 0;
-    }    
+      console.log("Le groupe : " + this.lesvotes );
+    
+
+    console.log("bjr")
   }
-  annulerVote(){
+
+  annulerVote() {
     const session = this.authService.getSession();
-    const deletVote = this.http.delete('http://localhost:8083/votes/delete/battlegroupe/'+session.id +'/'+this.event.id ).toPromise();
-      deletVote.then(
-        response =>  {
-          this.data = response;
-          console.log("a deja voté : "+this.data)
-          this.adejavote = false;
-          this.votesVisible = false;          
-        });      
+    const deletVote = this.http.delete('http://localhost:8083/votes/delete/battlegroupe/' + session.id + '/' + this.event.id).toPromise();
+    deletVote.then(
+      response => {
+        this.data = response;
+        console.log("a deja voté : " + this.data)
+        this.adejavote = false;
+        this.votesVisible = false;
+      });
   }
 
   getEvent() {
     return JSON.parse(localStorage.getItem('event'));
   }
 
-  getLogin() {
+  getLoginRole() {
     return this.authService.getUser().roles;
     //return JSON.parse(localStorage.getItem('user')).login;
   }
   vote(g) {
-    if (this.getLogin() == 'CLIENT') {
+    if (this.getLoginRole() == 'CLIENT') {
       console.log("Client connecté, vote autorisé")
-      const session = this.authService.getSession();
-      console.log("info post")
-      console.log("client" + session.id)
-      console.log("event" + this.event.id)
-      console.log("groupe" + g.id)
+      const session = this.authService.getSession();  
       const recupVote = this.http.post('http://localhost:8083/votes/battlegroupe/' + session.id + '/' + g.id + '/' + this.event.id, this.v).toPromise();
       recupVote.then(
         response => {
           console.log("vote enregistré");
+          this.getVotes();
           this.ngOnInit();
         },
         err => {
@@ -111,29 +130,31 @@ export class PageEventComponent implements OnInit {
       );
 
     }
-    this.teste();
+    
   }
 
   setEvent(event: any) {
     localStorage.setItem('event', JSON.stringify(event));
   }
 
-  teste(){
-    this.datainscrits.forEach( element => {
-      const recupVote = this.http.get('http://localhost:8083/votes/battlegroupe/'+this.event.id+'/groupe/'+element.id).toPromise();
-      recupVote.then(
-      response => {          
-        this.nbv.push({groupe: element, nb: response});
-        console.log(this.nbv[this.nbv.length-1]);
-      });
-    }
-    
-    );
-    console.log("testtest");
-    console.log(this.nbv);
-    
-    console.log("testfin");
-
+  getLogin() {
+    return this.authService.getUser().login;
+    //return JSON.parse(localStorage.getItem('user')).login;
   }
+
+  logout() {
+    console.log('Tentative de déconnexion');
+    return this.authService.logout();
+    //localStorage.removeItem('user');
+    // localStorage.removeItem('type');
+    //this.router.navigate(['/login']);
+  }
+
+  
+
+  hasAnyRole(roles: string[]) {
+    return this.authService.hasAnyRole(roles);
+  }
+
 
 }
