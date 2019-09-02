@@ -46,15 +46,21 @@ export class HomebarComponent implements OnInit {
     const session = this.authService.getSession();
     console.log(session)
     
-      this.http.get('http://localhost:8083/battlegroupes/futur'+this.authService.getSession().id).subscribe(
-        response => {
-          this.nbEventsF = Object.keys(response).length;
-          console.log("futurEvent");
-          console.log(response);
-          console.log("nbEventsF");
-          console.log(this.nbEventsF);
-          this.myFuturEvent = response;
-        });   
+     const getevent =  this.http.get('http://localhost:8083/battlegroupes/futur'+this.authService.getSession().id).toPromise();
+        
+     getevent.then(
+      response => {
+        this.nbEventsF = Object.keys(response).length;
+        console.log("futurEvent");
+        console.log(response);
+        console.log("nbEventsF");
+        console.log(this.nbEventsF);
+        this.myFuturEvent = response;
+      }  
+
+
+     );
+   
  
     
     // login donc son mail 

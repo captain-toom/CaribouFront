@@ -42,6 +42,7 @@ export class CreateEventComponent implements OnInit {
     const getelement = this.http.post('http://localhost:8083/battlegroupe', this.battleGroupe).toPromise();
     getelement.then(data => {
       this.routeur.navigate(['home_bar']);
+      console.log("add event ok")
     }
 
     );
