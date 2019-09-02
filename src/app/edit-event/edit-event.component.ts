@@ -52,13 +52,16 @@ export class EditEventComponent implements OnInit {
   }
 
   modifyEvent(){
-    this.http.post('http://localhost:8083/battlegroupeedit', this.event)
-     .subscribe(data =>{
-
-     },err =>{
-     console.log(err);
-     });
+    const getelement = this.http.post('http://localhost:8083/battlegroupeedit', this.event).toPromise();
+    getelement.then(data => {
+      this.routeur.navigate(['home_bar']);
+    });
   }
+
+ 
+ 
+
+
 
   refuse(i){
     console.log(i);

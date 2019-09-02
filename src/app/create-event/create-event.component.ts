@@ -38,14 +38,13 @@ export class CreateEventComponent implements OnInit {
      this.http.get("http://localhost:8083/genres").subscribe(response =>{ this.genres =response});
   }
 
-   addBattleGroupe(){     
-     this.http.post('http://localhost:8083/battlegroupe', this.battleGroupe)
-     .subscribe(data  =>{      
-      console.log(data);
-     },err =>{
-     console.log(err);
-     });
-     this.routeur.navigate(['home_bar']);
+  addBattleGroupe(){
+    const getelement = this.http.post('http://localhost:8083/battlegroupe', this.battleGroupe).toPromise();
+    getelement.then(data => {
+      this.routeur.navigate(['home_bar']);
+    }
+
+    );
   }
 
 }

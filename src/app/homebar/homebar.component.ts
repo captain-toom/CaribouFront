@@ -51,6 +51,8 @@ export class HomebarComponent implements OnInit {
           this.nbEventsF = Object.keys(response).length;
           console.log("futurEvent");
           console.log(response);
+          console.log("nbEventsF");
+          console.log(this.nbEventsF);
           this.myFuturEvent = response;
         });   
  
