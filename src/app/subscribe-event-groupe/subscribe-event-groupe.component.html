@@ -8,149 +8,292 @@
 <br>
 
 <div class="tot">
-<table mat-table [dataSource]="datasub">
-    <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef>Nom</th>
-        <td mat-cell *matCellDef="let e">{{e.nom}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="bar">
-        <th mat-header-cell *matHeaderCellDef>Bar</th>
-        <td mat-cell *matCellDef="let e">{{e.bar.nom}}</td>
-    </ng-container>
+    <table mat-table [dataSource]="datasub">
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef>Nom</th>
+            <td mat-cell *matCellDef="let e">{{e.nom}}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="capacite">
-        <th mat-header-cell *matHeaderCellDef>Capacite</th>
-        <td mat-cell *matCellDef="let e">{{e.bar.capacitemax}}</td>
-    </ng-container>
+        <ng-container matColumnDef="bar">
+            <th mat-header-cell *matHeaderCellDef>Bar</th>
+            <td mat-cell *matCellDef="let e">{{e.bar.nom}}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="dateEvent">
-        <th mat-header-cell *matHeaderCellDef>DateEvent</th>
-        <td mat-cell *matCellDef="let e">{{e.dateEvent}}</td>
-    </ng-container>
+        <ng-container matColumnDef="capacite">
+            <th mat-header-cell *matHeaderCellDef>Capacite</th>
+            <td mat-cell *matCellDef="let e">{{e.bar.capacitemax}}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="cachetmax">
-        <th mat-header-cell *matHeaderCellDef>Cachetmax</th>
-        <td mat-cell *matCellDef="let e">{{e.cachetmax}}</td>
-    </ng-container>
+        <ng-container matColumnDef="dateEvent">
+            <th mat-header-cell *matHeaderCellDef>DateEvent</th>
+            <td mat-cell *matCellDef="let e">{{e.dateEvent}}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="genre">
-        <th mat-header-cell *matHeaderCellDef>Genre</th>
-        <td mat-cell *matCellDef="let e">{{e.genre.nom}}</td>
-    </ng-container>
+        <ng-container matColumnDef="cachetmax">
+            <th mat-header-cell *matHeaderCellDef>Cachetmax</th>
+            <td mat-cell *matCellDef="let e">{{e.cachetmax}}</td>
+        </ng-container>
 
-    <ng-container matColumnDef="actions">
+        <ng-container matColumnDef="genre">
+            <th mat-header-cell *matHeaderCellDef>Genre</th>
+            <td mat-cell *matCellDef="let e">{{e.genre.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>Se désinscire</th>
             <td mat-cell *matCellDef="let e">
-                <button mat-button (click)="desinscrire(e)">Check</button>
+                <button mat-button (click)="desinscrire(e)"><img style="width: 4vw; height: 4vh" src="https://png.pngtree.com/svg/20170119/unsubscribe_402584.png"></button>
             </td>
-    </ng-container>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef= "columnsToDisplay; sticky: true"></tr>
-    <tr mat-row *matRowDef= "let myRowData; columns:columnsToDisplay" (click)="openeventsub(myRowData)"></tr>
-</table>
-<br>
-<br>
-<br>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns:columnsToDisplay" (click)="openeventsub(myRowData)"></tr>
+    </table>
+    <br>
+    <br>
+    <br>
 
 
-<div class="rech">
-<button class="recherche" (click)=opensearch()>Recherche</button>
-</div>
-<div *ngIf="visible" class="formul">
-    <form #forme ="ngForm" (ngSubmit)="search()" autocomplete="off">
-        <label>Nom du Bar</label>
-        <input type="text" name="nom" #nomAction="ngModel" [(ngModel)]= "recherche.bar">
-        <br>
-        <label>Genre</label>
-        <select name="genre" #genreAction="ngModel" [(ngModel)]= "recherche.genre">
-            <option *ngFor = "let g of genres" value="{{g.nom}}">{{g.nom}}</option>
-        </select>
-        
-        <div class="in">
-        <label>Cachet</label>
-        <label><</label>
-        <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetmaxAction="ngModel" [(ngModel)]= "recherche.cachetmax">
-        <br>
-        <label>></label>
-        <input type="number" placeholder="Cachetmin" name="cachetmin" #cachetminAction="ngModel" [(ngModel)]= "recherche.cachetmin">
-        </div>
+    <div class="rech">
+        <button class="recherche" (click)=opensearch()>Recherche</button>
+    </div>
+    <div *ngIf="visible" class="formul">
+        <form #forme="ngForm" (ngSubmit)="search()" autocomplete="off">
 
-        <div class="in">
-        <label>Date</label>
-        <label><</label>
-        <input type="date" name="dateEventmax" #datemaxAction="ngModel" [(ngModel)]= "recherche.datemax">
-        <br>
-        <label>></label>
-        <input type="date" name="dateEventmin" #dateminAction="ngModel" [(ngModel)]= "recherche.datemin">
-        </div>
 
-        <div class="in">
-        <label>Capacité</label>
-        <label><</label>
-        <input type="number" placeholder="capacitemax" name="capacitemax" #capacitemaxAction="ngModel" [(ngModel)]= "recherche.capacitemax">
-        <br>
-        <label>></label>
-        <input type="number" placeholder="capacitemin" name="capacitemin" #capaciteminAction="ngModel" [(ngModel)]= "recherche.capacitemin">
-        </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-6 lbjo">
+                            Nom du bar
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" name="nom" #nomAction="ngModel"
+                                [(ngModel)]="recherche.bar">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-6 lbjo">
+                            Genre
+                        </div>
+                        <div class="col-sm-6">
+                            <select name="genre" #genreAction="ngModel" [(ngModel)]="recherche.genre">
+                                <option *ngFor="let g of genres" value="{{g.nom}}">{{g.nom}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <br>
-        <br>
-        <br>
-        <button  [disabled]="!forme.form.valid">Search</button> 
-    </form>
-</div>
 
-<table mat-table [dataSource]="data">
-    <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef>Nom</th>
-        <td mat-cell *matCellDef="let e">{{e.nom}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="bar">
-        <th mat-header-cell *matHeaderCellDef>Bar</th>
-        <td mat-cell *matCellDef="let e">{{e.bar.nom}}</td>
-    </ng-container>
+            <!-- <div class="row">
+                <div class="col-sm-6 ">
+                    <div class="form-group">
+                        <div class="col-sm-2">Nom du Bar</div>
+                        <div class="col-sm-4"><input class="form-control" type="text" name="nom" #nomAction="ngModel"
+                                [(ngModel)]="recherche.bar"></div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-6">
+                    <label>Genre</label>
+                    <select name="genre" #genreAction="ngModel" [(ngModel)]="recherche.genre">
+                        <option *ngFor="let g of genres" value="{{g.nom}}">{{g.nom}}</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="row">
+                &nbsp;
+            </div>
 
-    <ng-container matColumnDef="capacite">
-        <th mat-header-cell *matHeaderCellDef>Capacite</th>
-        <td mat-cell *matCellDef="let e">{{e.bar.capacitemax}}</td>
-    </ng-container>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-5 lbjo">
+                            Cachet
+                        </div>
+                        <div class="col-sm-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm-1 lbjo">
+                            < </div> <div class="col-sm-5">
+                                <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetmaxAction="ngModel"
+                                    [(ngModel)]="recherche.cachetmax">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-2 lbjo">
+                            >
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="number" placeholder="Cachetmin" name="cachetmin" #cachetminAction="ngModel"
+                                [(ngModel)]="recherche.cachetmin">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <ng-container matColumnDef="dateEvent">
-        <th mat-header-cell *matHeaderCellDef>DateEvent</th>
-        <td mat-cell *matCellDef="let e">{{e.dateEvent}}</td>
-    </ng-container>
 
-    <ng-container matColumnDef="cachetmax">
-        <th mat-header-cell *matHeaderCellDef>Cachetmax</th>
-        <td mat-cell *matCellDef="let e">{{e.cachetmax}}</td>
-    </ng-container>
 
-    <ng-container matColumnDef="genre">
-        <th mat-header-cell *matHeaderCellDef>Genre</th>
-        <td mat-cell *matCellDef="let e">{{e.genre.nom}}</td>
-    </ng-container>
+            <!-- <div class="in">
+                <label>Cachet</label>
+                <label>
+                    <</label> <input type="number" placeholder="Cachetmax" name="cachetmax" #cachetmaxAction="ngModel"
+                        [(ngModel)]="recherche.cachetmax">
+                        <br>
+                        <label>></label>
+                        <input type="number" placeholder="Cachetmin" name="cachetmin" #cachetminAction="ngModel"
+                            [(ngModel)]="recherche.cachetmin">
+            </div> -->
 
-     <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>S'inscrire</th>
-        <td mat-cell *matCellDef="let e">
-            <button mat-button (click)="inscrire(e)">Check</button>
-        </td>
-    </ng-container>
+            <div class="row">
+                &nbsp;
+            </div>
 
-    <tr mat-header-row *matHeaderRowDef= "columnsToDisplay; sticky: true"></tr>
-    <tr mat-row *matRowDef= "let myRowData; columns:columnsToDisplay" (click)="openevent(myRowData)"></tr>
-</table>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-5 lbjo">
+                            Date
+                        </div>
+                        <div class="col-sm-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm-1 lbjo">
+                            < </div> <div class="col-sm-5">
+                                <input type="date" name="dateEventmax" #datemaxAction="ngModel"
+                                    [(ngModel)]="recherche.datemax">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-2 lbjo">
+                            >
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="date" name="dateEventmin" #dateminAction="ngModel"
+                                [(ngModel)]="recherche.datemin">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div *ngIf="visibleevent">
-    <p>{{event.nom}}</p>
-    <p>{{event.bar.nom}}</p>
-    <p>{{event.bar.capacitemax}}</p>
-    <p>{{event.cachetmax}}</p>
-    <p>{{event.genre.nom}}</p>
-    <button *ngIf="noninscrit" (click)="inscrire(event)">S'inscrire</button>
-</div>
+
+            <!-- <div class="in">
+                <label>Date</label>
+                <label>
+                    <</label> <input type="date" name="dateEventmax" #datemaxAction="ngModel"
+                        [(ngModel)]="recherche.datemax">
+                        <br>
+                        <label>></label>
+                        <input type="date" name="dateEventmin" #dateminAction="ngModel" [(ngModel)]="recherche.datemin">
+            </div> -->
+
+            <div class="row">
+                &nbsp;
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-5 lbjo">
+                            Capacité
+                        </div>
+                        <div class="col-sm-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm-1 lbjo">
+                            < </div> <div class="col-sm-5">
+                                <input type="number" placeholder="capacitemax" name="capacitemax"
+                                    #capacitemaxAction="ngModel" [(ngModel)]="recherche.capacitemax">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-2 lbjo">
+                            >
+                        </div>
+                        <div class="col-sm-10">
+                            <input type="number" placeholder="capacitemin" name="capacitemin"
+                                #capaciteminAction="ngModel" [(ngModel)]="recherche.capacitemin">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="in">
+                <label>Capacité</label>
+                <label>
+                    <</label> <input type="number" placeholder="capacitemax" name="capacitemax"
+                        #capacitemaxAction="ngModel" [(ngModel)]="recherche.capacitemax">
+                        <br>
+                        <label>></label>
+                        <input type="number" placeholder="capacitemin" name="capacitemin" #capaciteminAction="ngModel"
+                            [(ngModel)]="recherche.capacitemin">
+            </div> -->
+
+            <br>
+            <br>
+            <br>
+            <button class="btn-search" [disabled]="!forme.form.valid">Search</button>
+        </form>
+    </div>
+
+    <table mat-table [dataSource]="data">
+        <ng-container matColumnDef="nom">
+            <th mat-header-cell *matHeaderCellDef>Nom</th>
+            <td mat-cell *matCellDef="let e">{{e.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="bar">
+            <th mat-header-cell *matHeaderCellDef>Bar</th>
+            <td mat-cell *matCellDef="let e">{{e.bar.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="capacite">
+            <th mat-header-cell *matHeaderCellDef>Capacite</th>
+            <td mat-cell *matCellDef="let e">{{e.bar.capacitemax}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateEvent">
+            <th mat-header-cell *matHeaderCellDef>DateEvent</th>
+            <td mat-cell *matCellDef="let e">{{e.dateEvent}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cachetmax">
+            <th mat-header-cell *matHeaderCellDef>Cachetmax</th>
+            <td mat-cell *matCellDef="let e">{{e.cachetmax}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="genre">
+            <th mat-header-cell *matHeaderCellDef>Genre</th>
+            <td mat-cell *matCellDef="let e">{{e.genre.nom}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>S'inscrire</th>
+            <td mat-cell *matCellDef="let e">
+                <button mat-button (click)="inscrire(e)"><img style="width: 4vw; height: 4vh"
+                        src="https://www.freeiconspng.com/uploads/check-green-tick-icon-8.png"></button>
+            </td>
+        </ng-container>
+
+        <tr class="jo" mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns:columnsToDisplay" (click)="openevent(myRowData)"></tr>
+    </table>
+    <hr>
+
+
+    <div class="form-group">
+        <input type="text" class="form-control">
+    </div>
+
 </div>
 <br>
 <br>

@@ -13,12 +13,11 @@ body{
     border: 0.1vmin solid black;
     padding: 5px;
     text-align: center;
-    border-radius: 2vmin;
 }
 
 .recherche{
-    border-top-left-radius: 2vmin;
-    border-top-right-radius: 2vmin;
+    border-top-left-radius: 0.5vmin;
+    border-top-right-radius: 0.5vmin;
     border: 0.1vmin solid black;
     padding-left: 35px;
     padding-right: 35px;
@@ -30,17 +29,17 @@ body{
     text-align: center;
 }
 
-form{
+/*form{
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-}
+}*/
 
-.formul, .in{    
+/*.formul, .in{    
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-}
+}*/
 
 .formul{
     width: calc(100vmin - 70px);
@@ -50,8 +49,8 @@ form{
     margin: auto;
 }
 
-label{
-    background-color: chocolate;
+.lbjo{
+    background-color: rgb(83, 83, 83);
     padding: 1vmin;
     position: relative;
     top: 0.6vmin;
@@ -59,11 +58,29 @@ label{
     color: azure;
 }
 
-.se{
-
-}
 
 .example-container {
     height: 50vh;
     overflow: auto;
+  }
+
+.mat-header-row{
+
+	background-color: whitesmoke;
+	background-image:
+	linear-gradient(to bottom, rgba(255, 255, 255, 0.37) 45%,  rgba(236, 211, 70, 0)), url('https://jondi.fr/wp-content/uploads/2014/01/concert-rock.jpg');
+
+	background-position-x: center;
+
+  }
+
+  input, select{
+      margin-top: 1.5vh;
+  }
+
+  .btn-search{
+    background-color: rgb(83, 83, 83);
+    color: azure;
+    border-radius: 0.3vmax;
+    border:none;
   }

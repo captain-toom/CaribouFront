@@ -19,6 +19,7 @@ export class CreateEventComponent implements OnInit {
   battleGroupe:BattleGroupe = new BattleGroupe();
   bar:Bar = new Bar();
   genre:Genre = new Genre();
+  id;
 
   constructor(
     private http: HttpClient, 
@@ -29,12 +30,12 @@ export class CreateEventComponent implements OnInit {
     { }
 
   ngOnInit() {
-     
+    const session = this.authService.getSession();
+    this.id = session.id;
     
      this.battleGroupe.visible_client  = false;
-     this.bar.id=1;
+     this.bar.id=this.id;
      this.battleGroupe.bar=this.bar;
-     this.genre.id=1;
      this.battleGroupe.genre=this.genre;
      this.http.get("http://localhost:8083/genres").subscribe(response =>{ this.genres =response});
   }
