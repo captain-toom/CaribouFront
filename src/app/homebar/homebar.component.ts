@@ -56,7 +56,6 @@ export class HomebarComponent implements OnInit {
  
     
     // login donc son mail 
-
         
     this.http.get('http://localhost:8083/battlegroupes/old'+session.id)    
     .subscribe(
@@ -68,8 +67,12 @@ export class HomebarComponent implements OnInit {
         }
     );
   }
-  passevent(e){
-    this.service.setEvent(e);
+
+
+  passevent(e){     
+    this.router.navigate(['home_bar/edit_event']);
+  this.service.setEvent(e);  
+   
   }
 
   logout() {
