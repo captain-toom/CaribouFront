@@ -122,7 +122,7 @@ export class SubscribeEventGroupeComponent implements OnInit {
       response =>{
         this.ngOnInit();     
       }, err => {
-        console.log( err);
+        console.log("BIJOUR" + err);
       }
     )
   }

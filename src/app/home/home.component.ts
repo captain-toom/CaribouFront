@@ -62,6 +62,8 @@ export class HomeComponent implements OnInit {
     //this.router.navigate(['/login']);
   }
 
+  
+
   hasAnyRole(roles: string[]) {
     return this.authService.hasAnyRole(roles);
   }
