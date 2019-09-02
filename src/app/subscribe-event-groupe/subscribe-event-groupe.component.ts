@@ -102,7 +102,7 @@ export class SubscribeEventGroupeComponent implements OnInit {
 
   inscrire(e) {
     this.inscrig.event = e;
-    this.inscrig.groupe.id = 1;
+    this.inscrig.groupe.id = this.id;
     this.inscrig.refused = false;
     const d=this.http.post('http://localhost:8083/groupeinscri', this.inscrig).toPromise();
       d.then(data => {
@@ -115,8 +115,20 @@ export class SubscribeEventGroupeComponent implements OnInit {
     this.noninscrit = false;
   }
 
-
-
+  desinscrire(e) {
+    console.log(e.id);
+    console.log(this.id);
+    this.http.delete('http://localhost:8083/deleteinscri/'+ e.id+'/'+this.id).subscribe(
+      response =>{
+        this.ngOnInit();     
+      }, err => {
+        console.log( err);
+      }
+    )
   }
+
+
+
+}
 
 
