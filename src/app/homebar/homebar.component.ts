@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class HomebarComponent implements OnInit {
-
+  any
   allEvent;
   myAllEvent;
   myOldEvent;
@@ -102,7 +102,6 @@ export class HomebarComponent implements OnInit {
   }
 
 
-
   getEvent() {
     return JSON.parse(localStorage.getItem('event'));
   }
@@ -117,6 +116,17 @@ export class HomebarComponent implements OnInit {
   }
   voirEvent(e){
     this.setEvent({id: e.id, date : e.date, nom : e.nom, description : e.description, genre : e.genre.nom, prix : e.prix, ngGroupe : e.ngGroupe, cachetMax : e.cachetmax})
-    this.router.navigate(['/event']);  }
+    this.router.navigate(['/event']);  
+  }
 
+  deleteEvent(e : BattleGroupe) {
+    //requete hhtp modif set visible client
+    this.http.delete('http://localhost:8083/battlegroupes/'+e.id)  
+    .subscribe(
+        data => {          
+          this.ngOnInit();
+        }
+    ); 
+
+}
 }
