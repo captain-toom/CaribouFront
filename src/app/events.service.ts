@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BattleGroupe } from './model/BattleGroupe';
+import { RouterModule, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
   event;
-  constructor() {
+  constructor(
+    private router : Router
+
+  ) {
   }
 
   getEvent(){
@@ -14,7 +22,9 @@ export class EventsService {
   }
 
   setEvent(event){
-    localStorage.setItem('event',JSON.stringify(event));
+    localStorage.setItem('event',JSON.stringify(event));    
     console.log(this.event);
+    this.router.navigate(['home_bar/edit_event']);
+      
   }
 }

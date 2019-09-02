@@ -91,6 +91,11 @@ const routes: Routes = [
         path:'edit_event',
         component:EditEventComponent
       },
+      {
+        path: 'createevent',
+        component: CreateEventComponent
+      },
+    
     ]
   },
 
@@ -100,10 +105,7 @@ const routes: Routes = [
   },
 
  
-  {
-    path: 'createevent',
-    component: CreateEventComponent
-  },
+  
 
   
   {
