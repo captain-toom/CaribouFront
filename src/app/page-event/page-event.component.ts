@@ -35,11 +35,27 @@ export class PageEventComponent implements OnInit {
   adejavote = false;
   data;
   nbv = [];
+
+ vo;
   ngOnInit() {
+    console.log('deb');
+    
     this.autoVote = false;
     this.adejavote = false;
     this.event = this.getEvent();
     const session = this.authService.getSession();
+
+    const recupVote = this.http.get('http://localhost:8083//votes/battlegroupes/'+this.event.id).toPromise();
+
+    recupVote.then(
+      ress => {
+        this.vo = ress;
+
+       
+        console.log('test primo ', this.vo);
+      }
+    )
+
     const recupGroupe = this.http.get('http://localhost:8083/groupes/inscrits/valides/' + this.event.id).toPromise();
     recupGroupe.then(
       response => {
