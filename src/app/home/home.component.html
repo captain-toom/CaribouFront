@@ -37,6 +37,7 @@
           <a class="nav-link" routerLink="myProfil_Client" routerLinkActive="active">Mon Profil</a>
         </li>
 
+
       </ul>
       <form class="form-inline my-2 my-lg-0">
        
@@ -78,7 +79,7 @@
                   <p style="font-family: 'Roboto'; letter-spacing: 1px; color: rgb(122, 122, 122)" class="text-center">
                     Lieu : {{e.bar.nom}} - Style : {{e.genre.nom}}
                   </p>
-                  <button type="button" class="mdl-chip" (click)="voirEvent(e)">
+                  <button type="button" class="mdl-chip" (click)="voirEvent(e)" routerLink="myProfil_Client">
                     <span class="mdl-chip mdl-chip--deletable">
                       <span class="mdl-chip__text" style="font-family: 'Roboto'; letter-spacing: 1px">Voir l'évennement</span>
                       <button type="button" class="mdl-chip__action" >

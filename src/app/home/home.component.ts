@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   }
   voirEvent(e){
     this.setEvent({id: e.id, date : e.date, nom : e.nom, description : e.description, genre : e.genre.nom, prix : e.prix, ngGroupe : e.ngGroupe, bar : e.bar})
-    this.router.navigate(['/event']);  }
+    this.router.navigate(['home/event']);  }
 
   getLogin() {
     return this.authService.getUser().login;

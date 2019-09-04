@@ -70,6 +70,10 @@ const routes: Routes = [
       {
         path: 'myProfil_Client',
         component: MyprofilclientComponent,
+      },
+      {
+        path : 'event',
+        component : PageEventComponent
       }
       
     ]
@@ -99,10 +103,7 @@ const routes: Routes = [
     ]
   },
 
-  {
-    path : 'event',
-    component : PageEventComponent
-  },
+
 
  
   

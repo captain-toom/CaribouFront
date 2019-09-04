@@ -9,7 +9,8 @@ import { DataInscrit } from '../model/DataInscrit';
 @Component({
   selector: 'app-page-event',
   templateUrl: './page-event.component.html',
-  styleUrls: ['./page-event.component.css']
+  styleUrls: ['./page-event.component.css'],
+  providers: [AuthService]
 })
 export class PageEventComponent implements OnInit {
 
@@ -33,11 +34,12 @@ export class PageEventComponent implements OnInit {
   vo;
 
   ngOnInit() {
+    const session = this.authService.getSession();
     document.body.classList.add('bg-img-event');
     this.autoVote = false;
     this.adejavote = false;
     this.event = this.getEvent();
-    const session = this.authService.getSession();
+
     const recupVote = this.http.get('http://localhost:8083//votes/battlegroupes/' + this.event.id).toPromise();
     recupVote.then(
       ress => {
