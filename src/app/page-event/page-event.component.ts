@@ -33,26 +33,21 @@ export class PageEventComponent implements OnInit {
   vo;
 
   ngOnInit() {
-    console.log('deb');
-
+    document.body.classList.add('bg-img-event');
     this.autoVote = false;
     this.adejavote = false;
     this.event = this.getEvent();
     const session = this.authService.getSession();
-
     const recupVote = this.http.get('http://localhost:8083//votes/battlegroupes/' + this.event.id).toPromise();
-
     recupVote.then(
       ress => {
         this.vo = ress;
         console.log('test primo ', this.vo);
       }
     )
-
     const recupGroupe = this.http.get('http://localhost:8083/groupes/inscrits/valides/' + this.event.id).toPromise();
     recupGroupe.then(
       response => {
-
         this.http.get('http://localhost:8083/client/avote/' + session.id + '/' + this.event.id).subscribe(
           response => {
             this.data = response;
@@ -120,7 +115,7 @@ export class PageEventComponent implements OnInit {
 
   logout() {
     console.log('Tentative de déconnexion');
-    this.event.clearEvent();
+    this.clearEvent();
     return this.authService.logout();
   }
 

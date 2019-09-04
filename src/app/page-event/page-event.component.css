@@ -2,3 +2,12 @@
     overflow: auto;
     height: 10vh;
 }
+
+.bg-img-event
+{	background-size: 100%;
+
+	background-image: url('https://www.google.fr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=2ahUKEwjZ38rf5LbkAhWEy4UKHe_eA8kQjRx6BAgBEAQ&url=https%3A%2F%2Fwall.alphacoders.com%2Fbig.php%3Fi%3D4574%26lang%3DFrench&psig=AOvVaw2Q3VwthdsA6qK_1N6E9Ylr&ust=1567673195898063');
+	width: 100% !important;
+	background-position-x: center;
+	height: 100% !important;	
+}
