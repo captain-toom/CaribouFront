@@ -4,6 +4,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { HttpClient } from '@angular/common/http';
 
 
+
 @Injectable()
 export class AuthService {
 
@@ -11,6 +12,7 @@ export class AuthService {
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
+   
   ) { }
   typeconnect: String;
   data;
@@ -80,6 +82,7 @@ export class AuthService {
     this.clearUser();
     this.clearTypeUser();
     this.clearSession();
+  
     this.router.navigate(['/login']);
   }
 

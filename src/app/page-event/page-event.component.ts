@@ -11,7 +11,6 @@ import { DataInscrit } from '../model/DataInscrit';
   templateUrl: './page-event.component.html',
   styleUrls: ['./page-event.component.css']
 })
-
 export class PageEventComponent implements OnInit {
 
   constructor(
@@ -19,7 +18,6 @@ export class PageEventComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
   ) { }
-
   event;
   datainscrits: DataInscrit = new DataInscrit();
   votesVisible = false;
@@ -70,7 +68,6 @@ export class PageEventComponent implements OnInit {
       }, err => {
         console.log("BIJOUR" + err);
       });
-
   }
 
 
@@ -86,14 +83,6 @@ export class PageEventComponent implements OnInit {
       });
   }
 
-  getEvent() {
-    return JSON.parse(localStorage.getItem('event'));
-  }
-
-  getLoginRole() {
-    return this.authService.getUser().roles;
-    //return JSON.parse(localStorage.getItem('user')).login;
-  }
   vote(g) {
     if (this.getLoginRole() == 'CLIENT') {
       console.log("Client connecté, vote autorisé")
@@ -101,9 +90,6 @@ export class PageEventComponent implements OnInit {
       const recupVote = this.http.post('http://localhost:8083/votes/battlegroupe/' + session.id + '/' + g.id + '/' + this.event.id, this.v).toPromise();
       recupVote.then(
         response => {
-          console.log("vote enregistré");
-          console.log(this.v)
-          // this.getVotes();
           this.ngOnInit();
         },
         err => {
@@ -113,21 +99,29 @@ export class PageEventComponent implements OnInit {
     }
   }
 
+
+  getEvent() {
+    return JSON.parse(localStorage.getItem('event'));
+  }
+  getLoginRole() {
+    return this.authService.getUser().roles;
+
+  }
   setEvent(event: any) {
     localStorage.setItem('event', JSON.stringify(event));
+  }
+  clearEvent() {
+    localStorage.removeItem('event');
   }
 
   getLogin() {
     return this.authService.getUser().login;
-    //return JSON.parse(localStorage.getItem('user')).login;
   }
 
   logout() {
     console.log('Tentative de déconnexion');
+    this.event.clearEvent();
     return this.authService.logout();
-    //localStorage.removeItem('user');
-    // localStorage.removeItem('type');
-    //this.router.navigate(['/login']);
   }
 
   hasAnyRole(roles: string[]) {
