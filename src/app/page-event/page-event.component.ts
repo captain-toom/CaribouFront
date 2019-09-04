@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../service/auth/auth.service';
@@ -21,13 +21,10 @@ export class PageEventComponent implements OnInit {
   ) { }
 
   event;
-  datainscrits :DataInscrit =  new DataInscrit();
+  datainscrits: DataInscrit = new DataInscrit();
   votesVisible = false;
   lesvotes: Vote[];
-  unvote : Vote;
-
-
-
+  unvote: Vote;
   //autorisation de voter pour un groupe
   autoVote = false;
   test;
@@ -35,23 +32,21 @@ export class PageEventComponent implements OnInit {
   adejavote = false;
   data;
   nbv = [];
+  vo;
 
- vo;
   ngOnInit() {
     console.log('deb');
-    
+
     this.autoVote = false;
     this.adejavote = false;
     this.event = this.getEvent();
     const session = this.authService.getSession();
 
-    const recupVote = this.http.get('http://localhost:8083//votes/battlegroupes/'+this.event.id).toPromise();
+    const recupVote = this.http.get('http://localhost:8083//votes/battlegroupes/' + this.event.id).toPromise();
 
     recupVote.then(
       ress => {
         this.vo = ress;
-
-       
         console.log('test primo ', this.vo);
       }
     )
@@ -77,37 +72,7 @@ export class PageEventComponent implements OnInit {
       });
 
   }
-  getVotes() {
-    console.log('datainscrit ' , this.datainscrits);
-      this.datainscrits.data.forEach(element => { 
-        console.log(this.event.id);
-        console.log(element.id);
-        const recupVote = this.http.get('http://localhost:8083/votes/battlegroupe/' + this.event.id + '/groupe/' + element.id).toPromise();   
-        recupVote.then(
-          response => {           
-            this.datainscrits.nbv.push(response);
-            console.log('LE VOTE: ', response)
 
-
-          
-            // console.log("je passe ici")
-            // this.lesvotes.groupe.push(element);
-            // console.log('les groupes :' );
-            // console.log (element)
-            // this.lesvotes.nbVote.push(Number(response)); 
-            // console.log ('les votes : ');
-            // console.log(this.lesvotes.nbVote);    
-          }
-        );
-      });
-
-      console.log('dainscrit fin ' , this.datainscrits)
-      console.log("check2");
-      console.log("Le groupe : " + this.lesvotes );
-    
-
-    console.log("bjr")
-  }
 
   annulerVote() {
     const session = this.authService.getSession();
@@ -132,21 +97,20 @@ export class PageEventComponent implements OnInit {
   vote(g) {
     if (this.getLoginRole() == 'CLIENT') {
       console.log("Client connecté, vote autorisé")
-      const session = this.authService.getSession();  
+      const session = this.authService.getSession();
       const recupVote = this.http.post('http://localhost:8083/votes/battlegroupe/' + session.id + '/' + g.id + '/' + this.event.id, this.v).toPromise();
       recupVote.then(
         response => {
           console.log("vote enregistré");
-          this.getVotes();
+          console.log(this.v)
+          // this.getVotes();
           this.ngOnInit();
         },
         err => {
           console.log("erreur : " + err);
         }
       );
-
     }
-    
   }
 
   setEvent(event: any) {
@@ -166,11 +130,42 @@ export class PageEventComponent implements OnInit {
     //this.router.navigate(['/login']);
   }
 
-  
-
   hasAnyRole(roles: string[]) {
     return this.authService.hasAnyRole(roles);
   }
 
 
 }
+
+//FONCTION ABANDONEES
+ // getVotes() {
+  //   console.log('datainscrit ' , this.datainscrits);
+  //     this.datainscrits.data.forEach(element => { 
+  //       console.log(this.event.id);
+  //       console.log(element.id);
+  //       const recupVote = this.http.get('http://localhost:8083/votes/battlegroupe/' + this.event.id + '/groupe/' + element.id).toPromise();   
+  //       recupVote.then(
+  //         response => {           
+  //           this.datainscrits.nbv.push(response);
+  //           console.log('LE VOTE: ', response)
+
+
+
+  //           // console.log("je passe ici")
+  //           // this.lesvotes.groupe.push(element);
+  //           // console.log('les groupes :' );
+  //           // console.log (element)
+  //           // this.lesvotes.nbVote.push(Number(response)); 
+  //           // console.log ('les votes : ');
+  //           // console.log(this.lesvotes.nbVote);    
+  //         }
+  //       );
+  //     });
+
+  //     console.log('dainscrit fin ' , this.datainscrits)
+  //     console.log("check2");
+  //     console.log("Le groupe : " + this.lesvotes );
+
+
+  //   console.log("bjr")
+  // }
