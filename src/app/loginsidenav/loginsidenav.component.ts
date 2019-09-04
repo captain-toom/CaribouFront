@@ -15,6 +15,9 @@ export class LoginsidenavComponent implements OnInit {
   model: any = {};
   typeuser: any;
   connect: boolean;
+  msgUnknownUser : string;
+  msgMdpInvalid : string;
+  
 
   constructor( private http: HttpClient,
     private router: Router,
@@ -23,47 +26,16 @@ export class LoginsidenavComponent implements OnInit {
   ngOnInit() {
     document.body.classList.add('bg-img');
   }
-  login() {
-    //#region ici il ya ton ancien code ARTHUR ALIAS SHELBY
-    /* console.log('Tentative de connexion');
-     console.log(this.model.username);
-     console.log(this.model.password);
-     this.http.get('http://localhost:8083/connexion/request/' + this.model.username + '/' + this.model.password)
-       .subscribe(
-         response => {
-           this.data = response;
-           console.log("aaa"+ response);
-           console.log("a"+ this.data);
-         }
-       );
-       console.log( "boolean true or false verif co" , this.data);
- 
-     // if (this.data == true) {
-     //   this.http.get('http://localhost:8083/connexion/type/' + this.model.username)
-     //     .subscribe(
-     //       response2 => {
-     //         this.typeruser = response2;
-     //         console.log("bbb" +response2);
-     //          //if (this.typeruser == 'client') {
-     //         //   localStorage.setItem('user', JSON.stringify({ login: this.model.username }));
-     //         //   this.authService.login(this.model);
-     //         //   this.router.navigate(['/home']);
-     //         // }
- 
-     //       }
-     //     );
-     // }
- 
-     // Vérifier que login/mdp sont correctes, par exemple par une requête à un service REST
- */
-    //#endregion
-
-    //#region debut première solution
-
+  login() {    
+    this.msgUnknownUser = null;
     const verifUser = this.http.get('http://localhost:8083/connexion/request/' + this.model.username + '/' + this.model.password).toPromise();
     verifUser.then(res => {
       this.data = res;  // solution pour utiliser data after mais attention a quant tu l'utilise !
       console.log("arthur dans la sauce 1", this.data);
+      if (res == false){
+        
+        this.msgMdpInvalid = "Mail ou mot de passe incorrect.";
+      }
 
       // première solution -----------------------------------------------------------------------------------------------
       this.http.get('http://localhost:8083/connexion/type/' + this.model.username, { responseType: 'text' }).subscribe(
@@ -91,7 +63,10 @@ export class LoginsidenavComponent implements OnInit {
             }
           }
           else {
-            console.log("TYPE DE CONNEXION INCONNU");
+            console.log("TYPE DE CONNEXION INCONNU");         
+     
+            
+            
           }
         }
       );
